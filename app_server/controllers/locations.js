@@ -9,8 +9,8 @@ const apiOptions = {
   server: "http://localhost:3000", //servidor local - desarrollo
 };
 
-if (process.env.NODE_ENV === "production") {
-  apiOptions.server = "https://pro-web-pizza-la.herokuapp.com/"; //servidor remoto - producción
+if (process.env.NODE_ENV === 'production') {
+  apiOptions.server = 'https://pro-web-pizza-la.herokuapp.com/'; //servidor remoto - producción
   console.log("=========================HA LLEGADO A PRODUCCION");
 }
 

@@ -4,9 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
  
+
 //MONGOSE BASE DE DATOS
 require('./app_api/models/db');
-
 
 //var usersRouter = require('./app_server/routes/users');
 var indexRouter = require('./app_server/routes/index');
