@@ -12,11 +12,11 @@ if (process.env.NODE_ENV === "production") {
 mongoose.connect(dbURI, { useNewUrlParser: true });
 
 
-
+/*
 //MULTIPLE DATA BASE
 const dbURIlog = 'mongodb://localhost/mibasededatosLog';
 const logDB = mongoose.createConnection(dbURIlog);
-
+*/
 
 
 if (process.platform === 'win32') {
@@ -73,7 +73,7 @@ mongoose.connection.on('disconnected', () => {
 
 //MONITOREO DB2 =================================
   
-
+/*
 // DB conectada
 logDB.on('connected', () => {
    console.log(`Mongoose log se conectó a  ${dbURIlog}`);
@@ -86,6 +86,7 @@ logDB.on('error', err => {
 logDB.on('disconnected', () => {
    console.log('Mongoose log está desconectado');
 });
+*/
 
 // Cerrar la conexion
 // logDB.close(() => {
