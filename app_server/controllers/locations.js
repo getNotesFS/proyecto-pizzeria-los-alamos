@@ -16,7 +16,7 @@ const apiOptions = {
 };
 
 if (process.env.NODE_ENV === "production") {
-       apiOptions.server = "https://safe-scrubland-56853.herokuapp.com/"; //servidor remoto - producción
+       apiOptions.server = "https://pro-web-pizza-la.herokuapp.com/"; //servidor remoto - producción
 }
 
 
