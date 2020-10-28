@@ -16,9 +16,8 @@ const apiOptions = {
 };
 
 if (process.env.NODE_ENV === "production") {
-       apiOptions.server = "https://pro-web-pizza-la.herokuapp.com/"; //servidor remoto - producción
+  apiOptions.server = "https://pro-web-pizza-la.herokuapp.com/"; //servidor remoto - producción
 }
-
 
 /*GET -> Mi Homepage*/
 const homeList = (req, res) => {
@@ -136,14 +135,14 @@ const addNewPizza = (req, res) => {
     console.log("No hay objeto Nombre");
   } else {
     request(requestOptions, (err, { statusCode }, { name }, body) => {
-      if (statusCode === 201) { //HTTP response status 201 : Creado exitoso
-       /* res.redirect("/pizza/new");*/
+      if (statusCode === 201) {
+        //HTTP response status 201 : Creado exitoso
+        /* res.redirect("/pizza/new");*/
         console.log("Ha recibido");
-        res.render('new_pizza', {
-          title: 'Add New Pizza',
-          mensaje: 'Se ha agrergado un nuevo producto'
-      })
-
+        res.render("new_pizza", {
+          title: "Add New Pizza",
+          mensaje: "Se ha agrergado un nuevo producto",
+        });
       } else if (statusCode === 400 && name && name === "ValidationError") {
         res.redirect("/?err=val");
         //FORMATO DEBE SER ASÍ SI EL ADD NEW ESTÁ EN UN PATH INDEPENDIENTE
@@ -156,12 +155,11 @@ const addNewPizza = (req, res) => {
   }
 };
 
-
 /*GET -> IMPRIME FORMULARIO*/
-const NewPizzaView =  (req, res) => {
+const NewPizzaView = (req, res) => {
   res.render("new_pizza", {
     title: "Add New Pizza",
-    error: req.query.err, 
+    error: req.query.err,
   });
 };
 
@@ -184,5 +182,5 @@ module.exports = {
   locationInfo,
   addReview,
   addNewPizza,
-  NewPizzaView
+  NewPizzaView,
 };
