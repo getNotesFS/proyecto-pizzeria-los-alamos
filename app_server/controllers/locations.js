@@ -125,10 +125,10 @@ const addNewPizza = (req, res) => {
     json: postdata,
   };
 
-  if (!postdata.Nombre) {
+ /* if (!postdata.Nombre) {
     res.redirect("/pizza/new?err=val");
     console.log("No hay objeto Nombre");
-  } else {
+  } else {*/
     request(requestOptions, (err, { statusCode }, { name }, body) => {
       console.log("Aqui voy");
       if (statusCode === 201) {
@@ -149,7 +149,7 @@ const addNewPizza = (req, res) => {
         console.log(err);
       }
     });
-  }
+ // }
 };
 
 /*GET -> IMPRIME FORMULARIO*/
