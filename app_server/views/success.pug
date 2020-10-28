@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  .alert.alert-success.alert-dismissable.fade.hide
+    a.close(href='#' data-dismiss='alert' aria-label='close') &times;
+    strong #{error}:
+    strong #{nombre}
+    |  #{mensaje}

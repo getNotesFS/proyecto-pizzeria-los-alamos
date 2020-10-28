@@ -1,0 +1,66 @@
+extends layout
+
+
+block content
+
+
+    .container
+      .row.justify-content-md-center
+        .col-md-6
+          br
+          h1=title
+          p #{mensaje}
+          - if (error == "val")
+            .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+              strong Error!
+              |  Debes llenar todos los campos antes de guardar. Vuele a intentarlo.
+              button.close(type='button' data-dismiss='alert' aria-label='Close')
+                span(aria-hidden='true') &times; 
+          br
+          form(method='POST' action='' role="form")
+                   
+            .form-group
+              label(for='nombre') Nombre
+              input.form-control(type='text' name='nombre' )
+            .form-group
+              label(for='descripcion') Descripción
+              textarea.form-control(name='descripcion' required='')
+            .form-group
+              label(for='categoria') Categoría
+              select.form-control(name='categoria' required='')
+                option( selected='') Selecciona una categoría...
+                option( value='Vegana') Vegana
+                option( value='Oriental') Oriental
+                option( value='Otro') Otro
+            .form-group
+              label(for='tipomasa') Tipo Masa
+              select.form-control(name='tipomasa' required='')
+                option(selected='') Selecciona un tipo de masa...
+                option(value='0') Fina
+                option(value='1') Gruesa
+            .form-group
+              label(for='tamanio') Tamaño
+              select.form-control(name='tamanio' required='')
+                option(selected='') Selecciona un tamaño...
+                option(value='0') Grande
+                option(value='1') Mediana
+                option(value='2') Personal
+            .form-group
+              label(for='precio') Precio
+              input.form-control(type='text' name='precio' required='')
+            .form-group
+              label(for='imagen') Imagen
+              input.form-control(type='text' name='imagen' required='')
+            .form-group
+              label(for='imagenSubir') Imagen Subir
+              br
+              input.form-control(type='file' name='imagenSubir' )
+            .form-group
+              label(for='ingredientes') Ingredientes
+              select.form-control(multiple='' name='ingredientes')
+                option(value='5f84ac2280986513c4e7d193') Cebolla
+                option(value='5f84ac2280986513c4e7d193') Tomate
+                option(value='5f84ac2280986513c4e7d193') Champiñon
+                option(value='5f84ac2280986513c4e7d193') Jamón
+                option(value='5f84ac2280986513c4e7d193') Pollo
+            button.btn.btn-primary(type='submit') Guardar

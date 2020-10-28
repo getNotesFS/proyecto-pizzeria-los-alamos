@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+  - if (error == "val")
+    .alert.alert-danger(role="alert") Todos los campos deven estar llenos!  
+  //.alert.alert-danger.alert-dismissable.fade.show
+    a.close(href='#' data-dismiss='alert' aria-label='close') &times;
+    strong #{error}:
+    strong #{codigo}
+    |  #{mensaje}

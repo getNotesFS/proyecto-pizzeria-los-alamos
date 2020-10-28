@@ -1,0 +1,20 @@
+
+@mixin .estilos{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    color:grey;
+}
+
+.contenidos{
+    include: .estilos;
+    text-align: left;
+}
+
+.parametros (@fondo: blue, @texto: white){
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+.fondos_amarillos{
+    .parametros(yellow,black);
+}

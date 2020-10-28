@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6">
+        <form method="POST" action="/pizza/new">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción 2</label>
+            <textarea class="form-control" name="descripcion" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select name="categoria" class="form-control" required>
+              <option selected>Selecciona una categoría...</option>
+              <option val="0">Vegana</option>
+              <option val="1">Oriental</option>
+              <option val="2">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tipomasa">Tipo Masa</label>
+            <select name="tipomasa" class="form-control" required>
+              <option selected>Selecciona un tipo de masa...</option>
+              <option val="0">Fina</option>
+              <option val="1">Gruesa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tamanio">Tamaño</label>
+            <select name="tamanio" class="form-control" required>
+              <option selected>Selecciona un tamaño...</option>
+
+              <option val="0">Grande</option>
+              <option val="1">Mediana</option>
+              <option val="2">Personal</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="text" class="form-control" name="precio" required />
+          </div>
+
+          <div class="form-group">
+            <label for="imagen">Imagen</label>
+            <input type="text" class="form-control" name="imagen" required />
+          </div>
+
+          <div class="form-group">
+            <label for="ingredientes">Ingredientes</label>
+            <select multiple class="form-control" name="ingredientes">
+              <option val="0">Cebolla</option>
+              <option val="1">Tomate</option>
+              <option val="2">Champiñon</option>
+              <option val="3">Jamón</option>
+              <option val="4">Pollo</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
