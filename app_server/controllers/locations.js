@@ -126,7 +126,7 @@ const addNewPizza = (req, res) => {
   };
 
   if (!postdata.Nombre) {
-    res.redirect("/?err=val");
+    res.redirect("/pizza/new?err=val");
     console.log("No hay objeto Nombre");
   } else {
     request(requestOptions, (err, { statusCode }, { name }, body) => {
@@ -139,9 +139,10 @@ const addNewPizza = (req, res) => {
           mensaje: "Se ha agrergado un nuevo producto",
         });
       } else if (statusCode === 400 && name && name === "ValidationError") {
-        res.redirect("/?err=val");
+        res.redirect("/pizza/new?err=val");
         //FORMATO DEBE SER ASÍ SI EL ADD NEW ESTÁ EN UN PATH INDEPENDIENTE
         //res.redirect("/pizza/new?err=val");
+        console.log(body);
       } else {
         showError(req, res, statusCode);
         console.log(err);
