@@ -4,7 +4,7 @@ const readLine = require('readline');
 
 //const dbURI = 'mongodb://localhost/bigpizzadb';
 let dbURI = "mongodb+srv://dbadmin:admin1234@cluster0.89fqu.gcp.mongodb.net/bigpizzadb?retryWrites=true&w=majority";
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
  dbURI = process.env.MONGODB_URI;
  console.log("Se esta conectando a la DB remota");
 } 
