@@ -31,7 +31,7 @@ const homeList = (req, res) => {
 };
 
 const pizzaList = (req, res) => {
-  const path = `/api/pizzas/${req.params.pizzaid}`;
+  const path = `api/pizzas/${req.params.pizzaid}`;
   const requestOptions = {
     //Objeto cargado con las Opciones
     url: `${apiOptions.server}${path}`,
@@ -107,7 +107,7 @@ const addNewPizza = (req, res) => {
   console.log("Llegaron los datos");
   console.log(req.body);
 
-  const path = "/api/pizzas";
+  const path = "api/pizzas";
   const postdata = {
     Nombre: req.body.nombre,
     Descripcion: req.body.descripcion,
