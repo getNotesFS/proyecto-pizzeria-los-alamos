@@ -3,7 +3,9 @@ const readLine = require('readline');
 //Localhost debería de cambiar por el servidor en el que está la base de datos
 
 //const dbURI = 'mongodb://localhost/bigpizzadb';
-let dbURI = "mongodb+srv://dbadmin:admin1234@cluster0.89fqu.gcp.mongodb.net/bigpizzadb?retryWrites=true&w=majority";
+//let dbURI = "mongodb+srv://dbadmin:admin1234@cluster0.89fqu.gcp.mongodb.net/bigpizzadb?retryWrites=true&w=majority";
+let dbURI = "mongodb://localhost/bigpizzadb";
+
 if (process.env.NODE_ENV === "production") {
  dbURI = process.env.MONGODB_URI;
  console.log("Se esta conectando a la DB remota");

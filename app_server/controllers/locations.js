@@ -130,6 +130,7 @@ const addNewPizza = (req, res) => {
     console.log("No hay objeto Nombre");
   } else {
     request(requestOptions, (err, { statusCode }, { name }, body) => {
+      console.log("Aqui voy");
       if (statusCode === 201) {
         //HTTP response status 201 : Creado exitoso
         /* res.redirect("/pizza/new");*/

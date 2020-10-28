@@ -23,8 +23,9 @@ router.get('/location/review/new', ctrlLocations.addReview);
 router.get('/pizzas/:pizzaid', ctrlLocations.pizzaList); //modificado para usar la API REST
 
 //FORM HERE
-router.post('/pizza/new',ctrlLocations.addNewPizza);
+
 router.get('/pizza/new',ctrlLocations.NewPizzaView);
+router.post('/pizza/new',ctrlLocations.addNewPizza);
   
 
 /*2.- About*/
