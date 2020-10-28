@@ -1,13 +1,7 @@
 /*Controladores para la Collection Locations*/
 //Llamado a request
 const request = require("request");
-/*const bodyParser = require('body-parser');
-
-
-//middleware
-app.use(bodyParser.urlencoded(({extended: false}));
-app.use(bodyParser.json());
-*/
+ 
 
 // Definir las URLs para los ambientes de desarrollo y producción
 
