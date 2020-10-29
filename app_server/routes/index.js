@@ -59,6 +59,7 @@ router.get('/order-complete', ctrlCart.ordercomplete);
 router.get('/admin', ctrlAdminIndex.adminIndex);
 router.get('/admin/nueva-pizza', ctrlAdminNuevaPizza.adminNuevaPizza);
 router.post('/admin/nueva-pizza', ctrlAdminNuevaPizza.addNuevaPizza);
+
 router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngrediente);
 router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngrediente);
 router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoProductos);

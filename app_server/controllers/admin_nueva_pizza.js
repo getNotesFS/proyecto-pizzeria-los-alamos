@@ -26,31 +26,33 @@
       method: "POST",
       json: postdata,
     };
-
-
-    request(requestOptions, (err, { statusCode }, { name }, body) => {
-      console.log("Aqui voy");
-      if (statusCode === 201) {
-        //HTTP response status 201 : Creado exitoso
-        /* res.redirect("/pizza/new");*/
-        console.log("Ha recibido");
-        res.render("admin_nueva_pizza", {
-          title: "Add New Pizza",
-          mensaje: "Se ha agrergado un nuevo ingrediente",
-        });
-      } else if (statusCode === 400 && name && name === "ValidationError") {
-        res.redirect("/admin/nueva-pizza?err=val");
-        //FORMATO DEBE SER ASÍ SI EL ADD NEW ESTÁ EN UN PATH INDEPENDIENTE
-        //res.redirect("/pizza/new?err=val");
-        console.log(body);
-      } else {
-        showError(req, res, statusCode);
-        console.log(err);
-      }
-    });
- // }
-};
-
+  
+   /* if (!postdata.Nombre) {
+      res.redirect("/pizza/new?err=val");
+      console.log("No hay objeto Nombre");
+    } else {*/
+      request(requestOptions, (err, { statusCode }, { name }, body) => {
+        console.log("Aqui voy");
+        if (statusCode === 201) {
+          //HTTP response status 201 : Creado exitoso
+          /* res.redirect("/pizza/new");*/
+          console.log("Ha recibido");
+          res.render("admin_nueva_pizza", {
+            title: "Add New Pizza",
+            mensaje: "Se ha agrergado un nuevo producto",
+          });
+        } else if (statusCode === 400 && name && name === "ValidationError") {
+          res.redirect("/admin/nueva-pizza?err=val");
+          //FORMATO DEBE SER ASÍ SI EL ADD NEW ESTÁ EN UN PATH INDEPENDIENTE
+          //res.redirect("/pizza/new?err=val");
+          console.log(body);
+        } else {
+          showError(req, res, statusCode);
+          console.log(err);
+        }
+      });
+   // }
+  };
   
     module.exports =  {
         //separador de módulos con una "COMA"
