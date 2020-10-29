@@ -9,7 +9,7 @@
     console.log("Llegaron los datos");
     console.log(req.body);
   
-    const path = "api/pizzasNueva";
+    const path = "api/pizzas";
     const postdata = {
       Nombre: req.body.nombre,
       Descripcion: req.body.descripcion,
@@ -39,7 +39,7 @@
           mensaje: "Se ha agrergado un nuevo ingrediente",
         });
       } else if (statusCode === 400 && name && name === "ValidationError") {
-        res.redirect("/pizza/new?err=val");
+        res.redirect("/admin/nueva-pizza?err=val");
         //FORMATO DEBE SER ASÍ SI EL ADD NEW ESTÁ EN UN PATH INDEPENDIENTE
         //res.redirect("/pizza/new?err=val");
         console.log(body);
