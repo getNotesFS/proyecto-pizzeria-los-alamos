@@ -237,6 +237,12 @@ footer {
 .mainSliderHomePage .carousel-item {
   min-height: calc(86vh);
   max-height: calc(88vh);
+  background-image: url('../../images/pizzaDouble.jpg');
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .slidee1{
   background-image: url("../../images/pizzaDouble.jpg");
@@ -392,7 +398,7 @@ footer {
 
 .icon-default {
   width: 254px;
-  background: url(/images/pattern-white.png) no-repeat center center;
+  background: url(../../images/pattern-white.png) no-repeat center center;
   height: 59px;
   z-index: 30;
   text-align: center;
@@ -401,7 +407,7 @@ footer {
 }
 .icon-find {
   width: 254px;
-  background: url(/images/find-us.png) no-repeat center center;
+  background: url(../../images/find-us.png) no-repeat center center;
   height: 59px;
   z-index: 30;
   text-align: center;
@@ -495,7 +501,7 @@ footer {
 
 .icon-default2 {
   width: 254px;
-  background: url(/images/pattern-white.png) no-repeat center center;
+  background: url(../../images/pattern-white.png) no-repeat center center;
   height: 59px;
   z-index: 30;
   text-align: center;
