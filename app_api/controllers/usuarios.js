@@ -86,14 +86,59 @@ const usuarioRead = (req, res) => {
 };
 
 const usuarioUpdate = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Usuario actualizado" });
+    if(!req.params.usuarioid){
+        return res
+            .status(404)
+            .json({"Mensaje" : "El ID Usuario ingresado no existe, ingrese un ID pizza valido."});
+    }
+
+        usuarios
+        .findById(req.params.usuarioid)
+        .exec((err, objetoUsuario)=>{
+
+            if(!objetoUsuario){
+                return res
+                    .status(404)
+                    .json({"Mensaje" : "El ID Usuario no econtrado"});
+            }
+            objetoUsuario.Nombres = req.body.Nombres;
+            objetoUsuario.Apellidos = req.body.Apellidos;
+            objetoUsuario.Correo = req.body.Correo;
+            objeto.Usuario.Contrasenia = req.body.Contrasenia;
+            objetoUsuario.save((err, objetoUsuario)=>{
+                if(err){
+                    res
+                        .status(404)
+                        .json(err);
+                }else{
+                    res
+                        .status(200)
+                        .json(objetoUsuario);
+                }
+            });
+        });
 };
+
+
 const usuarioDelete = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Usuario eliminado" });
+    if (req.params.usuarioid) {
+        usuarios
+            .findByIdAndDelete(req.params.usuarioid)
+            .exec((err, objetoUsuario) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json(null);
+            });
+    } else {
+        res
+            .status(404)
+            .json({ "Mensaje": "Usuario no encontrado" });
+    }
 };
 
 

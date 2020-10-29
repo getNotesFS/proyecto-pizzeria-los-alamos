@@ -74,14 +74,59 @@ const pedidoRead = (req, res) => {
 };
 
 const pedidoUpdate = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Pedido actualizado" });
+    if(!req.params.pedidoid){
+        return res  
+                .status(404)
+                .json({"Mensaje" : "El ID Pedido ingresado no existe, ingrese un ID PEDIDO válido."});
+    } 
+    
+        pedidos
+        .findById(req.params.pedidoid)
+        .exec((err, objetoPedido)=>{
+
+            if(!objetoPedido){
+                return res  
+                    .status(404)
+                    .json({"Mensaje" : "El ID Pedido no encontrado."});
+            }
+            
+            objetoPedido.DetallesOrden = req.body.DetallesOrden;
+            objetoPedido.Usuario = req.body.Usuario;
+            objetoPedido.Fecha = req.body.Fecha;
+            objetoPedido.Total = req.body.Total;
+            objetoPedido.SubTotal = req.body.SubTotal;
+            objetoPizza.save((err, objetoPedido)=>{
+                if(err){
+                    res
+                        .status(404)
+                        .json(err);
+                }else{
+                    res
+                        .status(200)
+                        .json(objetoPedido);
+                }
+            });
+        });
 };
 const pedidoDelete = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Pedido eliminado" });
+    if (req.params.pedidoid) {
+        pizzas
+            .findByIdAndDelete(req.params.pedidoid)
+            .exec((err, objetoPedido) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json(null);
+            });
+    } else {
+        res
+            .status(404)
+            .json({ "Mensaje": "Pedido no encontrado" });
+    }
 };
 
 

@@ -77,14 +77,59 @@ const otroProductoRead = (req, res) => {
 };
 
 const otroProductoUpdate = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Otro Producto actualizado" });
+    if(!req.params.otroproductoid){
+        return res  
+                .status(404)
+                .json({"Mensaje" : "El ID OtroProducto ingresado no existe, ingrese un ID OTROPRODUCTO válido."});
+    } 
+    
+        otrosProductos
+        .findById(req.params.otroproductoid)
+        .exec((err, objetoOtrosProductos)=>{
+
+            if(!objetoOtrosProductos){
+                return res  
+                    .status(404)
+                    .json({"Mensaje" : "El ID Otro no encontrado."});
+            }
+            objetoOtrosProductos.Nombre = req.body.Nombre; 
+            objetoOtrosProductos.Tipo = req.body.Tipo; 
+            objetoOtrosProductos.Descripcion = req.body.Descripcion; 
+            objetoOtrosProductos.Stock = req.body.Stock; 
+            objetoOtrosProductos.Cantidad = req.body.Cantidad; 
+            objetoOtrosProductos.Precio = req.body.Precio; 
+            objetoPizza.save((err, objetoOtrosProductos)=>{
+                if(err){
+                    res
+                        .status(404)
+                        .json(err);
+                }else{
+                    res
+                        .status(200)
+                        .json(objetoOtrosProductos);
+                }
+            });
+        });
 };
 const otroProductoDelete = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Otro Producto eliminado" });
+    if (req.params.otroproductoid) {
+        pizzas
+            .findByIdAndDelete(req.params.otroproductoid)
+            .exec((err, objetoOtrosProductos) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json(null);
+            });
+    } else {
+        res
+            .status(404)
+            .json({ "Mensaje": "OtrosProductos no encontrado" });
+    }
 };
 
 

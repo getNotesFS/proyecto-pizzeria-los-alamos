@@ -72,14 +72,54 @@ const historialPedidosRead = (req, res) => {
 };
 
 const historialPedidosUpdate = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Historial Pedidos actualizado" });
+    if(!req.params.historialpedidoid){
+        return res  
+                .status(404)
+                .json({"Mensaje" : "El ID HistorialPedidos ingresado no existe, ingrese un ID HISTORIALPEDIDOS válido."});
+    } 
+    
+        historialPedidos
+        .findById(req.params.historialpedidoid)
+        .exec((err, objetoHistorialPedidos)=>{
+
+            if(!objetoHistorialPedidos){
+                return res  
+                    .status(404)
+                    .json({"Mensaje" : "El ID HistorialPedido no encontrado."});
+            }
+            objetoHistorialPedidos.Pedido = [req.body.Pedido];
+            objetoHistorialPedidos.save((err, objetoHistorialPedidos)=>{
+                if(err){
+                    res
+                        .status(404)
+                        .json(err);
+                }else{
+                    res
+                        .status(200)
+                        .json(objetoHistorialPedidos);
+                }
+            });
+        });
 };
 const historialPedidosDelete = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Historial Pedidos eliminado" });
+    if (req.params.historialpedidoid) {
+        pizzas
+            .findByIdAndDelete(req.params.historialpedidoid)
+            .exec((err, objetoHistorialPedidos) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json(null);
+            });
+    } else {
+        res
+            .status(404)
+            .json({ "Mensaje": "HistoriaPedidos no encontrado" });
+    }
 };
 
 

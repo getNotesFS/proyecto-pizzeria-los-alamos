@@ -74,14 +74,57 @@ const ingredienteRead = (req, res) => {
 };
 
 const ingredienteUpdate = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Ingrediente actualizado" });
+    if(!req.params.ingredienteid){
+        return res  
+                .status(404)
+                .json({"Mensaje" : "El ID Ingrediente ingresado no existe, ingrese un ID INGREDIENTE válido."});
+    } 
+    
+        ingredientes
+        .findById(req.params.ingredienteid)
+        .exec((err, objetoIngrediente)=>{
+
+            if(!objetoIngrediente){
+                return res  
+                    .status(404)
+                    .json({"Mensaje" : "El ID Ingrediente no encontrado."});
+            }
+            objetoIngrediente.Nombre = req.body.Nombre;
+            objetoIngrediente.Imagen = req.body.Imagen;
+            objetoIngrediente.Precio = req.body.Precio; 
+            objetoPizza.save((err, objetoIngrediente)=>{
+                if(err){
+                    res
+                        .status(404)
+                        .json(err);
+                }else{
+                    res
+                        .status(200)
+                        .json(objetoIngrediente);
+                }
+            });
+        });
+     
 };
 const ingredienteDelete = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Ingrediente eliminado" });
+    if (req.params.ingredienteid) {
+        pizzas
+            .findByIdAndDelete(req.params.ingredienteid)
+            .exec((err, objetoIngrediente) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json(null);
+            });
+    } else {
+        res
+            .status(404)
+            .json({ "Mensaje": "Ingredientes no encontrado" });
+    }
 };
 
 

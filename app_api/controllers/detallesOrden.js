@@ -71,14 +71,55 @@ const detallesOrdenRead = (req, res) => {
 };
 
 const detallesOrdenUpdate = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Detalles Orden actualizado" });
+    if(!req.params.detallesordenid){
+        return res  
+                .status(404)
+                .json({"Mensaje" : "El ID DetalleOrden ingresado no existe, ingrese un ID DETALLEORDEN válido."});
+    } 
+    
+        pizzas
+        .findById(req.params.detallesordenid)
+        .exec((err, objetoDetallesOrdenes)=>{
+
+            if(!objetoDetallesOrdenes){
+                return res  
+                    .status(404)
+                    .json({"Mensaje" : "El ID DetalleOrden no encontrado."});
+            }
+            objetoDetallesOrdenes.CantidadPizzas = [req.body.CantidadPizzas];
+            objetoDetallesOrdenes.CantidadOtrosProductos = [req.body.CantidadOtrosProductos];
+            objetoDetallesOrdenes.save((err, objetoDetallesOrdenes)=>{
+                if(err){
+                    res
+                        .status(404)
+                        .json(err);
+                }else{
+                    res
+                        .status(200)
+                        .json(objetoDetallesOrdenes);
+                }
+            });
+        });
 };
 const detallesOrdenDelete = (req, res) => {
-    res
-        .status(200)
-        .json({ "status": "Detalles Orden eliminado" });
+    if (req.params.detallesordenid) {
+        pizzas
+            .findByIdAndDelete(req.params.detallesordenid)
+            .exec((err, objetoDetallesOrdenes) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json(null);
+            });
+    } else {
+        res
+            .status(404)
+            .json({ "Mensaje": "DetalleOrden no encontrado" });
+    }
 };
 
 

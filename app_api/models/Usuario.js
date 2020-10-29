@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var datos_schema = new Schema({
+const datos_schema = new Schema({
   Cedula: { type: Number, required: true },
   Provincia: { type: String, required: true },
   Ciudad: { type: String, required: true },
@@ -23,7 +23,6 @@ var usuario_schema = new Schema({
   Datos:datos_schema,
   HistorialPedidos: {
     type: Schema.Types.ObjectId,
-   
     ref: "HistorialPedidos",
   },
 });
