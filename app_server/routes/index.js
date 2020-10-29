@@ -46,8 +46,9 @@ router.get('/offerts', ctrlOfferts.offerts);
 router.get('/product', ctrlProduct.product);
 
 
-/*34.- Single Product*/
+/*34.- Register*/
 router.get('/login-register', ctrlLoginRegister.loginRegister);
+router.post('/login-register', ctrlLoginRegister.addNewRegister);
  
 /*7.- Checkout*/
 router.get('/cart', ctrlCart.cart);
@@ -57,7 +58,9 @@ router.get('/order-complete', ctrlCart.ordercomplete);
 
 router.get('/admin', ctrlAdminIndex.adminIndex);
 router.get('/admin/nueva-pizza', ctrlAdminNuevaPizza.adminNuevaPizza);
+router.post('/admin/nueva-pizza', ctrlAdminNuevaPizza.addNuevaPizza);
 router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngrediente);
+router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngrediente);
 router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoProductos);
 
 
@@ -77,7 +80,6 @@ router.get('/pizza/new',ctrlLocations.NewPizzaView);
 router.post('/pizza/new',ctrlLocations.addNewPizza);
   
 
- 
 
 
 

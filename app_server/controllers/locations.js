@@ -30,6 +30,8 @@ const homeList = (req, res) => {
   });
 };
 
+
+
 const pizzaList = (req, res) => {
   const path = `api/pizzas/${req.params.pizzaid}`;
   const requestOptions = {
@@ -103,6 +105,7 @@ const showError = (req, res, status) => {
   });
 };
 
+/* add */
 const addNewPizza = (req, res) => {
   console.log("Llegaron los datos");
   console.log(req.body);
