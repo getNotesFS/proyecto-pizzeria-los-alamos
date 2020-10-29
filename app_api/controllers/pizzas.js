@@ -31,9 +31,7 @@ const pizzaCreate = (req, res) =>{
 
 const pizzaList = (req, res) => {
     pizzas //nombre del modelo
-        .find({
-            'Nombre' : 'peperonni'
-        })
+        .find()
         .exec((err, objetoPizza)=>{
             if(!objetoPizza){
                 console.log(`no existen documentos en la coleccion: ${pizzas}`);
