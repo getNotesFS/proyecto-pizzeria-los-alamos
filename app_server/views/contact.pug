@@ -1,0 +1,81 @@
+extends layout
+
+block content
+
+    // STAR CABECERA MAPA CONTACT
+    section.mapaContacto
+      .mapaSL
+        iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.4491112372677!2d-78.48429667080315!3d-0.18973139999134625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a7ba861479d%3A0xbc7ed28e01ecc8dd!2sROYAL%20ENFIELD%20QUITO!5e0!3m2!1ses!2sec!4v1603494645819!5m2!1ses!2sec" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0")
+      #mapaLAContactoOverlay
+    .iconArrowDown
+      .icon-default
+        ion-icon(name="arrow-down-outline")
+    // SECCION MAPA DATOS
+    section.form_datosContacto.mt-5
+      .container
+        h2.titulo_PaginasDark
+          = title
+        .row.justify-content-center
+          .col-md-8
+            .secCabecera1
+              h4.titulo_ParrafosDark ....
+              p
+                | Welcome. This is La Boom. Elegant & sophisticated restaurant template. Royal plate offers
+                | different home page layouts with smart and unique design, showcasing beautifully designed
+                | elements every restaurant website should have.
+            .formularioContacto
+              form(action="" method="POST" role="form")
+                .form-row
+                  .form-group.col-md-6
+                    label(for="nombre") Nombre
+                    input#nombre.form-control(type="text" name="nombre")
+                  .form-group.col-md-6
+                    label(for="apellido") Apellido
+                    input#apellido.form-control(type="text" name="apellido")
+                .form-row
+                  .form-group.col-md-6
+                    label(for="correo") Email
+                    input#correo.form-control(type="email" name="correo")
+                  .form-group.col-md-6
+                    label(for="asunto") Asunto
+                    input#asunto.form-control(type="text" name="asunto")
+                .form-group
+                  label(for="mensaje") Mensaje
+                  textarea#mensaje.form-control(name="mensaje" rows="3")
+                button.btn.btn-Dark.float-right(type="submit") Enviar Mensaje
+          .col-md-4
+            .secCabecera2
+              h4.titulo_ParrafosYellow Dirección
+              p Av. Eloy Alfaro, Quito 170517, Ecuador.
+              p (02) 2456123
+              p info@losalamos.com
+            .secCabecera3.mt-5
+              h4.titulo_ParrafosDark Horario
+              .table-responsive
+                table.table
+                  thead
+                    tr
+                      th(scope="col") Día
+                      th(scope="col") Hora
+                  tbody
+                    tr
+                      td Lunes
+                      td 09-00 AM - 19:00 PM
+                    tr
+                      td Martes
+                      td 09-00 AM - 19:00 PM
+                    tr
+                      td Miércoles
+                      td 09-00 AM - 19:00 PM
+                    tr
+                      td Jueves
+                      td 09-00 AM - 19:00 PM
+                    tr
+                      td Viérnes
+                      td 09-00 AM - 19:00 PM
+                    tr
+                      td Sábado
+                      td 09-00 AM - 20:00 PM
+                    tr
+                      td Domingo
+                      td 09-00 AM - 20:00 PM

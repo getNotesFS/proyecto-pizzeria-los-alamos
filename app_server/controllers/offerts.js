@@ -1,13 +1,13 @@
   /*Controladores para la Collection Locations*/
 
-  /*GET -> About*/
+  /*GET -> Offerts*/
 
-  const about = (req, res) => {
-    res.render('about', { title: 'Acerca de' });
+  const offerts = (req, res) => {
+    res.render('offerts', { title: 'Ofertas' });
   }
   
     module.exports =  {
         //separador de módulos con una "COMA"
-        about
+        offerts
   
     }

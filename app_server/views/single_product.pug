@@ -1,0 +1,90 @@
+extends layout
+
+block content
+
+
+    // START CABECERA PAGINAS
+    section.SeccionCabeceraPAGINAS
+      .container-fluid
+        .row
+          .cabeceraPaginas
+            h1.tituloPaginasCabera
+              = title
+            .breadcrumb-inner
+              a(href="/") Home
+              span= title
+    .iconArrowDown
+      .icon-default2
+        ion-icon(name="arrow-down-outline")
+    // START MAIN SECTION
+    .pt-5
+    section.pt-5.singleProduct
+      .container
+        .row
+          .col-md-6.col-sm-12.col-xs-12.singlePLeft
+            .container
+              .row
+                .col-md-12
+                  #carouselSingleProduct.carousel.slide(data-ride="carousel" align="center")
+                    // slides
+                    .carousel-inner
+                      .carousel-item.active
+                        img(src="images/extraPapas.jpg" alt="Hills")
+                      .carousel-item
+                        img(src="images/pizza1.jpg" alt="Hills")
+                      .carousel-item
+                        img(src="images/pizzaDouble.jpg" alt="Hills")
+                      .carousel-item
+                        img(src="images/pizzaPersonal.jpg" alt="Hills")
+                    // Left right
+                    a.carousel-control-prev(href="#carouselSingleProduct" data-slide="prev")
+                      ion-icon.prevIcon(name="chevron-back-outline")
+                    a.carousel-control-next(href="#carouselSingleProduct" data-slide="next")
+                      ion-icon.nextIcon(name="chevron-forward-outline")
+                    // Thumbnails
+                    ol.carousel-indicators.list-inline
+                      li.list-inline-item.active
+                        a#carousel-selector-0.selected(data-slide-to="0" data-target="#carouselSingleProduct")
+                          img.img-fluid(src="images/extraPapas.jpg")
+                      li.list-inline-item
+                        a#carousel-selector-1(data-slide-to="1" data-target="#carouselSingleProduct")
+                          img.img-fluid(src="images/pizza1.jpg")
+                      li.list-inline-item
+                        a#carousel-selector-2(data-slide-to="2" data-target="#carouselSingleProduct")
+                          img.img-fluid(src="images/pizzaDouble.jpg")
+                      li.list-inline-item
+                        a#carousel-selector-2(data-slide-to="3" data-target="#carouselSingleProduct")
+                          img.img-fluid(src="images/pizzaPersonal.jpg")
+          .col-md-6.col-sm-12.col-xs-12.singlePRight
+            h4.tituloSP Caramel Cheesecake
+            p.descripcionSP
+              | If you're planning to start an online store right away, look no further,
+              | get this template on
+              | templateForest. This product page demonstrates a "Simple Product".
+            h3.precioSP $290.50
+            .campoCantidadProducto
+              span.disminuir
+                ion-icon(name="remove-outline")
+              input(type="text" name="txt" placeholder="1" pattern="[0-9]")
+              span.agregar
+                ion-icon(name="add-outline")
+            a.btnAgregarACarrito.btnSpecialYellow(href="#")
+              ion-icon(name="basket-outline")
+              | Añadir al Carrito
+            .compartirRS.mt-4
+              .row
+                .col-md-12.col-sm-12.col-xs-12
+                  .bloqueRS.d-flex.align-items-center
+                    h5 COMPARTIR
+                    ul.socialList
+                      li.social-facebook
+                        a(href="#")
+                          ion-icon(name="logo-facebook")
+                      li.social-instagram
+                        a(href="#")
+                          ion-icon(name="logo-instagram")
+                      li.social-twitter
+                        a(href="#")
+                          ion-icon(name="logo-twitter")
+    .pb-5
+    .pb-5

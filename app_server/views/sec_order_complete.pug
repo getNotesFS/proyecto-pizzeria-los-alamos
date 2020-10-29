@@ -1,0 +1,38 @@
+extends layout
+
+block content
+
+    // START CABECERA PAGINAS
+    section.SeccionCabeceraPAGINAS
+      .container-fluid
+        .row
+          .cabeceraPaginas
+            h1.tituloPaginasCabera
+              = title
+            .breadcrumb-inner
+              a(href="/") Home
+              a(href="/cart") Cart
+              a(href="/checkout") Checkout
+              span= title
+    .iconArrowDown
+      .icon-default2
+        ion-icon(name="arrow-down-outline")
+    section.mainCheckout.pb-5.pt-5
+      .container
+        h2.titulo_PaginasDark  
+          =title
+        .progressBar.pt-3.pb-5
+          .progress.shadow-sm
+            .progress-bar.bg-warning(role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100") 100%
+        br
+        br
+        br
+        .row
+          .col-md-12.bloqueIzquierda
+            .parte1.shadow
+              .secCabecera1
+                h2.titulo_PaginasDark.bigLetter  Orden
+                h2.titulo_PaginasDark.bigLetter2 Completada
+                br
+                h6.titulo_ParrafosDark.text-center En 30 minutos le llegará el pedido
+                br

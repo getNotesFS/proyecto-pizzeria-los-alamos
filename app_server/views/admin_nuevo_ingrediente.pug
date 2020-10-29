@@ -1,0 +1,35 @@
+extends admin_layout
+
+block content
+
+    // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
+    main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2 Nuevo Ingrediente
+      // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
+      .pt-5
+      // AQUI VA EL MENSAJE DE PRODUCTO INGRESADO
+      .row.justify-content-center.pt-5.mainIntercambiableContent
+        .col-md-6
+          form(method="POST" action="/pizza/new" role="form")
+            .form-group
+              label(for="nombre") Nombre
+              input.form-control(type="text" name="nombre")
+            .form-group
+              label(for="precio") Precio
+              input.form-control(type="text" name="precio" required="")
+            .form-group
+              label(for="imagen")
+                | Imagen 
+                small
+                  | (Solo hay cebolla, champinion, tomate, queso, pollo,
+                  | pinia, tocino o jamon)
+              input.form-control(type="text" name="imagen" placeholder="tomate" required="")
+            // FILE INPUT MODIFICAR ESTO PARA IMAGEN
+            //
+              <div class="form-group">
+              <label for="subirImagen">Subir Imagen</label><br>
+              <input type="file" class="customSubirImagen" name="subirImagen">
+              </div>
+            button.btn.btn-primary(type="submit") Guardar Producto
+      .pb-5

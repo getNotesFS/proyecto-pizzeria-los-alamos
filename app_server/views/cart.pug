@@ -1,0 +1,84 @@
+extends layout
+
+block content
+    
+    // START CABECERA PAGINAS
+    section.SeccionCabeceraPAGINAS
+      .container-fluid
+        .row
+          .cabeceraPaginas
+            h1.tituloPaginasCabera 
+              = title
+            .breadcrumb-inner
+              a(href="/") Home
+              span=title
+    .iconArrowDown
+      .icon-default2
+        ion-icon(name="arrow-down-outline")
+    section.mainCartList.pb-5.pt-5
+      .container
+        h2.titulo_PaginasDark
+          = title
+        .progressBar.pt-3.pb-5
+          .progress.shadow-sm
+            .progress-bar.bg-warning(role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100") 25%
+        br
+        br
+        br
+        .row
+          .card.mb-3.shadow-sm
+            .row.no-gutters
+              .col-md-2.col-sm-12.col-12.imgProduct
+                img.card-img(src="images/pizzaPersonal.jpg" alt="...")
+              .col-md-10.col-sm-12.col-12.txtProduct
+                .card-body
+                  h5.card-title $ 12
+                  p.card-text
+                    strong Pizza de pollo
+                    |  - 
+                    span.tipoMasa
+                      | Personal
+                    span.cantidadP 1 
+                  span.ingredientesExtra
+                    small.text-muted + Pepperoni
+                    small.text-muted + Pepperoni
+                  button.btn.btn-danger.btn-sm.removeProduct(type="button")
+                    ion-icon(name="trash-outline")
+                    |  Eliminar
+                  button.btn.btn-primary.btn-sm.editProduct(type="button")
+                    ion-icon(name="create-outline")
+                    |  Editar
+          .actualizarListado.pt-3
+            .campoCupon
+              input(type="text" name="txt" placeholder="Código de cupón")
+            a.btn-mediano.bg-darkCupon(href="#") Aplicar Cupón
+            a.btn-mediano.bg-yellowCupon(href="#") Actualizar
+        .row.totalPriceP.justify-content-end.pt-5
+          .col-md-7.col-lg-6.float-right.shadow-sm.p-4.cardTotals
+            h2.tituloSecctionT  Total a Pagar
+            .table-responsive
+              table.table.preciosSubTotP
+                thead
+                  tr
+                    th(scope="col")
+                    th(scope="col")
+                tbody
+                  tr
+                    td
+                      span.txtSubtotal Total de productos
+                    td.text-right
+                      span.priceSubtotal $12
+                  tr
+                    td
+                      span.txtSubtotal Total de envío
+                    td.text-right
+                      span.priceSubtotal $3.50
+                  tr
+                    td
+                      span.txtTotal Total
+                    td.text-right
+                      span.priceTotal $15.50
+            .row.pt-4
+              .actualizarListado.pagarBtnTotalCart.pt-3
+                a.btn-mediano.bg-yellowCupon(href="/checkout") Pagar
+    // END CART

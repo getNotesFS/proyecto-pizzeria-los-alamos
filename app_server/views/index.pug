@@ -3,19 +3,191 @@ extends layout
 
 block content
   
-  h1= title
-  p Welcome to #{title}
-  hr
-  h2 Detalles de Pizza
-  hr
-  pre Nombre       : #{nombre}
-  pre Descripción  : #{descripcion} 
-  pre Categoría    : #{categoria}
-  pre Tipo Masa    : #{tipomasa}
-  pre Tamanio      : #{tamanio}
-  pre Precio       : #{precio}
-  pre Imagen       : #{imagen}
-  pre Ingredientes : #{ingredientes}
+    // SLIDER HOMEPAGE
+    section.mainSliderHomePage
+      #carouselExampleIndicators.carousel.slide(data-ride="carousel")
+        ol.carousel-indicators
+          li.active(data-target="#carouselExampleIndicators" data-slide-to="0")
+          li(data-target="#carouselExampleIndicators" data-slide-to="1")
+          li(data-target="#carouselExampleIndicators" data-slide-to="2")
+        .carousel-inner
+          .carousel-item.active
+            .slidee1
+            //
+              <img class="d-block w-100" src="images/pizzaDouble.jpg" alt="First slide">
+            .carousel-caption.d-md-block.contenidoSlider
+              h5 SLIDE 1
+              p textoooooooo
+              .actualizarListado.pt-3.d-flex.justify-content-center
+                a(href="/menu").btn-mediano.bg-darkCupon(type="submit") Revisa nuestro Menú
+          .carousel-item
+            .slidee1
+            //
+              <img class="d-block w-100" src="images/pizzaDouble.jpg" alt="First slide">
+            .carousel-caption.d-md-block.contenidoSlider
+              h5 SLIDE 2
+              p textoooooooo
+              .actualizarListado.pt-3.d-flex.justify-content-center
+                a(href="/menu").btn-mediano.bg-darkCupon(type="submit") Revisa nuestro Menú
+        a.carousel-control-prev(href="#carouselExampleIndicators" role="button" data-slide="prev")
+          ion-icon(name="chevron-back-outline")
+          span.sr-only Anterior
+        a.carousel-control-next(href="#carouselExampleIndicators" role="button" data-slide="next")
+          ion-icon(name="chevron-forward-outline")
+          span.sr-only Siguiente
+    // WELCOME HERE
+    section.secBienvenido.pt-5.pb-5
+      .container
+        h1.titulo_PaginasDark.text-center Bienvenido a la Pizzaería Los Álamos
+        p.descripcionSeccion.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        .row.pt-5
+          .col-md-6
+            p
+              | Welcome. This is La Boom. Elegant & sophisticated restaurant template. Royal plate offers
+              | different home page layouts with smart and unique design, showcasing beautifully designed
+              | elements every restaurant website should have. Smooth animations, fast loading and engaging user
+              | experience are just some of , the features this template offers. So, give it a try and dive into
+              | a world of La Boom restaurant websites.
+            .actualizarListado.pt-3.pb-4.d-flex.justify-content-center
+              button.btn-mediano.bg-darkCupon(type="submit") Acerca de nosotros
+          .col-md-6
+            .imgContainerMiddle
+              img(src="images/pizza1.jpg" alt="")
+    // SLIDER  PRODUCTOS
+    section.sliderProductos
+      .container.my-4
+        hr.my-4
+        // Carousel Wrapper
+        #multi-item-example.carousel.slide.carousel-multi-item(data-ride="carousel")
+          // Controls
+          a.carousel-control-prev(href="#multi-item-example" role="button" data-slide="prev" style="margin-left: -12%; font-size:30px;")
+            ion-icon.md.hydrated(name="chevron-back-outline" role="img" aria-label="chevron back outline")
+            span.sr-only Anterior
+          a.carousel-control-next(href="#multi-item-example" role="button" data-slide="next" style="margin-right: -12%;font-size:30px;")
+            ion-icon.md.hydrated(name="chevron-forward-outline" role="img" aria-label="chevron forward outline")
+            span.sr-only Siguiente
+          //
+            Controls
+            <div class="controls-top ">
+            <a class="btn-floating" href="#multi-item-example" data-slide="prev"><ion-icon name="chevron-back-outline"></ion-icon></a>
+            <a class="btn-floating" href="#multi-item-example" data-slide="next"><ion-icon name="chevron-forward-outline"></ion-icon></a>
+            </div>
+          // /.Controls
+          // Indicators VER PARA QUITAR
+          ol.carousel-indicators
+            li.active(data-target="#multi-item-example" data-slide-to="0")
+            li(data-target="#multi-item-example" data-slide-to="1")
+          // /.Indicators
+          // Slides
+          .carousel-inner.listadoProductosSlider(role="listbox")
+            // First slide
+            .carousel-item.active
+              .row
+                .col-md-4
+                  .card.mb-2
+                    img.card-img-top(src="images/productos/pizzaJamon.png" alt="Card image cap")
+                    .card-body
+                      h4.card-title
+                        a(href="/product")| Pizza Jamón
+                      p.card-text
+                          | Los que no pueden vivir sin carne, tienen que probar
+                          | esta
+                          | pizza.
+                      strong.precioProductoListado $ 18.00
+                .col-md-4.clearfix.d-none.d-md-block
+                  .card.mb-2
+                    img.card-img-top(src="images/productos/pizzaMixto.png" alt="Card image cap")
+                    .card-body
+                      h4.card-title 
+                        a(href="/product") Pizza Mixto 
+                      p.card-text
+                        | Sabemos que muchos aman el pepperoni, por eso creamos esta
+                        | pizza
+                      strong.precioProductoListado $ 18.00
+                .col-md-4.clearfix.d-none.d-md-block
+                  .card.mb-2
+                    img.card-img-top(src="images/productos/pizzaPollo.png" alt="Card image cap")
+                    .card-body
+                      h4.card-title 
+                        a(href="/product") Pizza Pollo
+                      p.card-text
+                        | Some quick example text to build on the card title and make
+                        | up the bulk of the
+                        | card's content.
+                      strong.precioProductoListado $ 18.00
+            // /.First slide
+            // Second slide
+            .carousel-item
+              .row
+                .col-md-4
+                  .card.mb-2
+                    img.card-img-top(src="images/productos/pizzaQueso.png" alt="Card image cap")
+                    .card-body
+                      h4.card-title 
+                        a(href="/product") Pizza Queso
+                      p.card-text
+                        | ¿Amante del Jamón? Escoge tu masa y disfruta con doble
+                        | jamón en tu pizza.
+                      strong.precioProductoListado $ 18.00
+                .col-md-4.clearfix.d-none.d-md-block
+                  .card.mb-2
+                    img.card-img-top(src="images/productos/pizzaTomate.png" alt="Card image cap")
+                    .card-body
+                      h4.card-title 
+                        a(href="/product") Pizza Tomate
+                      p.card-text
+                        | Some quick example text to build on the card title and make
+                        | up the bulk of the
+                        | card's content.
+                      strong.precioProductoListado $ 18.00
+                .col-md-4.clearfix.d-none.d-md-block
+                  .card.mb-2
+                    img.card-img-top(src="images/productos/pizzaVegana.png" alt="Card image cap")
+                    .card-body
+                      h4.card-title 
+                        a(href="/product") Pizza Vegana
+                      p.card-text
+                        | Some quick example text to build on the card title and make
+                        | up the bulk of the
+                        | card's content.
+                      strong.precioProductoListado $ 18.00
+            // /.Second slide
+          // /.Slides
+        // /.Carousel Wrapper
+    // NUESTROS SERVICIOS
+    section.pt-5.pb-5.listadoServicios
+      .container
+        h1.titulo_PaginasDark.text-center Nuestros Servicios
+        p.descripcionSeccion.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        .servicios.pt-5
+          .row
+            .card.col-md-3.col-sm-6.col-xs-12
+              ion-icon.card-img-top(name="pizza-outline")
+              .card-body.text-center
+                h5.card-title Pizzas Frescas
+                p.card-text
+                  | Pizza de sabor a Peperoni preparada con ingredientes frescos de la más
+                  | alta calidad
+            .card.col-md-3.col-sm-6.col-xs-12
+              ion-icon.card-img-top(name="fast-food-outline")
+              .card-body.text-center
+                h5.card-title Menú Variado
+                p.card-text
+                  | Pizza de sabor a Peperoni preparada con ingredientes frescos de la más
+                  | alta calidad
+            .card.col-md-3.col-sm-6.col-xs-12
+              ion-icon.card-img-top(name="home-outline")
+              .card-body.text-center
+                h5.card-title Entregas a Domicilio
+                p.card-text
+                  | Pizza de sabor a Peperoni preparada con ingredientes frescos de la más
+                  | alta calidad
+            .card.col-md-3.col-sm-6.col-xs-12
+              ion-icon.card-img-top(name="timer-outline")
+              .card-body.text-center
+                h5.card-title Entrega Rápida
+                p.card-text
+                  | Pizza de sabor a Peperoni preparada con ingredientes frescos de la más
+                  | alta calidad
   
-  
-  
+   
