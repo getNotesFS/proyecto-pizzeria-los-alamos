@@ -24,9 +24,7 @@ const ingredienteCreate = (req, res) => {
 
 const ingredienteList = (req, res) => {
     ingredientes //nombre del modelo
-    .find({
-        'Nombre' : 'champiniones'
-    })
+    .find()
     .exec((err, objetoIngrediente)=>{
         if(!objetoIngrediente){
             console.log(`no existen documentos en la coleccion: ${ingredientes}`);

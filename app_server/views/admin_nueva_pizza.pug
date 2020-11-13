@@ -5,13 +5,16 @@ block content
     // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
     main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
       .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        h1.h2 Nueva Pizza
-        p #{mensaje}
+        h1= title
+       
       // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
       .pt-5
+        
+        
       // AQUI VA EL MENSAJE DE PRODUCTO INGRESADO
       .row.justify-content-center.pt-5.mainIntercambiableContent
         .col-md-6
+          p.text-center #{mensaje}
           form(method="POST" action="" role="form")
             .form-group
               label(for="nombre") Nombre
@@ -58,10 +61,8 @@ block content
             .form-group
               label(for="ingredientes") Ingredientes
               select.form-control(multiple="" name="ingredientes")
-                option(value="5f84ac2280986513c4e7d193") Cebolla
-                option(value="5f84ac2280986513c4e7d193") Tomate
-                option(value="5f84ac2280986513c4e7d193") Champiñon
-                option(value="5f84ac2280986513c4e7d193") Jamón
-                option(value="5f84ac2280986513c4e7d193") Pollo
+                each elem in listaIngredientes
+                    option(value= elem._id)= elem.Nombre 
+                    
             button.btn.btn-primary(type="submit") Guardar Producto
       .pb-5

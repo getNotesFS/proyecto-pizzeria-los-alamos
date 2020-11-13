@@ -1,3 +1,21 @@
+ 
+/*Controladores */
+//Llamado a request
+const request = require("request");
+ 
+
+// Definir las URLs para los ambientes de desarrollo y producción
+
+const apiOptions = {
+  server: "http://localhost:3000", //servidor local - desarrollo
+};
+
+if (process.env.NODE_ENV === 'production') {
+  apiOptions.server = 'https://pro-web-pizza-la.herokuapp.com'; //servidor remoto - producción
+  console.log("=========================HA LLEGADO A PRODUCCION");
+}
+
+
 const adminNuevoIngrediente = (req, res) => {
   res.render("admin_nuevo_ingrediente", { title: "Listado Productos" });
 };
@@ -6,11 +24,11 @@ const addNewIngrediente = (req, res) => {
   console.log("Llegaron los datos");
   console.log(req.body);
 
-  const path = "api/ingredientes";
+  const path = "/api/ingredientes";
   const postdata = {
     Nombre: req.body.nombre,
     Imagen: req.body.imagen,
-    Precio: parseInt(req.body.precio)
+    Precio: parseFloat(req.body.precio)
   };
 
   const requestOptions = {

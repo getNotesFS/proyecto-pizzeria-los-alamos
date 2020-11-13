@@ -16,6 +16,6 @@ const ingredientes = new Ingredientes({
 });
 
 
-ingredientes.save();
+//ingredientes.save();
 
 module.exports = Ingredientes;

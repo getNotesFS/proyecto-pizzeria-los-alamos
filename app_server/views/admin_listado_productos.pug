@@ -31,6 +31,7 @@ block content
       br
       br
       h5 Listado Pizzas
+       
       .table-responsive.tablaPizzas
         table.table.table-striped.table-sm
           thead
@@ -42,16 +43,18 @@ block content
               th Precio
               th Otros
           tbody
-            tr
-              td.idProducto 1
-              td.imagenPiz
-                img(src="../../images/productos/pizzaJamon.png" alt="")
-              td.nombrePiz Pizza Jamón
-              td.ingredientesPiz Cebolla, Jamón, Queso
-              td.precioPiz 11.50
-              td.crudProducto
-                a(href="#" data-toggle="modal" data-target="#modalEditarPizza") Editar
-                a(href="#") Eliminar
+            each element in pizzaList
+              
+              tr
+                td.idProducto 1
+                td.imagenPiz
+                  img(src=`../../images/productos/${element.Imagen}.png` alt="")
+                td.nombrePiz= element.Nombre
+                td.ingredientesPiz= element.Ingredientes
+                td.precioPiz= element.Precio
+                td.crudProducto
+                  a(href="#" data-toggle="modal" data-target="#modalEditarPizza") Editar
+                  a(href="#") Eliminar
         // Modal
         #modalEditarPizza.modal.fade(tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true")
           .modal-dialog.modal-dialog-centered.modal-lg(role="document")
