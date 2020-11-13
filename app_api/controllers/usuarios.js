@@ -36,9 +36,7 @@ const usuarioCreate = (req, res) => {
 
 const usuarioList = (req, res) => {
     usuarios //nombre del modelo
-        .find({
-            'Nombres' : 'Steven Frank'
-        })
+        .find()
         .exec((err, objetoUsuario)=>{
             if(!objetoUsuario){
                 console.log(`no existen documentos en la coleccion: ${usuarios}`);

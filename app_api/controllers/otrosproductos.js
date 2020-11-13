@@ -27,9 +27,7 @@ const otroProductoCreate = (req, res) => {
 
 const otroProductoList = (req, res) => {
     otrosProductos //nombre del modelo
-        .find({
-            'Tipo' : 'gaseosa'
-        })
+        .find()
         .exec((err, objetoOtrosProductos)=>{
             if(!objetoOtrosProductos){
                 console.log(`no existen documentos en la coleccion: ${otrosProductos}`);

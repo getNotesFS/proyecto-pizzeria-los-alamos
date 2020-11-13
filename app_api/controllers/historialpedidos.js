@@ -22,9 +22,7 @@ const historialPedidosCreate = (req, res) => {
 
 const historialPedidosList = (req, res) => {
     historialPedidos //nombre del modelo
-        .find({
-            'id' : '5f8522bd389d591a64b9f74e'
-        })
+        .find()
         .exec((err, objetoHistorialPedidos)=>{
             if(!objetoHistorialPedidos){
                 console.log(`no existen documentos en la coleccion: ${historialPedidos}`);
