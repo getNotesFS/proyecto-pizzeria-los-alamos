@@ -1,7 +1,9 @@
 /*Controladores */
 //Llamado a request
+const { get } = require("request");
 const request = require("request");
 
+const axios = require("axios").default;
 // Definir las URLs para los ambientes de desarrollo y producción
 
 const apiOptions = {
@@ -14,11 +16,49 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //GET INGREDIENTES
- 
 
 //PRINT VIEW NEW PIZZA
+//getUserData = async () =>
+
+
+async function adminNuevaPizza(req,res) {
+  try {
+    const response = await axios.get(`${apiOptions.server}/api/ingredientes`);
+    //console.log(response.data);
+  
+    res.render("admin_nueva_pizza", { 
+      title: "Nueva Pizza", 
+      listaIngredientes: response.data
+    });
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+/*
 const adminNuevaPizza = (req, res) => {
-  const path = `/api/ingredientes`;
+
+  
+
+
+  axios.get(`${apiOptions.server}/api/ingredientes`)
+    .then(function (response) {
+      // handle success
+     // console.log(response);
+      res.render("admin_nueva_pizza", { 
+        title: "Nueva Pizza", 
+        listaIngredientes: response.data
+      });
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+
+  /* const path = `/api/ingredientes`;
   const requestOptions = {
     //Objeto cargado con las Opciones
     url: `${apiOptions.server}${path}`,
@@ -45,14 +85,57 @@ const adminNuevaPizza = (req, res) => {
       }
     }
   );
- 
-};
+ */
+//};
+
 //ADD PIZZA
+
 
 const addNuevaPizza = (req, res) => {
   console.log("Llegaron los datos");
   console.log(req.body);
 
+  axios.post(`${apiOptions.server}/api/pizzas`, {
+      Nombre: req.body.nombre,
+      Descripcion: req.body.descripcion,
+      Categoria: req.body.categoria,
+      TipoMasa: req.body.tipomasa,
+      Tamanio: req.body.tamanio,
+      Precio: parseFloat(req.body.precio),
+      Imagen: req.body.imagen,
+      Ingredientes: req.body.ingredientes,
+    })
+    .then(function (response) { 
+      console.log("Ha recibido");
+      //res.redirect(`/admin/nueva-pizza`);
+      axios.get(`${apiOptions.server}/api/ingredientes`)
+        .then(function (response) { 
+        res.render("admin_nueva_pizza", {
+          title: "Add New Pizza",
+          mensaje: "Se ha agrergado un nuevo producto",
+          listaIngredientes:response.data
+        });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+      
+      
+      
+    
+      
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+};
+
+/*
   const path = "/api/pizzas";
   const postdata = {
     Nombre: req.body.nombre,
@@ -65,21 +148,18 @@ const addNuevaPizza = (req, res) => {
     Ingredientes: req.body.ingredientes,
   };
 
+
   const requestOptions = {
     url: `${apiOptions.server}${path}`,
     method: "POST",
     json: postdata,
   };
 
-  /* if (!postdata.Nombre) {
-      res.redirect("/pizza/new?err=val");
-      console.log("No hay objeto Nombre");
-    } else {*/
+  
   request(requestOptions, (err, { statusCode }, { name }, body) => {
     console.log("Aqui voy");
     if (statusCode === 201) {
-      //HTTP response status 201 : Creado exitoso
-      /* res.redirect("/pizza/new");*/
+      
       console.log("Ha recibido");
       res.render("admin_nueva_pizza", {
         title: "Add New Pizza",
@@ -87,19 +167,20 @@ const addNuevaPizza = (req, res) => {
       });
     } else if (statusCode === 400 && name && name === "ValidationError") {
       res.redirect("/admin/nueva-pizza?err=val");
-      //FORMATO DEBE SER ASÍ SI EL ADD NEW ESTÁ EN UN PATH INDEPENDIENTE
-      //res.redirect("/pizza/new?err=val");
+   
       console.log(body);
     } else {
       showError(req, res, statusCode);
       console.log(err);
     }
   });
-  // }
-};
+  
+
+  
+};*/
 
 module.exports = {
   //separador de módulos con una "COMA"
   adminNuevaPizza,
-  addNuevaPizza,
+  addNuevaPizza
 };

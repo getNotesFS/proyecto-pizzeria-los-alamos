@@ -17,6 +17,8 @@ const ctrlLoginRegister= require('../controllers/login_register');
 
 const ctrlAdminIndex = require('../controllers/admin_index');
 const ctrlAdminListadoProductos = require('../controllers/admin_listado_productos');
+const ctrlAdminListadoIngredientes = require('../controllers/admin_listado_ingredientes');
+
 const ctrlAdminNuevaPizza = require('../controllers/admin_nueva_pizza');
 const ctrlAdminNuevoIngrediente = require('../controllers/admin_nuevo_ingrediente');
 
@@ -63,6 +65,16 @@ router.post('/admin/nueva-pizza', ctrlAdminNuevaPizza.addNuevaPizza);
 router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngrediente);
 router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngrediente);
 router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoProductos);
+router.get('/admin/listado-ingredientes', ctrlAdminListadoIngredientes.adminListadoIngredientes);
+
+
+
+
+router.get('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.getIngrediente);
+router.post('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.UpdateIngrediente);
+
+//deleteIngrediente
+router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.deleteIngrediente);
 
 
 /*

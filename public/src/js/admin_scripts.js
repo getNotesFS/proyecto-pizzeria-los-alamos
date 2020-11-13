@@ -1,3 +1,5 @@
+//BTN JS
+  
 $(document).ready(function () {
 
     $(".nav-link").click(function () {
@@ -11,11 +13,25 @@ $(document).ready(function () {
         }else{
             $(this).removeClass('changed'); 
         } 
-        
-        
-
+      
     });
-  
+    $("#updateIngredente").click(function(){
+        
+    });
+
+    $(".nav-link").click(function () {
+        
+        $(".nav-link").removeClass("active");
+        // activamos el elemento clicado.
+        $(this).addClass("active");
+         
+        if(!$(this).hasClass("changed")){ 
+            $(this).addClass('changed'); 
+        }else{
+            $(this).removeClass('changed'); 
+        } 
+      
+    });
   
   });
   

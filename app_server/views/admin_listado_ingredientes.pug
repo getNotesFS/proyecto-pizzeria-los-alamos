@@ -1,0 +1,60 @@
+
+extends admin_layout
+
+block content
+
+    // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
+    main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1= title
+      // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
+      .table-responsive.tablaIngredientes
+        table.table.table-striped.table-sm
+          thead
+            tr
+              th #
+              th Imagen
+              th Nombre
+              th Precio
+              th Otros
+          tbody
+          - var pos=1
+            each element in ingredientesList
+              tr
+                td.idProducto= pos++
+                td.imagenIng
+                  img(src=`../../images/ingredientes/${element.Imagen}.png` alt="")
+                td.nombreIng= element.Nombre
+                td.precioIng= element.Precio
+                td.crudProducto
+                  a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href="#" data-toggle="modal" data-target="#modalEditarIngrediente") Editar
+                  a.btn.btn-danger.ml-1.btn-sm#deleteIngredente(href=`/admin/ingredientes/delete/${element._id}` data-id=`${element._id}`) Eliminar
+ 
+
+        // Modal
+        #modalEditarIngrediente.modal.fade(tabindex="-1" role="dialog" aria-labelledby="modalEditarIngrediente" aria-hidden="true")
+          .modal-dialog.modal-dialog-centered.modal-lg(role="document")
+            .modal-content
+              .modal-header
+                h5#exampleModalLongTitle.modal-title Editar
+                button.close(type="button" data-dismiss="modal" aria-label="Close")
+                  span(aria-hidden="true") ×
+              .modal-body
+                .row.p-3.justify-content-center
+                  .col-md-10
+                    form(method="POST" action="" role="form")
+                      .form-group
+                        label(for="nombre") Nombre
+                        input.form-control(type="text" name="nombre" value=`${nombre}`)
+                      .form-group
+                        label(for="precio") Precio
+                        input.form-control(type="text" name="precio" required="" value=`${precio}`)
+                      .form-group
+                        label(for="imagen")
+                          | Imagen 
+                          small
+                            | (Solo hay cebolla, champinion,
+                            | tomate, queso, pollo,
+                            | pinia, tocino o jamon)
+                        input.form-control(type="text" name="imagen" placeholder="tomate" required="" value=`${imagen}`)
+                      button.btn.btn-primary(type="submit") Actualizar Producto

@@ -6,31 +6,9 @@ block content
     // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
     main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
       .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        h1.h2 Listado de Productos
+        h1= title
       // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
-      h5 Listado Ingredientes
-      .table-responsive.tablaIngredientes
-        table.table.table-striped.table-sm
-          thead
-            tr
-              th #
-              th Imagen
-              th Nombre
-              th Precio
-              th Otros
-          tbody
-            tr
-              td.idProducto 1
-              td.imagenIng
-                img(src="../../images/ingredientes/cebolla.png" alt="")
-              td.nombreIng Cebolla
-              td.precioIng 0.95
-              td.crudProducto
-                a(href="#" data-toggle="modal" data-target="#modalEditarIngrediente") Editar
-                a(href="#") Eliminar
-      br
-      br
-      h5 Listado Pizzas
+      
        
       .table-responsive.tablaPizzas
         table.table.table-striped.table-sm
@@ -43,14 +21,17 @@ block content
               th Precio
               th Otros
           tbody
+            - var pos=1
             each element in pizzaList
               
               tr
-                td.idProducto 1
+                td.idProducto= pos++
                 td.imagenPiz
                   img(src=`../../images/productos/${element.Imagen}.png` alt="")
                 td.nombrePiz= element.Nombre
-                td.ingredientesPiz= element.Ingredientes
+                td.ingredientesPiz
+                  each ingre in element.Ingredientes
+                    span= ingre.Nombre + ', '
                 td.precioPiz= element.Precio
                 td.crudProducto
                   a(href="#" data-toggle="modal" data-target="#modalEditarPizza") Editar
@@ -69,7 +50,7 @@ block content
                     form(method="POST" action="" role="form")
                       .form-group
                         label(for="nombre") Nombre
-                        input.form-control(type="text" name="nombre")
+                        input.form-control(type="text" name="nombre" )
                       .form-group
                         label(for="descripcion") Descripción
                         textarea.form-control(name="descripcion" required="")

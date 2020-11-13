@@ -106,7 +106,7 @@ const ingredienteUpdate = (req, res) => {
 };
 const ingredienteDelete = (req, res) => {
     if (req.params.ingredienteid) {
-        pizzas
+        ingredientes
             .findByIdAndDelete(req.params.ingredienteid)
             .exec((err, objetoIngrediente) => {
                 if (err) {
