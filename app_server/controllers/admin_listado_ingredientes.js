@@ -21,6 +21,22 @@ if (process.env.NODE_ENV === "production") {
 
 //Listado Ingredientes
  
+
+//PRINT VIEW NEW PIZZA
+async function adminListadoIngredientes(req,res) {
+  try {
+    const response = await axios.get(`${apiOptions.server}/api/ingredientes`);
+    res.render("admin_listado_ingredientes", {
+      title: "Listado Ingredientes",
+      ingredientesList: response.data
+    });
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 const adminListadoIngredientes = (req, res)=>{
    
   const path = `/api/ingredientes`;
@@ -38,10 +54,12 @@ const adminListadoIngredientes = (req, res)=>{
         console.log(err);
       } else if (response.statusCode === 200 && body) {
         console.log("Listado ingredientes recuperado");
+        
         res.render("admin_listado_ingredientes", {
           title: "Listado Ingredientes",
           ingredientesList: body
         });
+
       } else {
         //en caso de error, se hará render de una vista para el manejo de errores
         console.log(response.statusCode);
@@ -144,42 +162,11 @@ const deleteIngrediente =  (req, res) => {
   console.log("=========================>"+req.params._id);
 //delete Axios
   axios.delete(`${apiOptions.server}/api/ingredientes/${req.params._id}`)
-    .then(function(){
-      // Observe the data keyword this time. Very important
-      // payload is the request body
-      // Do something
+    .then(function(){ 
       console.log("DELETED");
       res.redirect(`/admin/listado-ingredientes`);
     });
-
-  /*
-  const path = `/api/ingredientes/${req.params._id}`;
-
-
-    const requestOptions = {
-      //Objeto cargado con las Opciones
-      url: `${apiOptions.server}${path}`,
-      method: "DELETE",
-      json: {},
-      qs: {},
-    };
-    request(
-      requestOptions, // Opciones
-      (err, response, body) => {
-        if (err) {
-          console.log(err);
-        } else if (response.statusCode === 204) {
-          //además del statusCode, el objeto resultante debe tener contenido
-          console.log("REMOVED");
-          res.redirect(`/admin/listado-ingredientes`);
-        } else {
-          //en caso de error, se hará render de una vista para el manejo de errores
-          console.log(response.statusCode);
-        }
-      }
-    );
-*/
-
+ 
 };
 
 

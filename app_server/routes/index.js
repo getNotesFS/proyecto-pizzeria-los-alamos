@@ -64,17 +64,18 @@ router.post('/admin/nueva-pizza', ctrlAdminNuevaPizza.addNuevaPizza);
 
 router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngrediente);
 router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngrediente);
+
 router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoProductos);
+
+
 router.get('/admin/listado-ingredientes', ctrlAdminListadoIngredientes.adminListadoIngredientes);
-
-
-
 
 router.get('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.getIngrediente);
 router.post('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.UpdateIngrediente);
 
 //deleteIngrediente
 router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.deleteIngrediente);
+
 
 
 /*
