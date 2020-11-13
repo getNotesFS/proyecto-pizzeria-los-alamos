@@ -27,7 +27,8 @@ block content
                 td.nombreIng= element.Nombre
                 td.precioIng= element.Precio
                 td.crudProducto
-                  a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href="#" data-toggle="modal" data-target="#modalEditarIngrediente") Editar
+                  //a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-ingrediente/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarIngrediente") Editar
+                  a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-ingrediente/${element._id}` data-id=`${element._id}` ) Editar
                   a.btn.btn-danger.ml-1.btn-sm#deleteIngredente(href=`/admin/ingredientes/delete/${element._id}` data-id=`${element._id}`) Eliminar
  
 

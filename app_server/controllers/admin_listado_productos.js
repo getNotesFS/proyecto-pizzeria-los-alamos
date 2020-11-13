@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === "production") {
 const adminListadoProductos = (req, res,) => {
       
   const path = `/api/pizzas`;
+
   const requestOptions = {
     //Objeto cargado con las Opciones
     url: `${apiOptions.server}${path}`,
@@ -36,7 +37,7 @@ const adminListadoProductos = (req, res,) => {
         //console.log(ingred);
         res.render("admin_listado_productos", {
           title: "Listado Pizzas",
-          pizzaList: body,
+          pizzaList: body
         });
 
       } else {
