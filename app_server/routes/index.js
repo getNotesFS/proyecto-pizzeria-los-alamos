@@ -62,8 +62,10 @@ router.get('/admin', ctrlAdminIndex.adminIndex);
 router.get('/admin/nueva-pizza', ctrlAdminNuevaPizza.adminNuevaPizza);
 router.post('/admin/nueva-pizza', ctrlAdminNuevaPizza.addNuevaPizza);
 
-router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngrediente);
+router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngredienteView);
 router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngrediente);
+router.get('/admin/editar-ingrediente/:_id', ctrlAdminNuevoIngrediente.editIngredienteView);
+router.post('/admin/editar-ingrediente/:_id',ctrlAdminNuevoIngrediente.UpdateIngrediente);
 
 router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoProductos);
 
@@ -71,8 +73,7 @@ router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoPro
 router.get('/admin/listado-ingredientes', ctrlAdminListadoIngredientes.adminListadoIngredientes);
 
 router.get('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.getIngrediente);
-router.post('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.UpdateIngrediente);
-
+ 
 //deleteIngrediente
 router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.deleteIngrediente);
 
