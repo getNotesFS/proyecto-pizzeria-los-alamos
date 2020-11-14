@@ -48,11 +48,7 @@ router.get('/offerts', ctrlOfferts.offerts);
 router.get('/product', ctrlProduct.product);
 
 
-/*34.- Register*/
-/*
-router.get('/login-register', ctrlLoginRegister.loginRegister);
-router.post('/login-register', ctrlLoginRegister.addNewRegister);
- */
+
 
 /*7.- Checkout*/
 router.get('/cart', ctrlCart.cart);
@@ -84,7 +80,7 @@ router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.delete
  
  
 router.get('/pizzas/:pizzaid', ctrlLocations.pizzaList); //modificado para usar la API REST
- 
+
 
 
 

@@ -95,36 +95,7 @@ const UpdateIngrediente = (req, res) => {
           // always executed
         });
     })
-     
-/*
-  const path = "/api/ingredientes";
-
-  const putdata = {
-    Nombre: req.body.nombre,
-    Precio: req.body.precio,
-    Imagen: req.body.imagen,
-  };
  
-  const requestOptions = {
-    url: `${apiOptions.server}${path}/${req.params._id}`,
-    method: "PUT",
-    json: putdata,
-  };
-
-  request(requestOptions, (err, { statusCode }, { name }, body) => {
-    if (statusCode === 200) {
-      console.log("Ha actualizado");
-      res.redirect("/admin/listado-ingredientes");
-    } else if (statusCode === 400 && name && name === "ValidationError") {
-      res.redirect("/admin/listado-ingredientes?err=val");
-      console.log(body);
-    } else {
-      // showError(req, res, statusCode);
-      console.log(err);
-    }
-  });
-
-*/
 };
 
 module.exports = {

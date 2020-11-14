@@ -18,33 +18,34 @@ block content
               form(method="POST" action="" role="form")
                 .form-group
                   label(for="nombre") Nombre
-                  input.form-control(type="text" name="nombre" )
+                  input.form-control(type="text" name="nombre" value=`${pizzaData.Nombre}`)
                 .form-group
                   label(for="descripcion") Descripción
-                  textarea.form-control(name="descripcion" required="")
+                  textarea.form-control(name="descripcion" required="")= pizzaData.Descripcion
                 .form-group
                   label(for="categoria") Categoría
-                  select.form-control(name="categoria" required="")
-                    option(selected="") Selecciona una categoría...
-                    option(value="Vegana") Vegana
-                    option(value="Oriental") Oriental
-                    option(value="Otro") Otro
+                  select.form-control(name="categoria" required="" )
+                    
+                      option(selected=true ) Selecciona una categoría...
+                      option(value="Vegana" selected=`${pizzaData.Categoria}` == "Vegana") Vegana
+                      option(value="Oriental" selected=`${pizzaData.Categoria}` == "Oriental") Oriental
+                      option(value="Otro" selected=`${pizzaData.Categoria}` == "Otro") Otro
                 .form-group
                   label(for="tipomasa") Tipo Masa
-                  select.form-control(name="tipomasa" required="")
+                  select.form-control(name="tipomasa" required="" )
                     option(selected="") Selecciona un tipo de masa...
-                    option(value="0") Fina
-                    option(value="1") Gruesa
+                    option(value="true" selected=true) Fina
+                    option(value="false" selected=`${pizzaData.Tipomasa}` == "false") Gruesa
                 .form-group
                   label(for="tamanio") Tamaño
-                  select.form-control(name="tamanio" required="")
-                    option(selected="") Selecciona un tamaño...
-                    option(value="0") Grande
-                    option(value="1") Mediana
-                    option(value="2") Personal
+                  select.form-control(name="tamanio" required="" )
+                    option(selected=true) Selecciona un tamaño...
+                    option(value="0" selected=`${pizzaData.Tamanio}` == "0") Grande
+                    option(value="1" selected=`${pizzaData.Tamanio}` == "1") Mediana
+                    option(value="2" selected=`${pizzaData.Tamanio}` == "2") Personal
                 .form-group
                   label(for="precio") Precio
-                  input.form-control(type="text" name="precio" required="")
+                  input.form-control(type="text" name="precio" required="" value=`${pizzaData.Precio}`)
                 .form-group
                   label(for="imagen")
                     | Imagen 
@@ -52,14 +53,13 @@ block content
                       | (Solo hay:pizzaPollo, pizzaJamon,
                       | pizzaMixto, pizzaQueso, pizzaTomate, pizzaVegana
                       | )
-                  input.form-control(type="text" name="imagen" placeholder="pizzaPollo" required="")
+                  input.form-control(type="text" name="imagen" placeholder="pizzaPollo" required="" value=`${pizzaData.Imagen}`)
                 .form-group
                   label(for="ingredientes") Ingredientes
                   select.form-control(multiple="" name="ingredientes")
-                    option(value="5f84ac2280986513c4e7d193") Cebolla
-                    option(value="5f84ac2280986513c4e7d193") Tomate
-                    option(value="5f84ac2280986513c4e7d193") Champiñon
-                    option(value="5f84ac2280986513c4e7d193") Jamón
-                    option(value="5f84ac2280986513c4e7d193") Pollo
+                     each elem in listaIngredientes
+                         
+                          option(value= elem._id selected=`${pizzaData.Ingredientes[0]}` == `${elem._id}`)= elem.Nombre  
+                    
                 button.btn.btn-primary(type="submit") Guardar Producto
       .pb-5

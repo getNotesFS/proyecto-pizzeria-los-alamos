@@ -72,24 +72,102 @@ const addNuevaPizza = (req, res) => {
 };
 
 
+
+//MOSTRAR INGREDIENTE EN FORMULARIO EDITAR
 const editPizzaView = (req, res) => {
+  axios
+    .get(`${apiOptions.server}/api/pizzas/${req.params._id}`)
+    .then(function (response) {
+      //console.log(response.data);
+      const tmpp= response.data;
+      axios.get(`${apiOptions.server}/api/ingredientes`)
+        .then(function (response) { 
+          res.render("admin_editar_pizza", {
+            title: "Actualizar",
+            mensaje: "",
+            listaIngredientes:response.data,
+            pizzaData:tmpp
+          });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
 
+       
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
 };
-//EDIT PIZZA
-const editPizza = (req, res) => {
 
-};
+ 
+ 
 //UPDATE PIZZA
+ 
 const updatePizza = (req, res) => {
+  console.log("==========ACTUALIZAR");
+  console.log(req.body);
+  axios
+    .put(`${apiOptions.server}/api/pizzas/${req.params._id}`,{
+      Nombre: req.body.nombre,
+      Descripcion: req.body.descripcion,
+      Categoria: req.body.categoria,
+      TipoMasa: req.body.tipomasa,
+      Tamanio: req.body.tamanio,
+      Precio: parseFloat(req.body.precio),
+      Imagen: req.body.imagen,
+      Ingredientes: req.body.ingredientes
+    })
+    .then(function (){ 
+      res.redirect(`/admin/listado-productos`);
+     /* axios.get(`${apiOptions.server}/api/pizzas/${req.params._id}`)
+        .then(function (response) {
+          console.log(req.body);
+          const tmpp2= req.body;
+          axios.get(`${apiOptions.server}/api/ingredientes`)
+            .then(function (response) { 
+              res.render("admin_editar_pizza", {
+                title: "Actualizar",
+                mensaje: "Se ha actualizado ",
+                listaIngredientes:response.data,
+                pizzaData:tmpp2
+              });
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+          .then(function () {
+            // always executed
+          });
 
+
+    })
+  
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });  */
+    })
+ 
 };
 
 
 module.exports = {
   //separador de módulos con una "COMA"
   adminNuevaPizzaView,
-  addNuevaPizza,
-  editPizza,
+  addNuevaPizza, 
   updatePizza,
   editPizzaView
 };

@@ -40,8 +40,7 @@ const adminListadoIngredientes = (req, res) => {
   
 //delete
 const deleteIngrediente = (req, res) => {
-  console.log("======DELETE Ingrediente");
-  console.log("=========================>" + req.params._id);
+  
   //delete Axios
   axios.delete(`${apiOptions.server}/api/ingredientes/${req.params._id}`)
     .then(function () {
