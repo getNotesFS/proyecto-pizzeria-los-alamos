@@ -66,7 +66,6 @@ router.post('/admin/nueva-pizza', ctrlAdminNuevaPizza.addNuevaPizza);
 router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoProductos);
 router.get('/admin/editar-pizza/:_id', ctrlAdminNuevaPizza.editPizzaView);//VIEW
 router.post('/admin/editar-pizza/:_id', ctrlAdminNuevaPizza.updatePizza);
-//router.get('/admin/pizzas/:_id',ctrlAdminListadoIngredientes.getIngrediente);
 //deleteIngrediente
 router.get('/admin/pizzas/delete/:_id',ctrlAdminListadoProductos.deletePizza);
 
@@ -77,9 +76,21 @@ router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngredie
 router.get('/admin/editar-ingrediente/:_id', ctrlAdminNuevoIngrediente.editIngredienteView); //VIEW
 router.post('/admin/editar-ingrediente/:_id',ctrlAdminNuevoIngrediente.UpdateIngrediente);
 router.get('/admin/listado-ingredientes', ctrlAdminListadoIngredientes.adminListadoIngredientes);
-//router.get('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.getIngrediente);
+
 //deleteIngrediente
 router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.deleteIngrediente);
+
+
+
+
+/******** Cliente ******************/
+router.get('/admin/listado-usuarios', ctrlLoginRegisterUsuarios.adminListadoUsuarios);
+
+router.get('/admin/usuarios/:_id',ctrlLoginRegisterUsuarios.getUsuario);
+router.post('/admin/usuarios/:_id',ctrlLoginRegisterUsuarios.UpdateUsuario);
+ 
+//deleteIngrediente
+router.get('/admin/usuarios/delete/:_id',ctrlLoginRegisterUsuarios.deleteUsuario);
 
 
 
