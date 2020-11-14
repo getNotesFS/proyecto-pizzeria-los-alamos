@@ -49,9 +49,11 @@ router.get('/product', ctrlProduct.product);
 
 
 /*34.- Register*/
+/*
 router.get('/login-register', ctrlLoginRegister.loginRegister);
 router.post('/login-register', ctrlLoginRegister.addNewRegister);
- 
+ */
+
 /*7.- Checkout*/
 router.get('/cart', ctrlCart.cart);
 router.get('/checkout', ctrlCart.checkout); 
@@ -79,37 +81,10 @@ router.get('/admin/listado-ingredientes', ctrlAdminListadoIngredientes.adminList
 
 //deleteIngrediente
 router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.deleteIngrediente);
-
-
-
-
-/******** Cliente ******************/
-router.get('/admin/listado-usuarios', ctrlLoginRegisterUsuarios.adminListadoUsuarios);
-
-router.get('/admin/usuarios/:_id',ctrlLoginRegisterUsuarios.getUsuario);
-router.post('/admin/usuarios/:_id',ctrlLoginRegisterUsuarios.UpdateUsuario);
  
-//deleteIngrediente
-router.get('/admin/usuarios/delete/:_id',ctrlLoginRegisterUsuarios.deleteUsuario);
-
-
-
-/*
-router.get('/location', ctrlLocations.locationInfo);
-router.get('/location/review/new', ctrlLocations.addReview);
-
-*/
-//RUTA AL LISTADO
-/* GET User Info. */
-
+ 
 router.get('/pizzas/:pizzaid', ctrlLocations.pizzaList); //modificado para usar la API REST
-
-//FORM HERE
-
-router.get('/pizza/new',ctrlLocations.NewPizzaView);
-router.post('/pizza/new',ctrlLocations.addNewPizza);
-  
-
+ 
 
 
 
