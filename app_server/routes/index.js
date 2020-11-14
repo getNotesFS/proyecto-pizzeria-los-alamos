@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*AQUI VAN LAS RUTAS*/
 
 const express = require('express');
@@ -117,8 +116,3 @@ router.post('/pizza/new',ctrlLocations.addNewPizza);
 
 
 module.exports = router;
-
- 
-=======
->>>>>>> 3ea0ec8d86e038494eaa3c8c8ad6f776116ac3d5
-
