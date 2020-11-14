@@ -46,15 +46,15 @@ block content
                   form(action="" method="POST" role="form")
                     .form-group
                       label(for="nombre") Nombres
-                      input#nombre.form-control(type="text" name="nombre")
+                       input.form-control(type="text" name="nombre"  value=`${nombre}`)
                     .form-group
                       label(for="apellido") Apellidos
-                      input#apellido.form-control(type="text" name="apellido")
+                       input.form-control(type="text" name="apellido"  value=`${apellido}`)
                     .form-group
                       label(for="correo") Correo
-                      input#correo.form-control(type="text" name="correo")
+                       input.form-control(type="text" name="correo"  value=`${correo}`)
                     .form-group
                       label(for="contrasenia") Contraseña
-                      input#contrasenia.form-control(type="password" name="contrasenia")
+                      input.form-control(type="password" name="contrasenia"  value=`${contrasenia}`)
                     .actualizarListado.pt-3.d-flex.justify-content-center
                       button.btn-mediano.bg-yellowCupon(type="submit") REGISTRAR
