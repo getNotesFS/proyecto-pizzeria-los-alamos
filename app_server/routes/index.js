@@ -59,21 +59,25 @@ router.get('/order-complete', ctrlCart.ordercomplete);
 
 
 router.get('/admin', ctrlAdminIndex.adminIndex);
-router.get('/admin/nueva-pizza', ctrlAdminNuevaPizza.adminNuevaPizza);
+
+//=PIZZAS
+router.get('/admin/nueva-pizza', ctrlAdminNuevaPizza.adminNuevaPizzaView);//VIEW
 router.post('/admin/nueva-pizza', ctrlAdminNuevaPizza.addNuevaPizza);
-
-router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngredienteView);
-router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngrediente);
-router.get('/admin/editar-ingrediente/:_id', ctrlAdminNuevoIngrediente.editIngredienteView);
-router.post('/admin/editar-ingrediente/:_id',ctrlAdminNuevoIngrediente.UpdateIngrediente);
-
 router.get('/admin/listado-productos', ctrlAdminListadoProductos.adminListadoProductos);
+router.get('/admin/editar-pizza/:_id', ctrlAdminNuevaPizza.editPizzaView);//VIEW
+router.post('/admin/editar-pizza/:_id', ctrlAdminNuevaPizza.updatePizza);
+//router.get('/admin/pizzas/:_id',ctrlAdminListadoIngredientes.getIngrediente);
+//deleteIngrediente
+router.get('/admin/pizzas/delete/:_id',ctrlAdminListadoProductos.deletePizza);
 
 
+//=INGREDIENTES
+router.get('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.adminNuevoIngredienteView);//VIEW
+router.post('/admin/nuevo-ingrediente', ctrlAdminNuevoIngrediente.addNewIngrediente);
+router.get('/admin/editar-ingrediente/:_id', ctrlAdminNuevoIngrediente.editIngredienteView); //VIEW
+router.post('/admin/editar-ingrediente/:_id',ctrlAdminNuevoIngrediente.UpdateIngrediente);
 router.get('/admin/listado-ingredientes', ctrlAdminListadoIngredientes.adminListadoIngredientes);
-
-router.get('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.getIngrediente);
- 
+//router.get('/admin/ingredientes/:_id',ctrlAdminListadoIngredientes.getIngrediente);
 //deleteIngrediente
 router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.deleteIngrediente);
 

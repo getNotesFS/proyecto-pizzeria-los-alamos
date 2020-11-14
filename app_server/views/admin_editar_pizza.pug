@@ -1,0 +1,65 @@
+extends admin_layout
+
+block content
+
+    // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
+    main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1= title
+       
+      // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
+      .pt-5
+        
+        
+      // AQUI VA EL MENSAJE DE PRODUCTO INGRESADO
+      .row.justify-content-center.pt-5.mainIntercambiableContent
+        .col-md-6
+              p.text-center #{mensaje}
+              form(method="POST" action="" role="form")
+                .form-group
+                  label(for="nombre") Nombre
+                  input.form-control(type="text" name="nombre" )
+                .form-group
+                  label(for="descripcion") Descripción
+                  textarea.form-control(name="descripcion" required="")
+                .form-group
+                  label(for="categoria") Categoría
+                  select.form-control(name="categoria" required="")
+                    option(selected="") Selecciona una categoría...
+                    option(value="Vegana") Vegana
+                    option(value="Oriental") Oriental
+                    option(value="Otro") Otro
+                .form-group
+                  label(for="tipomasa") Tipo Masa
+                  select.form-control(name="tipomasa" required="")
+                    option(selected="") Selecciona un tipo de masa...
+                    option(value="0") Fina
+                    option(value="1") Gruesa
+                .form-group
+                  label(for="tamanio") Tamaño
+                  select.form-control(name="tamanio" required="")
+                    option(selected="") Selecciona un tamaño...
+                    option(value="0") Grande
+                    option(value="1") Mediana
+                    option(value="2") Personal
+                .form-group
+                  label(for="precio") Precio
+                  input.form-control(type="text" name="precio" required="")
+                .form-group
+                  label(for="imagen")
+                    | Imagen 
+                    small
+                      | (Solo hay:pizzaPollo, pizzaJamon,
+                      | pizzaMixto, pizzaQueso, pizzaTomate, pizzaVegana
+                      | )
+                  input.form-control(type="text" name="imagen" placeholder="pizzaPollo" required="")
+                .form-group
+                  label(for="ingredientes") Ingredientes
+                  select.form-control(multiple="" name="ingredientes")
+                    option(value="5f84ac2280986513c4e7d193") Cebolla
+                    option(value="5f84ac2280986513c4e7d193") Tomate
+                    option(value="5f84ac2280986513c4e7d193") Champiñon
+                    option(value="5f84ac2280986513c4e7d193") Jamón
+                    option(value="5f84ac2280986513c4e7d193") Pollo
+                button.btn.btn-primary(type="submit") Guardar Producto
+      .pb-5

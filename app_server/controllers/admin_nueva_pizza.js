@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 
 //GET INGREDIENTES
 //PRINT VIEW NEW PIZZA
-async function adminNuevaPizza(req,res) {
+async function adminNuevaPizzaView(req,res) {
   try {
     const response = await axios.get(`${apiOptions.server}/api/ingredientes`);
     res.render("admin_nueva_pizza", { 
@@ -72,8 +72,24 @@ const addNuevaPizza = (req, res) => {
 };
 
 
+const editPizzaView = (req, res) => {
+
+};
+//EDIT PIZZA
+const editPizza = (req, res) => {
+
+};
+//UPDATE PIZZA
+const updatePizza = (req, res) => {
+
+};
+
+
 module.exports = {
   //separador de módulos con una "COMA"
-  adminNuevaPizza,
-  addNuevaPizza
+  adminNuevaPizzaView,
+  addNuevaPizza,
+  editPizza,
+  updatePizza,
+  editPizzaView
 };
