@@ -75,10 +75,10 @@ const addNuevaPizza = (req, res) => {
 
 //MOSTRAR INGREDIENTE EN FORMULARIO EDITAR
 const editPizzaView = (req, res) => {
-  axios
-    .get(`${apiOptions.server}/api/pizzas/${req.params._id}`)
+  axios .get(`${apiOptions.server}/api/pizzas/${req.params._id}`)
     .then(function (response) {
-      //console.log(response.data);
+      console.log("==========================================");
+      console.log(response.data);
       const tmpp= response.data;
       axios.get(`${apiOptions.server}/api/ingredientes`)
         .then(function (response) { 
@@ -127,38 +127,37 @@ const updatePizza = (req, res) => {
       Ingredientes: req.body.ingredientes
     })
     .then(function (){ 
-      res.redirect(`/admin/listado-productos`);
-     /* axios.get(`${apiOptions.server}/api/pizzas/${req.params._id}`)
-        .then(function (response) {
-          console.log(req.body);
-          const tmpp2= req.body;
-          axios.get(`${apiOptions.server}/api/ingredientes`)
-            .then(function (response) { 
-              res.render("admin_editar_pizza", {
-                title: "Actualizar",
-                mensaje: "Se ha actualizado ",
-                listaIngredientes:response.data,
-                pizzaData:tmpp2
-              });
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          })
-          .then(function () {
-            // always executed
-          });
-
-
-    })
+      axios .get(`${apiOptions.server}/api/pizzas/${req.params._id}`)
+      .then(function (response) {
+        console.log("==========================================");
+        console.log(response.data);
+        const tmpp= response.data;
+        axios.get(`${apiOptions.server}/api/ingredientes`)
+          .then(function (response) { 
+            res.render("admin_editar_pizza", {
+              title: "Actualizar",
+              mensaje: "Se ha actualizado",
+              listaIngredientes:response.data,
+              pizzaData:tmpp
+            });
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
   
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });  */
+         
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
     })
  
 };

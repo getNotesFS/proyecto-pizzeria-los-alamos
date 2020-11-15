@@ -33,9 +33,9 @@ block content
                 .form-group
                   label(for="tipomasa") Tipo Masa
                   select.form-control(name="tipomasa" required="" )
-                    option(selected="") Selecciona un tipo de masa...
-                    option(value="true" selected=true) Fina
-                    option(value="false" selected=`${pizzaData.Tipomasa}` == "false") Gruesa
+                    option(selected=true) Selecciona un tipo de masa...
+                    option(value="0" selected=`${pizzaData.TipoMasa}` == "0") Fina
+                    option(value="1" selected=`${pizzaData.TipoMasa}` == "1") Gruesa
                 .form-group
                   label(for="tamanio") Tamaño
                   select.form-control(name="tamanio" required="" )
@@ -56,10 +56,26 @@ block content
                   input.form-control(type="text" name="imagen" placeholder="pizzaPollo" required="" value=`${pizzaData.Imagen}`)
                 .form-group
                   label(for="ingredientes") Ingredientes
-                  select.form-control(multiple="" name="ingredientes")
-                     each elem in listaIngredientes
-                         
-                          option(value= elem._id selected=`${pizzaData.Ingredientes[0]}` == `${elem._id}`)= elem.Nombre  
+                  select.form-control#propertyType(multiple="" name="ingredientes")
+                
+                    - let bandera = false
+                    - var IngDataSize = Object.keys(pizzaData.Ingredientes).length -1 
+                    - var IngredientesSize = Object.keys(listaIngredientes).length -1 
+                     
                     
+                    - for (let i = 0; i <= IngredientesSize; i++)
+                          - bandera = false
+                          - for (let j = 0; j <= IngDataSize; j++)
+                                
+                                if (listaIngredientes[i]._id == pizzaData.Ingredientes[j]._id)
+                                      option(value= listaIngredientes[i]._id selected=`${pizzaData.Ingredientes[j]._id}` == `${listaIngredientes[i]._id}`)= pizzaData.Ingredientes[j].Nombre
+                                      - bandera = true
+                                      - break
+                          if (bandera == false)
+                              option(value= listaIngredientes[i]._id )= listaIngredientes[i].Nombre      
+                            
+                  
                 button.btn.btn-primary(type="submit") Guardar Producto
       .pb-5
+                
+                          

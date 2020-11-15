@@ -6,7 +6,7 @@ const pizza_schema = new Schema({
   Nombre: { type: String, required: true },
   Descripcion: { type: String, required: true },
   Categoria: { type: String, required: true },
-  TipoMasa: { type: Boolean, required: true,default: false },
+  TipoMasa: { type: Number, required: true,default: 0 },
   Tamanio: { type: Number, required: true },
   Precio: { type: Number, required: true },
   Imagen: { type: String, required: true },

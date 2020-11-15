@@ -63,8 +63,14 @@ const pizzaList = (req, res) => {
 };
 
 const pizzaRead = (req, res) => {
-  pizzas //nombre del modelo
-    .findById(req.params.pizzaid)
+
+  pizzas.findById(req.params.pizzaid, function (err, pizzas) {
+    ingredientes.populate(pizzas, { path: "Ingredientes" }, function (err, pizzas) {
+      res.status(200).json(pizzas);
+    });
+  });
+/*
+  pizzas.findById(req.params.pizzaid)
     .exec((err, objetoPizza) => {
       if (!objetoPizza) {
         console.log(`Pizza no encontrada con el id: ${req.params.pizzaid}`);
@@ -82,6 +88,9 @@ const pizzaRead = (req, res) => {
       );
       res.status(200).json(objetoPizza);
     });
+*/
+
+
 };
 const pizzaUpdate = (req, res) => {
   if (!req.params.pizzaid) {
@@ -103,7 +112,7 @@ const pizzaUpdate = (req, res) => {
     objetoPizza.Tamanio = req.body.Tamanio;
     objetoPizza.Precio = req.body.Precio;
     objetoPizza.Imagen = req.body.Imagen;
-    objetoPizza.Ingredientes = [req.body.Ingredientes];
+    objetoPizza.Ingredientes = req.body.Ingredientes;
     objetoPizza.save((err, Pizzas) => {
       if (err) {
         res.status(404).json(err);
