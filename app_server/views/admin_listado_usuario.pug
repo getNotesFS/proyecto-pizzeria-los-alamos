@@ -1,0 +1,46 @@
+
+extends admin_layout
+
+block content
+
+    // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
+    main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1= title
+      // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
+      .table-responsive.tablaIngredientes
+        table.table.table-striped.table-sm
+          thead
+            tr
+              th #
+              th Nombre
+              th Apellido
+              th Correo
+              th Rol
+          tbody
+          - var pos=1
+            each element in usuariosList
+              tr
+                td.idProducto= pos++
+                td.nombreIng= element.Nombres
+                td.apellidoIng= element.Apellidos
+                td.correoIng= element.Correo
+                
+                if element.TipoUsuario==0
+                    td.tipoUsuario  Cliente
+                
+                else if element.TipoUsuario==1
+                      td.tipoUsuario  Administrador
+                else if element.TipoUsuario==2
+                      td.tipoUsuario  Súper Administrador
+                else
+                      td.tipoUsuario - 
+                      
+                  
+                td.crudProducto
+                  //a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-usuario/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarIngrediente") Editar
+                  a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-usuario/${element._id}` data-id=`${element._id}` ) Editar
+                  button.btn.btn-danger.ml-1.btn-sm#deleteIngredente(data-id=`${element._id}` onClick=`removeU('${element._id}')`) Eliminar
+ 
+
+        

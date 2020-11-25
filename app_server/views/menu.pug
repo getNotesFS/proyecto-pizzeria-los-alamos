@@ -18,75 +18,30 @@ block content
     .container.mn-contenedor
       #accordionExample.accordion
         #open-pizzas.card
-          #headingOne.mn-cards.card-header(style="padding: 0;")
+          #headingOne.mn-cards.card-header(style="padding: 0px;margin-top:0px;")
             h2.mb-0
               button#open-menu.mn-botones.btn.btn-dark.btn-block.text-left(style="background-image: url('../../images/pizzaDouble.jpg');" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne")
                 h1.mn-botones-texto PIZZAS
           #collapseOne.collapse(aria-labelledby="headingOne" data-parent="#accordionExample")
             .card-body
               .container-fluid
-                .mn-productos.row
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaJamon.png" alt="Pizza")
-                    h6 Pizza Peperoni
-                    p Pizza con Queso y Peperoni
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $5.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaMixto.png" alt="Pizza")
-                    h6 Pizza Mixto
-                    p Pizza con Jamon y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $7.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaPollo.png" alt="Pizza")
-                    h6 Pizza Pollo
-                    p Pizza con Pollo y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $4.00
-                    button.mn-productos-botones Add to Cart
-                .mn-productos.row
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaJamon.png" alt="Pizza")
-                    h6 Pizza Peperoni
-                    p Pizza con Queso y Peperoni
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $5.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaMixto.png" alt="Pizza")
-                    h6 Pizza Mixto
-                    p Pizza con Jamon y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $7.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaPollo.png" alt="Pizza")
-                    h6 Pizza Pollo
-                    p Pizza con Pollo y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $4.00
-                    button.mn-productos-botones Add to Cart
+                .mn-productos.row.justify-content-center
+                  each element in pizzaList
+                    .col-auto.mb-5.cardProductoM
+                        div
+                          img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
+                        h6= element.Nombre
+                        p.descripCort= element.Descripcion
+                        br
+                        span.mn-productos-precio
+                          small
+                            | Desde 
+                          b= "$ "+ element.Precio
+                        button.mn-productos-botones
+                          ion-icon(name="basket-outline")
+                          | Añadir
+                 
+        
         .card
           #headingTwo.mn-cards.card-header(style="padding: 0;")
             h2.mb-0
@@ -95,68 +50,22 @@ block content
           #collapseTwo.collapse(aria-labelledby="headingTwo" data-parent="#accordionExample")
             .card-body
               .container-fluid
-                .mn-productos.row
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaJamon.png" alt="Pizza")
-                    h6 Pizza Peperoni
-                    p Pizza con Queso y Peperoni
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $5.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaMixto.png" alt="Pizza")
-                    h6 Pizza Mixto
-                    p Pizza con Jamon y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $7.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaPollo.png" alt="Pizza")
-                    h6 Pizza Pollo
-                    p Pizza con Pollo y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $4.00
-                    button.mn-productos-botones Add to Cart
-                .mn-productos.row
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaJamon.png" alt="Pizza")
-                    h6 Pizza Peperoni
-                    p Pizza con Queso y Peperoni
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $5.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaMixto.png" alt="Pizza")
-                    h6 Pizza Mixto
-                    p Pizza con Jamon y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $7.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaPollo.png" alt="Pizza")
-                    h6 Pizza Pollo
-                    p Pizza con Pollo y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $4.00
-                    button.mn-productos-botones Add to Cart
+                .mn-productos.row.justify-content-center
+                     each element in pizzaList
+                          .col-auto.mb-5.cardProductoM
+                              div
+                                img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
+                              h6= element.Nombre
+                              p.descripCort= element.Descripcion
+                              br
+                              span.mn-productos-precio
+                                small
+                                  | Desde 
+                                b= "$ "+ element.Precio
+                              button.mn-productos-botones
+                                ion-icon(name="basket-outline")
+                                | Añadir
+                      
         .card
           #headingThree.mn-cards.card-header(style="padding: 0;")
             h2.mb-0
@@ -165,65 +74,18 @@ block content
           #collapseThree.collapse(aria-labelledby="headingThree" data-parent="#accordionExample")
             .card-body
               .container-fluid
-                .mn-productos.row
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaJamon.png" alt="Pizza")
-                    h6 Pizza Peperoni
-                    p Pizza con Queso y Peperoni
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $5.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaMixto.png" alt="Pizza")
-                    h6 Pizza Mixto
-                    p Pizza con Jamon y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $7.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaPollo.png" alt="Pizza")
-                    h6 Pizza Pollo
-                    p Pizza con Pollo y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $4.00
-                    button.mn-productos-botones Add to Cart
-                .mn-productos.row
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaJamon.png" alt="Pizza")
-                    h6 Pizza Peperoni
-                    p Pizza con Queso y Peperoni
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $5.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaMixto.png" alt="Pizza")
-                    h6 Pizza Mixto
-                    p Pizza con Jamon y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $7.00
-                    button.mn-productos-botones Add to Cart
-                  .col
-                    div
-                      img.img-fluid(src="../../images/productos/pizzaPollo.png" alt="Pizza")
-                    h6 Pizza Pollo
-                    p Pizza con Pollo y Queso
-                    br
-                    span.mn-productos-precio
-                      | desde 
-                      b $4.00
-                    button.mn-productos-botones Add to Cart
+                .mn-productos.row.justify-content-center
+                     each element in pizzaList
+                          .col-auto.mb-5.cardProductoM
+                              div
+                                img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
+                              h6= element.Nombre
+                              p.descripCort= element.Descripcion
+                              br
+                              span.mn-productos-precio
+                                small
+                                  | Desde 
+                                b= "$ "+ element.Precio
+                              button.mn-productos-botones
+                                ion-icon(name="basket-outline")
+                                | Añadir

@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="mt-5 ">{{title}}</h1>
+
+    </div>
+   
+    <div class="row mt-5">
+        
+    <div class="table-responsive tablaIngredientes">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Otros</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tbody>
+                <tr> 
+                    <td class="idProducto">1</td>
+                    <td class="imagenIng"><img src="public/images/ingredientes/{{ingredientes.Nombre}}.png" alt=""></td>
+                    <td class="nombreIng">{{ingredientes.Nombre}}</td>
+                    <td class="precioIng">{{ingredientes.Precio}}</td>
+                    <td class="crudProducto">
+                        <!--a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-ingrediente/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarIngrediente") Editar--><a
+                            class="btn btn-primary ml-1 btn-sm" id="updateIngredente"
+                            href="/admin/editar-ingrediente/5fa0cdb1155b5b00175d2132"
+                            data-id="5fa0cdb1155b5b00175d2132">Editar</a><a class="btn btn-danger ml-1 btn-sm"
+                            id="deleteIngredente" href="/admin/ingredientes/delete/5fa0cdb1155b5b00175d2132"
+                            data-id="5fa0cdb1155b5b00175d2132">Eliminar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    </div>
+
+</div>

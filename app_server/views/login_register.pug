@@ -43,18 +43,21 @@ block content
                 h4.titulo_ParrafosDark.text-center REGISTRO
               .secCabecera3.mt-5
                 .formularioRegistro
-                  form(action="" method="POST" role="form")
-                    .form-group
-                      label(for="nombre") Nombres
-                       input.form-control(type="text" name="nombre"  value=`${nombre}`)
-                    .form-group
-                      label(for="apellido") Apellidos
-                       input.form-control(type="text" name="apellido"  value=`${apellido}`)
-                    .form-group
-                      label(for="correo") Correo
-                       input.form-control(type="text" name="correo"  value=`${correo}`)
-                    .form-group
-                      label(for="contrasenia") Contraseña
-                      input.form-control(type="password" name="contrasenia"  value=`${contrasenia}`)
+                  form(action="/register-f" method="POST" role="form")
+                    
+                    .form-row
+                      .form-group.col-md-6
+                        label(for="nombre") Nombres
+                        input.form-control(type="text" name="nombre" )
+                      .form-group.col-md-6
+                        label(for="apellido") Apellidos
+                        input.form-control(type="text" name="apellido"  )
+                    .form-row
+                      .form-.col-md-6
+                        label(for="correo") Correo
+                        input.form-control(type="text" name="correo"  )
+                      .form-group.col-md-6
+                        label(for="contrasenia") Contraseña
+                        input.form-control(type="password" name="contrasenia"  )
                     .actualizarListado.pt-3.d-flex.justify-content-center
                       button.btn-mediano.bg-yellowCupon(type="submit") REGISTRAR

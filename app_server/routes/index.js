@@ -22,6 +22,9 @@ const ctrlAdminListadoIngredientes = require('../controllers/admin_listado_ingre
 const ctrlAdminNuevaPizza = require('../controllers/admin_nueva_pizza');
 const ctrlAdminNuevoIngrediente = require('../controllers/admin_nuevo_ingrediente');
 
+//usuarios
+const ctrlAdminListadoUsuarios = require('../controllers/admin_listado_usuarios');
+const ctrlAdminNuevoUsuario = require('../controllers/admin_nuevo_usuario');
 
 
 
@@ -46,10 +49,13 @@ router.get('/offerts', ctrlOfferts.offerts);
  
 /*34.- Single Product*/
 router.get('/product', ctrlProduct.product);
+router.get('/product/:_id', ctrlProduct.singleProduct);//VIEW
 
 
+/*LOGIN REGISTER */
 
-
+router.get('/login-register', ctrlLoginRegister.loginRegister);//VIEW
+router.post('/register-f', ctrlLoginRegister.addNewUsuario);
 /*7.- Checkout*/
 router.get('/cart', ctrlCart.cart);
 router.get('/checkout', ctrlCart.checkout); 
@@ -82,6 +88,16 @@ router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.delete
 router.get('/pizzas/:pizzaid', ctrlLocations.pizzaList); //modificado para usar la API REST
 
 
+
+
+//usuarios
+router.get('/admin/nuevo-usuario', ctrlAdminNuevoUsuario.adminNuevoUsuarioView);//VIEW
+router.post('/admin/nuevo-usuario', ctrlAdminNuevoUsuario.addNewUsuario);
+
+router.get('/admin/editar-usuario/:_id', ctrlAdminNuevoUsuario.editUsuarioView); //VIEW
+router.post('/admin/editar-usuario/:_id',ctrlAdminNuevoUsuario.UpdateUsuario);
+router.get('/admin/listado-usuarios', ctrlAdminListadoUsuarios.adminListadoUsuarios);
+router.get('/admin/usuarios/delete/:_id',ctrlAdminListadoUsuarios.deleteUsuario);
 
 
 

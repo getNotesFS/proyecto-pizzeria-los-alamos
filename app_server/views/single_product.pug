@@ -12,6 +12,7 @@ block content
               = title
             .breadcrumb-inner
               a(href="/") Home
+              a(href="/menu") Menú
               span= title
     .iconArrowDown
       .icon-default2
@@ -29,13 +30,13 @@ block content
                     // slides
                     .carousel-inner
                       .carousel-item.active
-                        img(src="images/extraPapas.jpg" alt="Hills")
+                        img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
                       .carousel-item
-                        img(src="images/pizza1.jpg" alt="Hills")
+                        img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
                       .carousel-item
-                        img(src="images/pizzaDouble.jpg" alt="Hills")
+                        img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
                       .carousel-item
-                        img(src="images/pizzaPersonal.jpg" alt="Hills")
+                        img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
                     // Left right
                     a.carousel-control-prev(href="#carouselSingleProduct" data-slide="prev")
                       ion-icon.prevIcon(name="chevron-back-outline")
@@ -45,32 +46,30 @@ block content
                     ol.carousel-indicators.list-inline
                       li.list-inline-item.active
                         a#carousel-selector-0.selected(data-slide-to="0" data-target="#carouselSingleProduct")
-                          img.img-fluid(src="images/extraPapas.jpg")
+                          img.img-fluid(src=`../images/productos/${pizzaData.Imagen}.png`)
                       li.list-inline-item
                         a#carousel-selector-1(data-slide-to="1" data-target="#carouselSingleProduct")
-                          img.img-fluid(src="images/pizza1.jpg")
+                          img.img-fluid(src=`../images/productos/${pizzaData.Imagen}.png`)
                       li.list-inline-item
                         a#carousel-selector-2(data-slide-to="2" data-target="#carouselSingleProduct")
-                          img.img-fluid(src="images/pizzaDouble.jpg")
+                          img.img-fluid(src=`../images/productos/${pizzaData.Imagen}.png`)
                       li.list-inline-item
                         a#carousel-selector-2(data-slide-to="3" data-target="#carouselSingleProduct")
-                          img.img-fluid(src="images/pizzaPersonal.jpg")
+                          img.img-fluid(src=`../images/productos/${pizzaData.Imagen}.png`)
           .col-md-6.col-sm-12.col-xs-12.singlePRight
-            h4.tituloSP Caramel Cheesecake
-            p.descripcionSP
-              | If you're planning to start an online store right away, look no further,
-              | get this template on
-              | templateForest. This product page demonstrates a "Simple Product".
-            h3.precioSP $290.50
+            h4.tituloSP= pizzaData.Nombre
+            p.descripcionSP= pizzaData.Descripcion
+               
+            h3.precioSP= "$ "+pizzaData.Precio
             .campoCantidadProducto
-              span.disminuir
+              span.disminuir#disminuir
                 ion-icon(name="remove-outline")
-              input(type="text" name="txt" placeholder="1" pattern="[0-9]")
-              span.agregar
+              input(type="text" name="txt" id="cantProductos" placeholder="1" pattern="[0-9]" value="1")
+              span.agregar#aumentar
                 ion-icon(name="add-outline")
-            a.btnAgregarACarrito.btnSpecialYellow(href="#")
+            a.btnAgregarACarrito.btnSpecialYellow#addCarrito(href="#")
               ion-icon(name="basket-outline")
-              | Añadir al Carrito
+              | Añadir
             .compartirRS.mt-4
               .row
                 .col-md-12.col-sm-12.col-xs-12

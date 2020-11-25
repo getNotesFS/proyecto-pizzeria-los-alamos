@@ -1,0 +1,80 @@
+extends admin_layout
+
+block content
+
+    // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
+    main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2 Nuevo Usuario
+         
+      // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
+      .pt-5
+      // AQUI VA EL MENSAJE DE PRODUCTO INGRESADO
+      .row.justify-content-center.pt-5.mainIntercambiableContent
+        .col-md-6
+          p.text-center #{mensaje}
+          form(method="POST" action="" role="form")
+            .form-group
+              label(for="nombre") Nombres
+              input.form-control(type="text" name="nombre" )
+            .form-group
+              label(for="apellido") Apellidos
+              input.form-control(type="text" name="apellido" )
+            .form-group
+              label(for="correo") Correo
+              input.form-control(type="text" name="correo" required="" )
+            .form-group
+              label(for="correo") Contraseña
+              input.form-control(type="text" name="contrasenia" required="")
+            
+            #accordion
+              .card
+                #headingOne.card-header.cardCollapseDatosFac
+                  h5.mb-0
+                    a.btn.btn-info.CollapseDatosFac(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                      ion-icon(name='receipt')
+                      | Datos de Facturación y Envío
+                #collapseOne.collapse(aria-labelledby='headingOne' data-parent='#accordion' style='')
+                  .card-body
+                    .form-group
+                      label(for="cedula") Cédula
+                      input.form-control(type="text" name="cedula" required="")
+                    .form-group
+                      label(for="provincia") Provincia
+                      input.form-control(type="text" name="provincia" required="")
+                    .form-group
+                      label(for="ciudad") Ciudad
+                      input.form-control(type="text" name="ciudad" required="")
+                    .form-group
+                      label(for="direccionFacturacion") Dirección de Facturación
+                      input.form-control(type="text" name="direccionFacturacion" required="")
+                    .form-group
+                      label(for="direccionEnvio") Dirección de Envío
+                      input.form-control(type="text" name="direccionEnvio" required="")
+                    .form-group
+                      label(for="referencia") Referencia
+                      input.form-control(type="text" name="referencia" required="")
+                    .form-group
+                      label(for="telefonoConvencional") Teléfono Convencional
+                      input.form-control(type="text" name="telefonoConvencional" required="")
+                    .form-group
+                      label(for="telefonoCelular") Teléfono Celular
+                      input.form-control(type="text" name="telefonoCelular" required="")
+                    .form-group
+                      label(for="codigoPostal") Código Postal
+                      input.form-control(type="text" name="codigoPostal" required="")
+                       
+            br
+            br
+            .form-group
+                  label(for="tipousuario") Rol de Usuario
+                  select.form-control(name="tipousuario" required="" )
+                    option(selected="") Selecciona un rol de usuario...
+                    option(value="0") Cliente
+                    option(value="1") Administrador
+                    option(value="2") Súper Administrador
+            br
+            br
+            button.btn.btn-primary(type="submit") Guardar Usuario
+            a.btn.btn-danger.ml-1(href="/admin/listado-usuarios") Cancelar
+      .pb-5

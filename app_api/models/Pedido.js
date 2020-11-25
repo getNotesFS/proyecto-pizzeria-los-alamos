@@ -22,6 +22,6 @@ const pedido = new Pedido({
   SubTotal: 100
 });
 
-pedido.save();
+//pedido.save();
 
 module.exports = Pedido;

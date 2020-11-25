@@ -43,117 +43,100 @@ block content
         .row.pt-5
           .col-md-6
             p
-              | Welcome. This is La Boom. Elegant & sophisticated restaurant template. Royal plate offers
-              | different home page layouts with smart and unique design, showcasing beautifully designed
-              | elements every restaurant website should have. Smooth animations, fast loading and engaging user
-              | experience are just some of , the features this template offers. So, give it a try and dive into
-              | a world of La Boom restaurant websites.
+              | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
             .actualizarListado.pt-3.pb-4.d-flex.justify-content-center
               a(href="about").btn-mediano.bg-darkCupon(type="submit") Acerca de nosotros
           .col-md-6
             .imgContainerMiddle
               img(src="images/pizza1.jpg" alt="")
-    // SLIDER  PRODUCTOS
-    section.sliderProductos
-      .container.my-4
-        hr.my-4
-        // Carousel Wrapper
-        #multi-item-example.carousel.slide.carousel-multi-item(data-ride="carousel")
-          // Controls
-          a.carousel-control-prev(href="#multi-item-example" role="button" data-slide="prev" style="margin-left: -12%; font-size:30px;")
-            ion-icon.md.hydrated(name="chevron-back-outline" role="img" aria-label="chevron back outline")
-            span.sr-only Anterior
-          a.carousel-control-next(href="#multi-item-example" role="button" data-slide="next" style="margin-right: -12%;font-size:30px;")
-            ion-icon.md.hydrated(name="chevron-forward-outline" role="img" aria-label="chevron forward outline")
-            span.sr-only Siguiente
-          //
-            Controls
-            <div class="controls-top ">
-            <a class="btn-floating" href="#multi-item-example" data-slide="prev"><ion-icon name="chevron-back-outline"></ion-icon></a>
-            <a class="btn-floating" href="#multi-item-example" data-slide="next"><ion-icon name="chevron-forward-outline"></ion-icon></a>
-            </div>
-          // /.Controls
-          // Indicators VER PARA QUITAR
-          ol.carousel-indicators
-            li.active(data-target="#multi-item-example" data-slide-to="0")
-            li(data-target="#multi-item-example" data-slide-to="1")
-          // /.Indicators
-          // Slides
-          .carousel-inner.listadoProductosSlider(role="listbox")
-            // First slide
-            .carousel-item.active
-              .row
-                .col-md-4
-                  .card.mb-2
-                    img.card-img-top(src="images/productos/pizzaJamon.png" alt="Card image cap")
-                    .card-body
-                      h4.card-title
-                        a(href="/product")| Pizza Jamón
-                      p.card-text
-                          | Los que no pueden vivir sin carne, tienen que probar
-                          | esta
-                          | pizza.
-                      strong.precioProductoListado $ 18.00
-                .col-md-4.clearfix.d-none.d-md-block
-                  .card.mb-2
-                    img.card-img-top(src="images/productos/pizzaMixto.png" alt="Card image cap")
-                    .card-body
-                      h4.card-title 
-                        a(href="/product") Pizza Mixto 
-                      p.card-text
-                        | Sabemos que muchos aman el pepperoni, por eso creamos esta
-                        | pizza
-                      strong.precioProductoListado $ 18.00
-                .col-md-4.clearfix.d-none.d-md-block
-                  .card.mb-2
-                    img.card-img-top(src="images/productos/pizzaPollo.png" alt="Card image cap")
-                    .card-body
-                      h4.card-title 
-                        a(href="/product") Pizza Pollo
-                      p.card-text
-                        | Some quick example text to build on the card title and make
-                        | up the bulk of the
-                        | card's content.
-                      strong.precioProductoListado $ 18.00
-            // /.First slide
-            // Second slide
-            .carousel-item
-              .row
-                .col-md-4
-                  .card.mb-2
-                    img.card-img-top(src="images/productos/pizzaQueso.png" alt="Card image cap")
-                    .card-body
-                      h4.card-title 
-                        a(href="/product") Pizza Queso
-                      p.card-text
-                        | ¿Amante del Jamón? Escoge tu masa y disfruta con doble
-                        | jamón en tu pizza.
-                      strong.precioProductoListado $ 18.00
-                .col-md-4.clearfix.d-none.d-md-block
-                  .card.mb-2
-                    img.card-img-top(src="images/productos/pizzaTomate.png" alt="Card image cap")
-                    .card-body
-                      h4.card-title 
-                        a(href="/product") Pizza Tomate
-                      p.card-text
-                        | Some quick example text to build on the card title and make
-                        | up the bulk of the
-                        | card's content.
-                      strong.precioProductoListado $ 18.00
-                .col-md-4.clearfix.d-none.d-md-block
-                  .card.mb-2
-                    img.card-img-top(src="images/productos/pizzaVegana.png" alt="Card image cap")
-                    .card-body
-                      h4.card-title 
-                        a(href="/product") Pizza Vegana
-                      p.card-text
-                        | Some quick example text to build on the card title and make
-                        | up the bulk of the
-                        | card's content.
-                      strong.precioProductoListado $ 18.00
-            // /.Second slide
-          // /.Slides
-        // /.Carousel Wrapper
+    
+    if Object.keys(pizzaList).length >6
+      // SLIDER  PRODUCTOS
+      section.sliderProductos
+        .container.my-4
+          hr.my-4
+          // Carousel Wrapper
+          #multi-item-example.carousel.slide.carousel-multi-item(data-ride="carousel")
+            // Controls
+            a.carousel-control-prev.customPrevC(href="#multi-item-example" role="button" data-slide="prev" )
+              ion-icon.md.hydrated(name="chevron-back-outline" role="img" aria-label="chevron back outline")
+              span.sr-only Anterior
+            a.carousel-control-next.customNextC(href="#multi-item-example" role="button" data-slide="next")
+              ion-icon.md.hydrated(name="chevron-forward-outline" role="img" aria-label="chevron forward outline")
+              span.sr-only Siguiente
+            //
+              Controls
+              <div class="controls-top ">
+              <a class="btn-floating" href="#multi-item-example" data-slide="prev"><ion-icon name="chevron-back-outline"></ion-icon></a>
+              <a class="btn-floating" href="#multi-item-example" data-slide="next"><ion-icon name="chevron-forward-outline"></ion-icon></a>
+              </div>
+            // /.Controls
+            // Indicators VER PARA QUITAR
+            ol.carousel-indicators
+              li.active(data-target="#multi-item-example" data-slide-to="0")
+              li(data-target="#multi-item-example" data-slide-to="1")
+            // /.Indicators
+            // Slides
+            .carousel-inner.listadoProductosSlider(role="listbox")
+              // First slide
+              .carousel-item.active
+                .row
+                  .col-md-4
+                    .card.mb-2
+                      img.card-img-top(src=`images/productos/${pizzaList[0].Imagen}.png` alt=`${pizzaList[0].Nombre}`)
+                      .card-body
+                        h4.card-title
+                          a(href=`/product/${pizzaList[0]._id}`)= pizzaList[0].Nombre
+                        p.card-text= pizzaList[0].Descripcion
+                        strong.precioProductoListado= "$ " + pizzaList[0].Precio
+                  .col-md-4.clearfix.d-none.d-md-block
+                    .card.mb-2
+                      img.card-img-top(src=`images/productos/${pizzaList[1].Imagen}.png` alt=`${pizzaList[1].Nombre}`)
+                      .card-body
+                        h4.card-title
+                          a(href=`/product/${pizzaList[1]._id}`)= pizzaList[1].Nombre
+                        p.card-text= pizzaList[1].Descripcion
+                        strong.precioProductoListado= "$ " + pizzaList[1].Precio
+                  .col-md-4.clearfix.d-none.d-md-block
+                    .card.mb-2
+                      img.card-img-top(src=`images/productos/${pizzaList[2].Imagen}.png` alt=`${pizzaList[2].Nombre}`)
+                      .card-body
+                        h4.card-title
+                          a(href=`/product/${pizzaList[2]._id}`)= pizzaList[2].Nombre
+                        p.card-text= pizzaList[2].Descripcion
+                        strong.precioProductoListado= "$ " + pizzaList[2].Precio
+              // /.First slide
+              // Second slide
+              .carousel-item
+                .row
+                  .col-md-4
+                    .card.mb-2
+                      img.card-img-top(src=`images/productos/${pizzaList[3].Imagen}.png` alt=`${pizzaList[3].Nombre}`)
+                      .card-body
+                        h4.card-title
+                          a(href=`/product/${pizzaList[3]._id}`)= pizzaList[3].Nombre
+                        p.card-text= pizzaList[3].Descripcion
+                        strong.precioProductoListado= "$ " + pizzaList[3].Precio
+                  .col-md-4.clearfix.d-none.d-md-block
+                    .card.mb-2
+                      img.card-img-top(src=`images/productos/${pizzaList[4].Imagen}.png` alt=`${pizzaList[4].Nombre}`)
+                      .card-body
+                        h4.card-title
+                          a(href=`/product/${pizzaList[4]._id}`)= pizzaList[4].Nombre
+                        p.card-text= pizzaList[4].Descripcion
+                        strong.precioProductoListado= "$ " + pizzaList[4].Precio
+                  .col-md-4.clearfix.d-none.d-md-block
+                    .card.mb-2
+                      img.card-img-top(src=`images/productos/${pizzaList[5].Imagen}.png` alt=`${pizzaList[5].Nombre}`)
+                      .card-body
+                        h4.card-title
+                          a(href=`/product/${pizzaList[5]._id}`)= pizzaList[5].Nombre
+                        p.card-text= pizzaList[5].Descripcion
+                        strong.precioProductoListado= "$ " + pizzaList[5].Precio
+              // /.Second slide
+            // /.Slides
+          // /.Carousel Wrapper
+      
     // NUESTROS SERVICIOS
     section.pt-5.pb-5.listadoServicios
       .container

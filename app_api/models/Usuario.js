@@ -2,27 +2,28 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const datos_schema = new Schema({
-  Cedula: { type: Number, required: true },
-  Provincia: { type: String, required: true },
-  Ciudad: { type: String, required: true },
-  DireccionFacturacion: { type: String, required: true },
-  DireccionEnvio: { type: String, required: true },
-  Referencia: { type: String },
-  TelefonoConvencional: { type: Number },
-  TelefonoCelular: { type: Number, required: true },
-  CodigoPostal: { type: Number, required: true },
+  Cedula: { type: Number, required: false, default:0 },
+  Provincia: { type: String, required: false, default:"" },
+  Ciudad: { type: String, required: false, default:"" },
+  DireccionFacturacion: { type: String, required: false, default:"" },
+  DireccionEnvio: { type: String, required: false, default:"" },
+  Referencia: { type: String, required: false, default:""  },
+  TelefonoConvencional: { type: Number, default: 0},
+  TelefonoCelular: { type: Number, required: false, default:0 },
+  CodigoPostal: { type: Number, required: false, default:0 },
 });
 
 
 var usuario_schema = new Schema({
-  TipoUsuario: { type: Number, required: true, default:0},
   Nombres: { type: String, required: true },
   Apellidos: { type: String, required: true },
   Correo: { type: String, required: true },
   Contrasenia: { type: String, required: true },
+  TipoUsuario: { type: Number, required: false, default:0},
   Datos:datos_schema,
   HistorialPedidos: {
     type: Schema.Types.ObjectId,
+    required: false,
     ref: "HistorialPedidos",
   },
 });
@@ -53,7 +54,7 @@ const usuario = new Usuario({
 });
 
 
-usuario.save(); // guardar en DB
+//usuario.save(); // guardar en DB
 
 
 module.exports = Usuario;

@@ -35,6 +35,6 @@ block content
                 td.precioPiz= element.Precio
                 td.crudProducto
                    a.btn.btn-primary.ml-1.btn-sm#updatePizza(href=`/admin/editar-pizza/${element._id}` data-id=`${element._id}` ) Editar
-                   a.btn.btn-danger.ml-1.btn-sm#deletePizza(href=`/admin/pizzas/delete/${element._id}` data-id=`${element._id}`) Eliminar
+                   button.btn.btn-danger.ml-1.btn-sm#deletePizza(data-id=`${element._id}` onClick=`removeP('${element._id}')`) Eliminar
  
         

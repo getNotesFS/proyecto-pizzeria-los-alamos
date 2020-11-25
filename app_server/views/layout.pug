@@ -30,24 +30,22 @@ html
             ion-icon.nv-redes-icons(name="logo-instagram")
             ion-icon.nv-redes-icons(name="logo-twitter")
           .nv-user.col-6.col-sm-6.col-md-2.col-lg-2.loginPart
-            span.myUsuario(style="float: left; cursor:pointer;" data-toggle="modal" data-target="#loginRegisterModal") Usuario
+            span.myUsuario(style="float: left; cursor:pointer;" data-toggle="modal" data-target="#loginRegisterModal") Mi Cuenta
             ion-icon.nv-user-icon(name="person-circle-outline")
-      .container-fluid.nv-header2(style="padding: 0;")
+      .container-fluid.nv-header2(style="padding: 0px;")
         nav.navbar.navbar-expand-lg.navbar-dark.bg-dark(style="padding: 5px 8%;")
           a.navbar-brand.logoHNavbar(href="/")
             img(src="../../images/LogoLA2.png" alt="Logo Pizzería Los Alamos")
           button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation")
             span.navbar-toggler-icon
           #navbarText.collapse.navbar-collapse
-            ul.navbar-nav.mr-auto
-              li.nav-item.active
-                a.nav-link(href="/")
-                  | Home 
-                  span.sr-only (current)
+            ul.navbar-nav.ml-auto.mr-5
               li.nav-item
-                a.nav-link(href="/about") About
+                a.nav-link(href="/") Inicio 
               li.nav-item
-                a.nav-link(href="/menu") Menu
+                a.nav-link(href="/about") Acerca de
+              li.nav-item
+                a.nav-link(href="/menu") Menú
               li.nav-item
                 a.nav-link(href="/offerts") Ofertas
               li.nav-item
@@ -132,15 +130,17 @@ html
                       label(for="contrasenia") Contraseña
                       input#contrasenia.form-control(type="password" name="contrasenia")
                     .form-group
-                      a.linkText(href="#") Olvidé Contraseña
+                      a.linkText(href="#")
+                        small Olvidé Contraseña
                     .actualizarListado.pt-3.d-flex.justify-content-center
-                      button.btn-mediano.bg-darkCupon(type="submit") Iniciar Sesión
+                      //button.btn-mediano.bg-darkCupon(type="submit") Iniciar Sesión
+                      a.btn-mediano.bg-darkCupon(href="/admin/listado-productos") Iniciar Sesión
               #registerTab.tab-pane
                 .secCabecera2
                   h4.titulo_ParrafosDark.text-center REGISTRO
                 .secCabecera3.mt-5
                   .formularioRegistro
-                    form(action="" method="POST" role="form")
+                    form(action="/register-f" method="POST" role="form")
                       .form-group
                         label(for="nombre") Nombres
                         input#nombre.form-control(type="text" name="nombre")

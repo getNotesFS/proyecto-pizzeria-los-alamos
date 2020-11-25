@@ -142,3 +142,19 @@ body {
   padding:5% 0;
   /*background-color: red;*/
 }
+
+
+/*COLLAPSE DE DATOS FACTURACION*/
+
+.cardCollapseDatosFac{
+  padding: 0px!important;
+}
+.CollapseDatosFac{
+  width: 100%!important;
+  display: flex;
+  align-items: center;
+}
+.CollapseDatosFac ion-icon{
+  font-size: 22px;
+  padding-right: 6px;
+}

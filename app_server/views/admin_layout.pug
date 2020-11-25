@@ -14,7 +14,7 @@ html
   body
     
     nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
-      a.navbar-brand.col-sm-3.col-md-2.mr-0.logoAdmin(href="#")
+      a.navbar-brand.col-sm-3.col-md-2.mr-0.logoAdmin(href="/")
         img(src="../../images/LogoLA2.png" alt="")
     .container-fluid
       .row
@@ -23,7 +23,7 @@ html
           .sidebar-sticky
             ul.nav.flex-column
               li.nav-item
-                a.nav-link.border.nbrl.active(href="/admin")
+                a.nav-link.border.nbrl(href="/admin")
                   ion-icon(name="apps-outline")
                   |                                 Dashboard
               li.nav-item
@@ -37,12 +37,12 @@ html
                 #productos.collapse
                   ul.nav.flex-column.pl-4
                     li.nav-item
-                      a.nav-link.border.nbr.active(href="/admin/nuevo-ingrediente")
+                      a.nav-link.border.nbr(href="/admin/nuevo-ingrediente")
                         ion-icon(name="create-outline")
                         |                                             Nuevo Ingrediente
                         ion-icon.float-right(name="shapes-outline")
                     li.nav-item
-                      a.nav-link.border.nbr.active(href="/admin/nueva-pizza")
+                      a.nav-link.border.nbr(href="/admin/nueva-pizza")
                         ion-icon(name="create-outline")
                         |                                             Nueva Pizza
                         ion-icon.float-right(name="pizza-outline")
@@ -55,9 +55,20 @@ html
                         ion-icon(name="server-outline")
                         |                                             Listado Ingredientes
               li.nav-item
-                a.nav-link.border.nbr(href="#")
+                a.nav-link.border.nbr.twoLevels(href="#" data-target="#productos2" data-toggle="collapse")
                   ion-icon(name="people-outline")
                   |                                 Clientes
+                #productos2.collapse
+                  ul.nav.flex-column.pl-4
+                    li.nav-item
+                      a.nav-link.border.nbr(href="/admin/nuevo-usuario")
+                        ion-icon(name="person-add-outline")
+                        |                                             Nuevo Usuario
+                        
+                    li.nav-item
+                      a.nav-link.border.nbr(href="/admin/listado-usuarios")
+                        ion-icon(name="server-outline")
+                        |                                             Listado Usuarios
             h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
               span Ajustes
               a.d-flex.align-items-center.text-muted(href="#")
@@ -83,5 +94,9 @@ html
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous")
+    
+    //SWEET ALERT
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@10")  
+
     // CUSTOM SCRIPT
     script(src="../../src/js/admin_scripts.js")

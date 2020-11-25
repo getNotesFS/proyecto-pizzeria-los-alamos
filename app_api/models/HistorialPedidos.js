@@ -12,7 +12,7 @@ const historialPedido = new HistorialPedidos({
   Pedido:['5f841647a943b40680f5fdf7']
 });
 
-historialPedido.save();
+//historialPedido.save();
 
 module.exports = HistorialPedidos;
 

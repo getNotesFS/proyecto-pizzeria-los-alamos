@@ -22,5 +22,5 @@ const detallesOrden = new DetallesOrden({
   CantidadOtrosProductos:['5f84151b6314ef39e8a17cfe','5f84151b6314ef39e8a17cfe']
 });
 
-detallesOrden.save();
+//detallesOrden.save();
 module.exports = DetallesOrden;

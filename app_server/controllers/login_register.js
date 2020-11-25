@@ -14,61 +14,7 @@ if (process.env.NODE_ENV === "production") {
   apiOptions.server = "https://pro-web-pizza-la.herokuapp.com"; //servidor remoto - producción
   console.log("=========================HA LLEGADO A PRODUCCION");
 }
-
-
-
-  /*GET -> MENU*/
-/*
-  const loginRegister = (req, res) => {
-    res.render('login_register', { title: 'Login / Registro' });
-  }
-  
-  const addNewRegister = (req, res) => {
-    console.log("Llegaron los datos");
-    console.log(req.body);
-  
-    const path = "api/usuarios";
-    const postdata = {
-      Nombre: req.body.nombre,
-      Apellido: req.body.apellido,
-      Categoria: req.body.categoria,
-      Correo: req.body.correo,
-      Contrasenia: req.body.contrasenia,
-    };
-  
-    const requestOptions = {
-      url: `${apiOptions.server}${path}`,
-      method: "POST",
-      json: postdata,
-    };
-  
-   /* if (!postdata.Nombre) {
-      res.redirect("/pizza/new?err=val");
-      console.log("No hay objeto Nombre");
-    } else {*/
-    /*  request(requestOptions, (err, { statusCode }, { name }, body) => {
-        console.log("Aqui voy");
-        if (statusCode === 201) {
-          //HTTP response status 201 : Creado exitoso
-          /* res.redirect("/pizza/new");*/
-          /*console.log("Ha recibido");
-          res.render("login_register", {
-            title: "Add New Register",
-            mensaje: "Se ha agrergado un nuevo registro",
-          });
-        } else if (statusCode === 400 && name && name === "ValidationError") {
-          res.redirect("/login_register?err=val");
-          //FORMATO DEBE SER ASÍ SI EL ADD NEW ESTÁ EN UN PATH INDEPENDIENTE
-          //res.redirect("/pizza/new?err=val");
-          console.log(body);
-        } else {
-          showError(req, res, statusCode);
-          console.log(err);
-        }
-      });
-   // }
-  };*/
-
+ 
   const adminListadoUsuarios = (req, res) => {
 
     axios.get(`${apiOptions.server}/api/usuarios`)
@@ -166,10 +112,51 @@ const UpdateUsuario = (req, res) =>{
   }
 
 
+  //ADD NUEVO INGREDIENTE
+const addNewUsuario = (req, res) => {
+  console.log("Llegaron los datos REGISTRO FRONTEND");
+  console.log(req.body);
+
+  axios
+    .post(`${apiOptions.server}/api/usuarios`, {
+      
+      Nombres: req.body.nombre,
+      Apellidos: req.body.apellido,
+      Correo: req.body.correo,
+      Contrasenia: req.body.contrasenia, 
+      Cedula: '',
+      Provincia: '',
+      Ciudad: '',
+      DireccionFacturacion: '',
+      DireccionEnvio: '',
+      Referencia: '',
+      TelefonoConvencional:'',
+      TelefonoCelular:'',
+      CodigoPostal: ''
+    })
+    .then(function (response) {
+      console.log("Guardado"); 
+     res.redirect(`/admin/listado-productos`);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+    //delete
+    const loginRegister = (req, res) =>{
+      
+      res.render("login_register", {
+        title: "Login / Registro"
+       
+      });
+    }
+
+
     module.exports =  {
         //separador de módulos con una "COMA"
-        //loginRegister,
-        //addNewRegister,
+        loginRegister,
+        addNewUsuario,
         deleteUsuario,
         UpdateUsuario,
         getUsuario,

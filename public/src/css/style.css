@@ -50,7 +50,7 @@ ion-icon {
 .nv-header1 {
   line-height: 25px;
   background-color: #e4b95b;
-  padding: 1px 0;
+   
   color: white;
 }
 .nv-margen {
@@ -63,7 +63,7 @@ ion-icon {
   text-align: right;
 }
 .nv-redes {
-  text-align: center;
+  text-align: right;
 }
 .nv-redes-icons {
   margin: 0 5px;
@@ -237,7 +237,7 @@ footer {
 .mainSliderHomePage .carousel-item {
   min-height: calc(86vh);
   max-height: calc(88vh);
-  background-image: url('../../images/pizzaDouble.jpg');
+  background-image: linear-gradient(0deg, #20202f59, rgba(0,0,0,.075)), url("../../images/pizzaDouble.jpg");
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -245,7 +245,7 @@ footer {
   background-size: cover;
 }
 .slidee1{
-  background-image: url("../../images/pizzaDouble.jpg");
+  background-image: linear-gradient(0deg, #20202f59, rgba(0,0,0,.075)), url("../../images/pizzaDouble.jpg");
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -295,7 +295,12 @@ footer {
     max-width: 100%; 
     color: white;
 }
-
+.descripCort{
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
 .listadoProductosSlider .card-title{
   color: white;
 }
@@ -511,11 +516,13 @@ footer {
 
 /*===================================CABECERA*/
 .cabeceraPaginas {
-  background-image: url(../../images/pizza1.jpg);
+  background-image: linear-gradient(0deg, #20202f, rgba(0,0,0,.075)), url(../../images/pizza1.jpg);-image: url(../../images/pizza1.jpg);
   background-size: cover;
   background-position: center;
   height: 350px;
 }
+
+ 
 
 .cabeceraPaginas {
   /*display: flex;
@@ -564,7 +571,8 @@ footer {
   width: auto;
   position: relative;
   max-width: 120px;
-  text-align: center;
+  text-align: center;  
+  margin-right: 15px;
   color: #372727;
 }
 .campoCantidadProducto ion-icon {
@@ -1076,6 +1084,18 @@ a.linkText:hover {
   border: none!important;
 }
 
+  /*SLIDER PIZZAS HOME*/
+  .customNextC{
+    font-size: 30px!important;
+    display: flex;
+    justify-content: flex-end;
+   }
+   .customPrevC{
+     
+    font-size: 30px!important;
+    display: flex;
+    justify-content: flex-start;
+   }
 
 /*===================================================================MEDIA QUERY*/
 @media (max-width: 575.98px) {
@@ -1225,9 +1245,20 @@ a.linkText:hover {
     width: auto;
     font-size: 80%;
   }
- 
+
+
+  
 }
 
+@media (max-width: 892px) {
+   /*SLIDER PIZZAS HOME*/
+ /*.customNextC{
+  margin-right: 0%!important;
+ }
+ .customPrevC{
+  margin-left: 0%!important;
+ }*/
+}
 @media (min-width: 768px) {
   .customTextOffert .card-text {
     font-size: 16px !important;
@@ -1335,11 +1366,64 @@ a.linkText:hover {
   margin-right: 30px;
 }
 .mn-productos-botones{
+  display: inline-flex;
+  align-items: center;
   padding: 10px;
-  background-color: whitesmoke;
-  -webkit-transition:color 0.5s ease-in;
+  border: none;
+  background-color: #e4b95b;
+  border-radius: 8px;
+  font-weight: 500;
+  -webkit-transition:color 0.2s ease-in;
 }
 .mn-productos-botones:hover{
-  color: white;
-  background-color: black;
+   
+  background-color: #d39e00;
+}
+button:focus{
+  outline:black!important;
+}
+.mn-productos-botones ion-icon{
+  font-size: 20px;
+  color:black;
+}
+
+/*??????????????????????????????===========MENU pizzas*/
+.cardProductoM h6{
+  text-align: center;
+}
+.cardProductoM{ 
+    padding: 15px 10px;
+    border-radius: 8px;
+    margin: 5px;
+}
+.cardProductoM:hover{
+  background-color: #f6f6f6; 
+}
+.DarkIcon{
+  color:black;
+  padding-right: 6px;
+}
+
+
+
+ 
+/**SCROLLBAR*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e4b95b; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffc107; 
 }

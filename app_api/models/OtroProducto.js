@@ -20,6 +20,6 @@ const otroProducto = new OtroProducto({
   Precio: 1
 });
 
-otroProducto.save();
+//otroProducto.save();
 
 module.exports = OtroProducto;
