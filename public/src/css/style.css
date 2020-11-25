@@ -301,6 +301,15 @@ footer {
     text-overflow: ellipsis;
     max-width: 200px;
 }
+.productLink{
+  text-decoration: none!important;
+  color:black;
+}
+.productLink:hover{
+  font-weight: 600;
+  color: #d39e00;
+}
+ 
 .listadoProductosSlider .card-title{
   color: white;
 }

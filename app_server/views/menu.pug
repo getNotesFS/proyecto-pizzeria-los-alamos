@@ -29,8 +29,10 @@ block content
                   each element in pizzaList
                     .col-auto.mb-5.cardProductoM
                         div
-                          img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
-                        h6= element.Nombre
+                          a(href=`/product/${element._id}`)
+                            img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
+                        a.productLink(href=`/product/${element._id}`)
+                                h6= element.Nombre
                         p.descripCort= element.Descripcion
                         br
                         span.mn-productos-precio
@@ -54,8 +56,10 @@ block content
                      each element in pizzaList
                           .col-auto.mb-5.cardProductoM
                               div
-                                img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
-                              h6= element.Nombre
+                                a(href=`/product/${element._id}`)
+                                    img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
+                              a.productLink(href=`/product/${element._id}`)
+                                h6= element.Nombre
                               p.descripCort= element.Descripcion
                               br
                               span.mn-productos-precio
@@ -78,8 +82,10 @@ block content
                      each element in pizzaList
                           .col-auto.mb-5.cardProductoM
                               div
-                                img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
-                              h6= element.Nombre
+                                a(href=`/product/${element._id}`)
+                                  img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
+                              a.productLink(href=`/product/${element._id}`)
+                                h6= element.Nombre
                               p.descripCort= element.Descripcion
                               br
                               span.mn-productos-precio
