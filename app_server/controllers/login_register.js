@@ -133,7 +133,7 @@ let bandera=false;
   axios.get(`${apiOptions.server}/api/usuarios/mail/${req.body.correo}`)
   .then(function (response) {
     //console.log(response.data);  
-    if(response.status ==200){
+    if(response.data.Correo == req.body.correo){
       bandera = true;
       res.redirect("/login-register"); 
     }
