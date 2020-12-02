@@ -4,6 +4,7 @@
 const request = require("request");
 // Modules
 const passport = require("passport");
+const { response } = require("express");
 
 
 /*
@@ -123,50 +124,50 @@ const UpdateUsuario = (req, res) =>{
 
   //ADD NUEVO INGREDIENTE
 const addNewUsuario = (req, res) => {
-   
-
- /* has dentro, remplazado por hash en modelo como middleware
-  const salt = bcrypt.genSaltSync(saltRounds);
-  const hash = bcrypt.hashSync(req.body.contrasenia, salt);
-*/
-let bandera=false;
+    
+  
   axios.get(`${apiOptions.server}/api/usuarios/mail/${req.body.correo}`)
   .then(function (response) {
-    //console.log(response.data);  
-    if(response.data.Correo == req.body.correo){
-      bandera = true;
-      res.redirect("/login-register"); 
-    }
+  
+    console.log("=================",response.data);  
+    
+    if(response.data.Correo == req.body.correo ){ 
       
+       res.redirect("/login-register"); 
+    } 
+ 
   })
   .catch(function (error) {
-    // handle error
-    //console.log(error);
+     
+    console.log(error);
+    createU(req,res);
   })
   .then(function () {
     // always executed
   });
   
 
-  if(!bandera){
-    axios.post(`${apiOptions.server}/api/usuarios`, {
-        
-      Nombres: req.body.nombre,
-      Apellidos: req.body.apellido,
-      Correo: req.body.correo,
-      Contrasenia: req.body.contrasenia
-    })
-    .then(function (response) {
-      console.log("Guardado"); 
-     res.redirect(`/my-account`);
-    })
-    .catch(function (error) {
-      console.log(error.response);
-    });
-  }
+  
 
  
 };
+
+const createU = (req,res=response)=>{
+
+  axios.post(`${apiOptions.server}/api/usuarios`, { 
+    Nombres: req.body.nombre,
+    Apellidos: req.body.apellido,
+    Correo: req.body.correo,
+    Contrasenia: req.body.contrasenia
+  })
+  .then(function (response) {
+    console.log("Guardado"); 
+   res.redirect(`/my-account`);
+  })
+  .catch(function (error) {
+    console.log(error.response);
+  });
+}
 
     //delete
     const loginRegister = (req, res) =>{
