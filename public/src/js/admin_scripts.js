@@ -154,5 +154,43 @@ $(document).ready(function () {
     });
 
 
+ 
+//end data table
+$('#table_id').DataTable( {
+  "language": {
+    "emptyTable":			"<i>No hay datos disponibles en la tabla.</i>",
+    "info":		   		"Del _START_ al _END_ de _TOTAL_ ",
+    "infoEmpty":			"Mostrando 0 registros de un total de 0.",
+    "infoFiltered":			"(filtrados de un total de _MAX_ registros)",
+    "infoPostFix":			"(actualizados)",
+    "lengthMenu":			"Mostrar _MENU_ registros",
+    "loadingRecords":		"Cargando...",
+    "processing":			"Procesando...",
+    "search":			"<span style='font-size:15px;'>Buscar:</span>",
+    "searchPlaceholder":		"Dato para buscar",
+    "zeroRecords":			"No se han encontrado coincidencias.",
+    "paginate": {
+      "first":			"Primera",
+      "last":				"Última",
+      "next":				"Siguiente",
+      "previous":			"Anterior"
+    },
+    "aria": {
+      "sortAscending":	"Ordenación ascendente",
+      "sortDescending":	"Ordenación descendente"
+    }
+  },
+
+  "lengthMenu":		[[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+  "iDisplayLength":	10,
+  responsive: true,
+  columnDefs: [
+      { responsivePriority: 1, targets: 0 },
+      { responsivePriority: 10001, targets: 4 },
+      { responsivePriority: 1, targets: -1 }
+  ]
+} );
+
+//end data table
   });
   

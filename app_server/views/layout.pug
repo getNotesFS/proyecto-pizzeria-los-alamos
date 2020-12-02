@@ -6,7 +6,11 @@ html
    
     // BOOTSTRAP LINKS
     link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous")
-    link(rel="stylesheet" href="../../src/css/style.css")
+    link(rel="stylesheet" href="../../src/css/style.css") 
+    //dataTables   
+    link(rel="stylesheet", href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css") 
+    link(rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css")
+    
     // IONICONS
     script(src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js")
     title=title
@@ -108,6 +112,7 @@ html
       .modal-dialog(role="document")
         .modal-content
           .modal-header
+            small= mensaje
             ul.nav.nav-tabs.tabsLogRegistro
               li.active.logg.opActive
                 a(data-toggle="tab" href="#loginTab") Iniciar Sesión
@@ -125,10 +130,10 @@ html
                   form(action="" method="POST" role="form")
                     .form-group
                       label(for="correo") Correo
-                      input#correo.form-control(type="text" name="correo")
+                      input#correo.form-control(type="email" name="correo" required)
                     .form-group
                       label(for="contrasenia") Contraseña
-                      input#contrasenia.form-control(type="password" name="contrasenia")
+                      input#contrasenia.form-control(type="password" name="contrasenia" required)
                     .form-group
                       a.linkText(href="#")
                         small Olvidé Contraseña
@@ -140,19 +145,19 @@ html
                   h4.titulo_ParrafosDark.text-center REGISTRO
                 .secCabecera3.mt-5
                   .formularioRegistro
-                    form(action="/register-f" method="POST" role="form")
+                    form(action="/register-f" method="POST" role="form" required)
                       .form-group
                         label(for="nombre") Nombres
-                        input#nombre.form-control(type="text" name="nombre")
+                        input#nombre.form-control(type="text" name="nombre" required)
                       .form-group
                         label(for="apellido") Apellidos
-                        input#apellido.form-control(type="text" name="apellido")
+                        input#apellido.form-control(type="text" name="apellido" required)
                       .form-group
                         label(for="correo") Correo
-                        input#correo.form-control(type="text" name="correo")
+                        input#correoHeadReg.correoHeadReg.form-control(type="email" name="correo" required)
                       .form-group
                         label(for="contrasenia") Contraseña
-                        input#contrasenia.form-control(type="password" name="contrasenia")
+                        input#contrasenia.form-control(type="password" name="contrasenia" required)
                       .actualizarListado.pt-3.d-flex.justify-content-center
                         button.btn-mediano.bg-yellowCupon(type="submit") REGISTRAR
 
@@ -160,6 +165,11 @@ html
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous")
+    
+    //dataTables
+    script(src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js")
+    script(src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js")
+     
     // CUSTOM SCRIPT
     script(src="../../src/js/scripts.js")
 

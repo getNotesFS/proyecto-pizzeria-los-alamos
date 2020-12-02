@@ -1,0 +1,61 @@
+extends layout
+
+include mixins/nav_my_account
+
+block content
+
+     
+     
+    br
+    br
+    section.myAccountDashboard.pb-5
+      .container
+        .main-body
+          .row.justify-content-center.mb-5.mt-5 
+            h1.tituloPaginasCabera= title
+          .row.gutters-sm
+            .col-md-4.mb-3
+                +nav_my_account()(class2="navActive") 
+                
+            .col-md-8
+              .card.mb-3
+                .card-body
+                   
+                  table#table_idP.display.responsive.nowrap(style="width:100%;")
+                      thead
+                        tr
+                          th #
+                          th Fecha
+                          th Estado
+                          th Producto
+                          th Extras
+                          th Envío
+                          th Subtotal
+                          th Total
+                          th Acciones 
+                      tbody
+                        tr
+                          td 1
+                          td 21/11/2020
+                          td En proceso
+                          td Pizza Tomate
+                          td Queso
+                          td $3.50
+                          td $13.50
+                          td $17
+                          td Editar / Actualizar 
+                        tr
+                          td 1
+                          td 21/11/2020
+                          td En proceso
+                          td Pizza Tomate
+                          td Queso
+                          td $3.50
+                          td $13.50
+                          td $17
+                          td Editar / Actualizar 
+              
+                 
+                       
+      
+                

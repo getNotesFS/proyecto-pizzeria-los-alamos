@@ -1412,10 +1412,121 @@ button:focus{
   color:black;
   padding-right: 6px;
 }
+.WhiteIcon{
+  color:white;
+  padding-right: 6px;
+}
+.darkIcon{
+  color:black;
+}
+.whiteIcon{
+  color:white;
+}
 
-
-
+/*TABLE STYLE*/
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: white !important;
+  border: none!important;
+  background-color: #ffffff; 
+  background: transparent!important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
  
+  padding: 0em!important; 
+  border: none!important; 
+}
+.dataTables_wrapper .page-item.active .page-link {
+  color:black;
+  background-color: #d39e00!important;
+  border-color: #d39e00!important;
+  
+}
+.page-link:focus { 
+  box-shadow: none!important;
+}
+.dataTables_wrapper .page-item.active .page-link:hover {
+  background-color:#e4b95b!important;
+  border-color: #e4b95b!important;
+
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #333 !important;
+  border: none!important;
+  background-color:  #d39e00!important;
+  background:#d39e00!important;
+  padding: 3px!important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+   
+  border: none!important;
+  background-color:  #e4b95b!important;
+  background:    #e4b95b!important;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th.dtr-control:before {
+ 
+  background-color: #28a745!important;
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+ 
+  background-color: #d33333!important;
+}
+
+.navMyAc .list-group-item{
+  padding: 0px!important;
+}
+.navActive{
+  background-color: #e4b95b!important;
+}
+.linkMyAc{
+  text-decoration: none!important;
+  color:#000!important;
+  width: 100%;
+  padding: 13px;
+}
+.linkMyAc:hover{
+  text-decoration: none!important;
+  background-color:#e4b95b87!important;
+}
+.linkVerP, .linkVerP ion-icon{
+  text-decoration: none!important;
+  color:#000!important;
+  font-weight: 500;
+}
+.linkVerP:hover{
+
+/*
+  color:#28a745!important;*/  
+color:#000!important;
+  font-weight: bold;
+}
+.linkVerP:hover ion-icon{
+  font-weight: bold;
+  color:#000!important;
+}
+.titProceso{
+  font-size: 14px;
+  font-weight: 600;
+}
+.descPedido p{
+  font-size: 13px;
+  font-weight: 500;
+  /*overflow: hidden;
+  max-width: 20ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;*/
+}
+
+/*COLOR DE LETRAS DE NAVBAR*/
+.nv-margen p,.nv-margen span, .nv-margen ion-icon {
+  color:#2b2b2b!important;
+}
+.nv-redes ion-icon {
+  color:#2b2b2b!important;
+}
+.nv-telefono svg{
+  color:#2b2b2bd6!important;
+}
 /**SCROLLBAR*/
 /* width */
 ::-webkit-scrollbar {

@@ -1,0 +1,35 @@
+mixin nav_my_account()
+    .card
+        .card-body
+            .d-flex.flex-column.align-items-center.text-center
+                img.rounded-circle(src='../../images/user.png' alt='Admin' width='150')
+                .mt-3
+                    h4 Sebastián
+                    p.text-secondary.mb-3 sfmarmolg@gmail.com 
+                    button.btn.btn-danger.btn-sm Cerrar Sesión 
+    .card.mt-3
+        ul.list-group.list-group-flush.navMyAc
+            li.list-group-item.d-flex.justify-content-between.align-items-center.flex-wrap(class!=attributes.class3)
+                a.linkMyAc(href="/my-account")
+                    h6.mb-0
+                        ion-icon.DarkIcon(name='grid-outline')
+                        | Mi Cuenta
+            
+            li.list-group-item.d-flex.justify-content-between.align-items-center.flex-wrap(class!=attributes.class)
+                a.linkMyAc(href="/my-account/perfil")
+                    h6.mb-0
+                        ion-icon.DarkIcon(name='person-outline')
+                        | Perfil
+                
+            //li.list-group-item.d-flex.justify-content-between.align-items-center.flex-wrap(class!=attributes.class1)
+                a.linkMyAc(href="#")
+                    h6.mb-0
+                        ion-icon.DarkIcon(name='location-outline')
+                        | Direcciones
+                
+            li.list-group-item.d-flex.justify-content-between.align-items-center.flex-wrap(class!=attributes.class2)
+                a.linkMyAc(href="/my-account/pedidos")
+                    h6.mb-0
+                        ion-icon.DarkIcon(name='list-outline')
+                        | Pedidos
+        

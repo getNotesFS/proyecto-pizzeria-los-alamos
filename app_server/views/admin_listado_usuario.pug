@@ -8,8 +8,8 @@ block content
       .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
         h1= title
       // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
-      .table-responsive.tablaIngredientes
-        table.table.table-striped.table-sm
+      .table-responsive
+        table#table_id.display.nowrap(style='width:100%')
           thead
             tr
               th #
@@ -17,8 +17,9 @@ block content
               th Apellido
               th Correo
               th Rol
+              th Otros
           tbody
-          - var pos=1
+            - var pos=1
             each element in usuariosList
               tr
                 td.idProducto= pos++
@@ -38,7 +39,6 @@ block content
                       
                   
                 td.crudProducto
-                  //a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-usuario/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarIngrediente") Editar
                   a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-usuario/${element._id}` data-id=`${element._id}` ) Editar
                   button.btn.btn-danger.ml-1.btn-sm#deleteIngredente(data-id=`${element._id}` onClick=`removeU('${element._id}')`) Eliminar
  

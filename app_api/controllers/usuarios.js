@@ -11,6 +11,7 @@ const usuarioCreate = (req, res) => {
       Apellidos: req.body.Apellidos,
       Correo: req.body.Correo,
       Contrasenia: req.body.Contrasenia,
+      
       Datos: {
         Cedula: req.body.Cedula,
         Provincia: req.body.Provincia,
@@ -21,7 +22,7 @@ const usuarioCreate = (req, res) => {
         TelefonoConvencional: req.body.TelefonoConvencional,
         TelefonoCelular: req.body.TelefonoCelular,
         CodigoPostal: req.body.CodigoPostal,
-      },
+      }
     },
     (err, objetoUsuario) => {
       if (err) {
@@ -68,6 +69,28 @@ const usuarioRead = (req, res) => {
       }
       console.log(
         `Se encontro el documento pizza con el id: ${req.params.usuarioid}`
+      );
+      res.status(200).json(objetoUsuario);
+    });
+};
+const usuarioReadExist = (req, res) => {
+  usuarios //nombre del modelo
+    .findOne({'Correo':req.params.email})
+    .exec((err, objetoUsuario) => {
+      if (!objetoUsuario) {
+        console.log(`Correo no encontrada con el id: ${req.params.email}`);
+        return res.status(404).json({
+          "Mensaje ": "Correo no encontrado",
+          "status":404
+        });
+      } else if (err) {
+        console.log(
+          `Se encontro un error en con el correo: ${req.params.email}`
+        );
+        return res.status(404).json(err);
+      }
+      console.log(
+        `Se encontro el documento con el Correo : ${req.params.email}`
       );
       res.status(200).json(objetoUsuario);
     });
@@ -140,4 +163,5 @@ module.exports = {
   usuarioList,
   usuarioRead,
   usuarioUpdate,
+  usuarioReadExist
 };

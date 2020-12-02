@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt'); 
+
 
 const datos_schema = new Schema({
   Cedula: { type: Number, required: false, default:0 },
@@ -17,7 +19,7 @@ const datos_schema = new Schema({
 var usuario_schema = new Schema({
   Nombres: { type: String, required: true },
   Apellidos: { type: String, required: true },
-  Correo: { type: String, required: true },
+  Correo: { type: String,required: true, unique:true },
   Contrasenia: { type: String, required: true },
   TipoUsuario: { type: Number, required: false, default:0},
   Datos:datos_schema,
@@ -28,6 +30,17 @@ var usuario_schema = new Schema({
   },
 });
 
+usuario_schema.pre('save', function(next){
+  bcrypt.genSalt(10).then(salts =>{
+    bcrypt.hash(this.Contrasenia,salts).then(hash =>{
+      this.Contrasenia = hash;
+      next();
+    }).catch(error => next(error));
+  }).catch(error => next(error));
+});
+ 
+
+ 
 
 const Usuario = new mongoose.model('usuario', usuario_schema); // compilar el esquema en el modelo
 const Datos = new mongoose.model('datosUsuario', datos_schema); // compilar el esquema en el modelo
@@ -55,6 +68,5 @@ const usuario = new Usuario({
 
 
 //usuario.save(); // guardar en DB
-
-
-module.exports = Usuario;
+ 
+ module.exports = Usuario;

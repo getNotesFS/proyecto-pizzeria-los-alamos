@@ -1,7 +1,16 @@
  /*Controladores */
 //Llamado a request
-const { get } = require("request");
+//const { get } = require("request");
 const request = require("request");
+// Modules
+const passport = require("passport");
+
+
+/*
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';*/
 
 const axios = require("axios").default;
 // Definir las URLs para los ambientes de desarrollo y producción
@@ -114,33 +123,49 @@ const UpdateUsuario = (req, res) =>{
 
   //ADD NUEVO INGREDIENTE
 const addNewUsuario = (req, res) => {
-  console.log("Llegaron los datos REGISTRO FRONTEND");
-  console.log(req.body);
+   
 
-  axios
-    .post(`${apiOptions.server}/api/usuarios`, {
+ /* has dentro, remplazado por hash en modelo como middleware
+  const salt = bcrypt.genSaltSync(saltRounds);
+  const hash = bcrypt.hashSync(req.body.contrasenia, salt);
+*/
+let bandera=false;
+  axios.get(`${apiOptions.server}/api/usuarios/mail/${req.body.correo}`)
+  .then(function (response) {
+    //console.log(response.data);  
+    if(response.status ==200){
+      bandera = true;
+      res.redirect("/login-register"); 
+    }
       
+  })
+  .catch(function (error) {
+    // handle error
+    //console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+  
+
+  if(!bandera){
+    axios.post(`${apiOptions.server}/api/usuarios`, {
+        
       Nombres: req.body.nombre,
       Apellidos: req.body.apellido,
       Correo: req.body.correo,
-      Contrasenia: req.body.contrasenia, 
-      Cedula: '',
-      Provincia: '',
-      Ciudad: '',
-      DireccionFacturacion: '',
-      DireccionEnvio: '',
-      Referencia: '',
-      TelefonoConvencional:'',
-      TelefonoCelular:'',
-      CodigoPostal: ''
+      Contrasenia: req.body.contrasenia
     })
     .then(function (response) {
       console.log("Guardado"); 
-     res.redirect(`/admin/listado-productos`);
+     res.redirect(`/my-account`);
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error.response);
     });
+  }
+
+ 
 };
 
     //delete
@@ -152,6 +177,28 @@ const addNewUsuario = (req, res) => {
       });
     }
 
+    //LOGIN
+    const logissn = (req, res) =>{
+      
+      res.render("login_register", {
+        title: "Login"
+       
+      });
+    }
+
+
+    const login = passport.authenticate("local", {
+      successRedirect: "/admin",
+      failureRedirect: "/login-register"
+       
+    });
+  
+   const logout = (req, res) => {
+    req.logout();
+    //req.flash("success_msg", "You are logged out now.");
+    res.redirect("/login-register");
+  };
+
 
     module.exports =  {
         //separador de módulos con una "COMA"
@@ -160,6 +207,7 @@ const addNewUsuario = (req, res) => {
         deleteUsuario,
         UpdateUsuario,
         getUsuario,
-        adminListadoUsuarios
+        adminListadoUsuarios,
+        login
   
     }

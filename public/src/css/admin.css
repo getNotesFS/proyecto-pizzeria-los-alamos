@@ -158,3 +158,33 @@ body {
   font-size: 22px;
   padding-right: 6px;
 }
+
+/*DATA TABLE*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #333 !important;
+  border: none!important;
+  background-color:  #d39e00!important;
+  background:#d39e00!important;
+  padding: 3px!important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+   
+  border: none!important;
+  background-color:  #e4b95b!important;
+  background:    #e4b95b!important;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th.dtr-control:before {
+ 
+  background-color: #28a745!important;
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+ 
+  background-color: #d33333!important;
+}
+
+
+.logoAdmin{
+  max-width: 150px;
+  padding: 8px;
+}

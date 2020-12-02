@@ -1,0 +1,70 @@
+extends layout
+
+include mixins/nav_my_account
+include mixins/producto_proceso
+block content
+
+     
+     
+    br
+    br
+    section.myAccountDashboard.pb-5
+      .container
+        .main-body
+          .row.justify-content-center.mb-5.mt-5 
+            h1.tituloPaginasCabera= title
+          .row.gutters-sm
+            .col-md-4.mb-3
+                +nav_my_account()(class3="navActive")
+                
+            .col-md-8
+              .card.mb-3
+                .card-body
+                  .row
+                    .col-sm-3
+                      h6.mb-0 Nombre Completo
+                    .col-sm-9.text-secondary
+                      | Kenneth Valdez
+                  hr
+                  .row
+                    .col-sm-3
+                      h6.mb-0 Correo
+                    .col-sm-9.text-secondary
+                      | fip@jukmuh.al
+                  hr
+                  .row
+                    .col-sm-3
+                      h6.mb-0 Telefóno
+                    .col-sm-9.text-secondary
+                      | (239) 816-9029
+                  hr
+                  .row
+                    .col-sm-3
+                      h6.mb-0 Celular
+                    .col-sm-9.text-secondary
+                      | (320) 380-4539
+                  
+                  
+                       
+              
+              .row.gutters-sm
+                .col-sm-6.mb-3
+                  .card.h-100
+                    .card-body
+                      h6.d-flex.align-items-center.mb-3
+                        ion-icon.DarkIcon(name='home-outline')  
+                        | Dirección Envío:
+                      p C/Guayaquil C-5 y Esmeraldas, Tumbaco 
+                .col-sm-6.mb-3
+                  .card.h-100
+                    .card-body
+                      h6.d-flex.align-items-center.mb-3
+                        ion-icon.DarkIcon(name='alert-circle-outline') 
+                        | Pedidos:
+                        //Pedido
+                      +producto_proceso("bg-warning","border-warning","En proceso")
+                        //Pedido2
+                      +producto_proceso("bg-success","border-success","Entregado")
+                          
+                       
+                

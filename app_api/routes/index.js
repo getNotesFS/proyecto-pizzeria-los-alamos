@@ -29,6 +29,10 @@ router
   .get(ctrlUsuarios.usuarioRead) //lee usuario específico por id
   .put(ctrlUsuarios.usuarioUpdate) //actualiza
   .delete(ctrlUsuarios.usuarioDelete); //elimina
+  
+  router
+  .route("/usuarios/mail/:email")
+  .get(ctrlUsuarios.usuarioReadExist) //lee usuario espe 
 
 router
   .route("/pizzas")

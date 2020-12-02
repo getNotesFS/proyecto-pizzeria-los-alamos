@@ -1,0 +1,86 @@
+
+extends layout
+
+include mixins/nav_my_account
+
+block content
+
+     
+     
+    br
+    br
+    section.myAccountDashboard.pb-5
+      .container
+        .main-body
+          .row.justify-content-center.mb-5.mt-5 
+            h1.tituloPaginasCabera= title
+          .row.gutters-sm
+            .col-md-4.mb-3
+                +nav_my_account()(class="navActive") 
+            .col-md-8
+              .card.mb-3
+                .card-body
+                  .row
+                    .col-md-12
+                      p.text-center #{mensaje}
+                      form(method="POST" action="" role="form")
+                        .form-group
+                          label(for="nombre") Nombres
+                          input.form-control(type="text" name="nombre" value=`${nombre}`)
+                        .form-group
+                          label(for="apellido") Apellidos
+                          input.form-control(type="text" name="apellido" value=`${apellido}`)
+                        .form-group
+                          label(for="correo") Correo
+                          input.form-control(type="text" name="correo" required="" value=`${correo}`)
+                        .form-group
+                          label(for="correo") Contraseña
+                          input.form-control(type="text" name="contrasenia" required="" value=`${contrasenia}`)
+                        
+                        #accordion
+                          .card
+                            #headingOne.card-header.cardCollapseDatosFac
+                              h5.mb-0
+                                a.btn.btn-info.CollapseDatosFac(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                                  ion-icon(name='receipt')
+                                  | Datos de Facturación y Envío
+                            #collapseOne.collapse(aria-labelledby='headingOne' data-parent='#accordion' style='')
+                              .card-body
+                                .form-group
+                                  label(for="cedula") Cédula
+                                  input.form-control(type="text" name="cedula" required="" value=`${cedula}`)
+                                .form-group
+                                  label(for="provincia") Provincia
+                                  input.form-control(type="text" name="provincia" required="" value=`${provincia}`)
+                                .form-group
+                                  label(for="ciudad") Ciudad
+                                  input.form-control(type="text" name="ciudad" required="" value=`${ciudad}`)
+                                .form-group
+                                  label(for="direccionFacturacion") Dirección de Facturación
+                                  input.form-control(type="text" name="direccionFacturacion" required="" value=`${direccionFacturacion}`)
+                                .form-group
+                                  label(for="direccionEnvio") Dirección de Envío
+                                  input.form-control(type="text" name="direccionEnvio" required="" value=`${direccionEnvio}`)
+                                .form-group
+                                  label(for="referencia") Referencia
+                                  input.form-control(type="text" name="referencia" required="" value=`${referencia}`)
+                                .form-group
+                                  label(for="telefonoConvencional") Teléfono Convencional
+                                  input.form-control(type="text" name="telefonoConvencional" required="" value=`${telefonoConvencional}`)
+                                .form-group
+                                  label(for="telefonoCelular") Teléfono Celular
+                                  input.form-control(type="text" name="telefonoCelular" required="" value=`${telefonoCelular}`)
+                                .form-group
+                                  label(for="codigoPostal") Código Postal
+                                  input.form-control(type="text" name="codigoPostal" required="" value=`${codigoPostal}`)
+                                  
+                        
+                        br
+                        br
+                        .text-center
+                            button.btn.btn-primary(type="submit") Actualizar
+                            a.btn.btn-danger.ml-1(href="/my-account") Cancelar
+                    
+                    
+               
+                      

@@ -1,20 +1,30 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan'); 
+
+const session = require("express-session"); 
+const passport = require("passport");
+const PassportLocal = require("passport-local").Strategy;
+const bodyParser = require('body-parser');
+const fs = require('fs');
  
 
 //MONGOSE BASE DE DATOS
 require('./app_api/models/db');
 
 //var usersRouter = require('./app_server/routes/users');
-var indexRouter = require('./app_server/routes/index');
-var apiRouter = require('./app_api/routes/index');
+const indexRouter = require('./app_server/routes/index');
+const apiRouter = require('./app_api/routes/index');
 
 
-var app = express();
+const app = express();
+//incluir passport
+//require("./app_server/controllers/auth");
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 // view engine setup  -> al modificar la ruta de las carpetas se debe especificar la carpeta padre
 app.set('views', path.join(__dirname,'app_server', 'views'));
 
@@ -27,6 +37,49 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); 
 //app angular aqui
 app.use(express.static(path.join(__dirname, 'app_public')));
+
+ 
+ /*
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true
+  }));
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(Usuarios.serializeUser()); 
+passport.deserializeUser(Usuarios.deserializeUser());
+
+const Usuarios = require('./app_api/models/Usuario'); 
+  
+const LocalStrategy = require('passport-local').Strategy; 
+passport.use(new LocalStrategy(Usuarios.authenticate())); 
+*/
+/*
+//passport manual
+passport.use(new PassportLocal(function(username,password,done){
+    if(username==="admin@gmail.com" && password==="1234"){
+
+      return done(null,{id:1,name:"Sebas"});
+    }
+  done(null,false);
+}));
+
+//serializacion
+passport.serializeUser(function(user,done){
+  done(null,user.id);
+});
+//deserializacion
+passport.deserializeUser(function(id,done){
+  done(null,{id:1,name:"Sebas"});
+});
+*/
+
+
+
 //permitir los requerimientos 
 app.use('/api', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');

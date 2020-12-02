@@ -9,32 +9,32 @@ block content
         h1= title
       // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
       
-       
-      .table-responsive.tablaPizzas
-        table.table.table-striped.table-sm
-          thead
-            tr
-              th #
-              th Imagen
-              th Nombre
-              th Ingredientes
-              th Precio
-              th Otros
-          tbody
-            - var pos=1
-            each element in pizzaList
+      .table-responsive
+        table#table_id.display.responsive.nowrap(style="width:100%;")
+                      thead
+                        tr
+                          th #
+                          th Imagen
+                          th Nombre
+                          th Ingredientes
+                          th Precio
+                          th Otros
+                      tbody
+                        
+                          - var pos=1
+                          each element in pizzaList
+                            
+                            tr
+                              td.idProducto= pos++
+                              td.imagenPiz
+                                img(src=`../../images/productos/${element.Imagen}.png` alt="")
+                              td.nombrePiz= element.Nombre
+                              td.ingredientesPiz
+                                each ingre in element.Ingredientes
+                                  span= ingre.Nombre + ', '
+                              td.precioPiz= element.Precio
+                              td.crudProducto
+                                a.btn.btn-primary.ml-1.btn-sm#updatePizza(href=`/admin/editar-pizza/${element._id}` data-id=`${element._id}` ) Editar
+                                button.btn.btn-danger.ml-1.btn-sm#deletePizza(data-id=`${element._id}` onClick=`removeP('${element._id}')`) Eliminar
               
-              tr
-                td.idProducto= pos++
-                td.imagenPiz
-                  img(src=`../../images/productos/${element.Imagen}.png` alt="")
-                td.nombrePiz= element.Nombre
-                td.ingredientesPiz
-                  each ingre in element.Ingredientes
-                    span= ingre.Nombre + ', '
-                td.precioPiz= element.Precio
-                td.crudProducto
-                   a.btn.btn-primary.ml-1.btn-sm#updatePizza(href=`/admin/editar-pizza/${element._id}` data-id=`${element._id}` ) Editar
-                   button.btn.btn-danger.ml-1.btn-sm#deletePizza(data-id=`${element._id}` onClick=`removeP('${element._id}')`) Eliminar
- 
-        
+      

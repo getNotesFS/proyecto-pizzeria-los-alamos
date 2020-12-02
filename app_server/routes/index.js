@@ -25,6 +25,7 @@ const ctrlAdminNuevoIngrediente = require('../controllers/admin_nuevo_ingredient
 //usuarios
 const ctrlAdminListadoUsuarios = require('../controllers/admin_listado_usuarios');
 const ctrlAdminNuevoUsuario = require('../controllers/admin_nuevo_usuario');
+const ctrlMyAccount = require('../controllers/my_account');
 
 
 
@@ -51,11 +52,22 @@ router.get('/offerts', ctrlOfferts.offerts);
 router.get('/product', ctrlProduct.product);
 router.get('/product/:_id', ctrlProduct.singleProduct);//VIEW
 
+/*MY ACCOUNT */
+router.get('/my-account', ctrlMyAccount.myAccountView);//VIEW
+router.get('/my-account/perfil', ctrlMyAccount.myAccountPerfilView);//VIEW
+router.get('/my-account/pedidos', ctrlMyAccount.myAccountPedidosView);//VIEW
+//router.get('/my-account/direcciones', ctrlMyAccount.myAccountView);//VIEW
+router.get('/my-account/perfil/:_id', ctrlMyAccount.editUsuarioView); //VIEW
+router.post('/my-account/perfil/:_id',ctrlMyAccount.UpdateUsuario);
+
+
 
 /*LOGIN REGISTER */
 
 router.get('/login-register', ctrlLoginRegister.loginRegister);//VIEW
 router.post('/register-f', ctrlLoginRegister.addNewUsuario);
+
+router.post('/login-register/login', ctrlLoginRegister.login);//VIEW
 /*7.- Checkout*/
 router.get('/cart', ctrlCart.cart);
 router.get('/checkout', ctrlCart.checkout); 

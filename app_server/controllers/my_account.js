@@ -1,3 +1,4 @@
+ 
 /*Controladores */
 //Llamado a request
 const request = require("request");
@@ -13,63 +14,37 @@ if (process.env.NODE_ENV === "production") {
   apiOptions.server = "https://pro-web-pizza-la.herokuapp.com"; //servidor remoto - producción
   console.log("=========================HA LLEGADO A PRODUCCION");
 }
-//print LISTADO
-const adminNuevoUsuarioView = (req, res) => {
-  res.render("admin_nuevo_usuario", { title: "Nuevio Usuario" });
-};
+  const myAccountView = (req, res) => {
+    res.render('my_account', { title: 'Mi Cuenta' });
+  }
+  
+  const myAccountPerfilView = (req, res) => {
+    res.render('my_account_perfil', { title: 'Mi Cuenta - Perfil' });
+  }
+  
+  const myAccountPedidosView = (req, res) => {
+    res.render('my_account_pedidos', { title: 'Mi Cuenta - Pedidos' });
+  }
+  
 
-//ADD NUEVO USUARIO
-const addNewUsuario = (req, res) => {
-  console.log("Llegaron los datos");
-  console.log(req.body);
-
-  axios
-    .post(`${apiOptions.server}/api/usuarios`, {
-      
-      Nombres: req.body.nombre,
-      Apellidos: req.body.apellido,
-      Correo: req.body.correo,
-      Contrasenia: req.body.contrasenia,
-      TipoUsuario: req.body.tipousuario,
-      Cedula: req.body.cedula,
-      Provincia: req.body.provincia,
-      Ciudad: req.body.ciudad,
-      DireccionFacturacion: req.body.direccionFacturacion,
-      DireccionEnvio: req.body.direccionEnvio,
-      Referencia: req.body.referencia,
-      TelefonoConvencional: req.body.telefonoConvencional,
-      TelefonoCelular: req.body.telefonoCelular,
-      CodigoPostal: req.body.codigoPostal,
-    })
-    .then(function (response) {
-      console.log("Guardado");
-      res.render("admin_nuevo_usuario", {
-        title: "Add New Usuario",
-        mensaje: "Se ha agrergado un nuevo usuario " + req.body.nombre,
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
-//MOSTRAR USUARIO EN FORMULARIO EDITAR
+  //FUNCIONES
+  //MOSTRAR USUARIO EN FORMULARIO EDITAR
 const editUsuarioView = (req, res) => {
   axios
     .get(`${apiOptions.server}/api/usuarios/${req.params._id}`)
     .then(function (response) {
-      console.log(
+      /*console.log(
         "========================TIPO USUARIO ES ==>>" +
           response.data.TipoUsuario
-      );
-      res.render("admin_editar_usuario", {
+      );*/
+      console.log(response.data);
+      res.render("my_account_perfil", {
         title: "Actualizar " + response.data.Nombres,
         _id: response.data._id,
         nombre: response.data.Nombres,
         apellido: response.data.Apellidos,
         correo: response.data.Correo,
-        contrasenia: response.data.Contrasenia, 
-        tipousuario: response.data.TipoUsuario,
+        contrasenia: response.data.Contrasenia,  
         cedula: response.data.Datos.Cedula,
         provincia: response.data.Datos.Provincia,
         ciudad: response.data.Datos.Ciudad,
@@ -99,8 +74,7 @@ const UpdateUsuario = (req, res) => {
       Nombres: req.body.nombre,
       Apellidos: req.body.apellido,
       Correo: req.body.correo,
-      Contrasenia: req.body.contrasenia, 
-      TipoUsuario: req.body.tipousuario,
+      Contrasenia: req.body.contrasenia,  
       Cedula: req.body.cedula,
       Provincia: req.body.provincia,
       Ciudad: req.body.ciudad,
@@ -117,15 +91,14 @@ const UpdateUsuario = (req, res) => {
         .then(function (response) {
           console.log("===================================DATOS ACTUALIZADOS==========");
           console.log(response.data);
-          res.render("admin_editar_usuario", {
+          res.render("my_account_perfil", {
             title: "Actualizar " + response.data.Nombres,
-            mensaje: response.data.Nombres + " se ha actualizado!",
+            mensaje: "Los datos se han acutalizado correctamente!",
             _id: response.data._id,
             nombre: response.data.Nombres,
             apellido: response.data.Apellidos,
             correo: response.data.Correo,
-            contrasenia: response.data.Contrasenia,
-            tipousuario: response.data.TipoUsuario,
+            contrasenia: response.data.Contrasenia, 
             cedula: response.data.Datos.Cedula,
             provincia: response.data.Datos.Provincia,
             ciudad: response.data.Datos.Ciudad,
@@ -148,10 +121,12 @@ const UpdateUsuario = (req, res) => {
  
 };
 
-module.exports = {
-  //separador de módulos con una "COMA"
-  adminNuevoUsuarioView,
-  addNewUsuario,
-  editUsuarioView,
-  UpdateUsuario,
-};
+    module.exports =  {
+        //separador de módulos con una "COMA"
+        myAccountView,
+        myAccountPerfilView,
+        myAccountPedidosView,
+        editUsuarioView,
+        UpdateUsuario
+  
+    }

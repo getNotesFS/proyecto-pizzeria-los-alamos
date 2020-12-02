@@ -9,18 +9,27 @@ html
     link(rel="stylesheet" href="../../src/css/admin.css")
     // IONICONS
     script(src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js")
+    //dataTables
+    link(rel="stylesheet", href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css") 
+    link(rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css")
+    
     title=title
    
   body
     
-    nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
-      a.navbar-brand.col-sm-3.col-md-2.mr-0.logoAdmin(href="/")
-        img(src="../../images/LogoLA2.png" alt="")
+  
+    nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0.pr-3(style="background-colo:rgba(0, 0, 0, .25)!important;")
+      a(href="/")
+        img.col-sm-3.col-md-2.mr-0.logoAdmin(src="../../images/LogoLA2.png" alt="")
+      button.navbar-toggler.d-md-none(type='button' data-toggle='collapse' data-target='#sidebarMenu' aria-controls='sidebarMenu' aria-expanded='true' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+    
     .container-fluid
       .row
+        
         // INICIO --- Menú Izquierdo
-        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
-          .sidebar-sticky
+        nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse(style='')
+          .sidebar-sticky.pt-3
             ul.nav.flex-column
               li.nav-item
                 a.nav-link.border.nbrl(href="/admin")
@@ -97,6 +106,9 @@ html
     
     //SWEET ALERT
     script(src="https://cdn.jsdelivr.net/npm/sweetalert2@10")  
-
+    //dataTables
+    script(src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js")
+    script(src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js")
+     
     // CUSTOM SCRIPT
     script(src="../../src/js/admin_scripts.js")
