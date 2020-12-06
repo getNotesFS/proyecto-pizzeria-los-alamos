@@ -27,7 +27,9 @@ const ctrlAdminListadoUsuarios = require('../controllers/admin_listado_usuarios'
 const ctrlAdminNuevoUsuario = require('../controllers/admin_nuevo_usuario');
 const ctrlMyAccount = require('../controllers/my_account');
 
-
+//otro producto
+const ctrlAdminListadoOtroProducto = require('../controllers/admin_listado_otroproducto');
+const ctrlAdminNuevoOtroProducto = require('../controllers/admin_nuevo_otroproducto');
 
 /* Definir las rutas de mis páginas*/
 
@@ -99,6 +101,14 @@ router.get('/admin/ingredientes/delete/:_id',ctrlAdminListadoIngredientes.delete
  
 router.get('/pizzas/:pizzaid', ctrlLocations.pizzaList); //modificado para usar la API REST
 
+//Otro Producto
+router.get('/admin/nuevo-otroproducto', ctrlAdminNuevoOtroProducto.adminNuevoOtroProductoView);//VIEW
+router.post('/admin/nuevo-otroproducto', ctrlAdminNuevoOtroProducto.addNewOtroProducto);
+
+router.get('/admin/editar-otroproducto/:_id', ctrlAdminNuevoOtroProducto.editOtroProductoView); //VIEW
+router.post('/admin/editar-otroproducto/:_id',ctrlAdminNuevoOtroProducto.UpdateOtroProducto);
+router.get('/admin/listado-otroproducto', ctrlAdminListadoOtroProducto.adminListadoOtroProductos);
+router.get('/admin/otrosproductos/delete/:_id',ctrlAdminListadoOtroProducto.deleteOtrosProductos);
 
 
 

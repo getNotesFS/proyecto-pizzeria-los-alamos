@@ -8,7 +8,7 @@ const otroProductoCreate = (req, res) => {
         Nombre: req.body.Nombre,
         Tipo: req.body.eq.body.Tipo,
         Descripcion : req.body.Descripcion,
-        Stock: req.body.Stock,
+        //Stock: req.body.Stock,
         Cantidad: req.body.Cantidad,
         Precio: req.body.Precio
        
@@ -81,7 +81,7 @@ const otroProductoUpdate = (req, res) => {
                 .json({"Mensaje" : "El ID OtroProducto ingresado no existe, ingrese un ID OTROPRODUCTO válido."});
     } 
     
-        otrosProductos
+    otrosProductos
         .findById(req.params.otroproductoid)
         .exec((err, objetoOtrosProductos)=>{
 
@@ -93,7 +93,7 @@ const otroProductoUpdate = (req, res) => {
             objetoOtrosProductos.Nombre = req.body.Nombre; 
             objetoOtrosProductos.Tipo = req.body.Tipo; 
             objetoOtrosProductos.Descripcion = req.body.Descripcion; 
-            objetoOtrosProductos.Stock = req.body.Stock; 
+            //objetoOtrosProductos.Stock = req.body.Stock; 
             objetoOtrosProductos.Cantidad = req.body.Cantidad; 
             objetoOtrosProductos.Precio = req.body.Precio; 
             objetoPizza.save((err, objetoOtrosProductos)=>{
@@ -111,7 +111,7 @@ const otroProductoUpdate = (req, res) => {
 };
 const otroProductoDelete = (req, res) => {
     if (req.params.otroproductoid) {
-        pizzas
+        otrosProductos
             .findByIdAndDelete(req.params.otroproductoid)
             .exec((err, objetoOtrosProductos) => {
                 if (err) {
