@@ -2,6 +2,12 @@
 const express = require("express");
 const router = express.Router(); 
 
+const jwt = require('express-jwt');
+const auth = jwt({
+  secret: process.env.JWT_SECRET,
+  algorithms: ['RS256'],
+  userProperty: 'payload'
+})
 //const ctrlLocations = require('../controllers/locations');
 //requerir controladores
 const ctrlUsuarios = require("../controllers/usuarios");
@@ -14,6 +20,10 @@ const ctrlDetallesOrden = require("../controllers/detallesOrden");
 const ctrlHistorialPedidos = require("../controllers/historialpedidos");
 const ctrlCantPizzas = require("../controllers/cantidadpizzas");
 const ctrlCantOtrosProductos = require("../controllers/cantidadotrosproductos");
+
+//auth
+const ctrlAuth = require('../controllers/auth');
+
 
 //definir rutas paara las acciones definidas para la colección users
 // locations
@@ -30,10 +40,14 @@ router
   .put(ctrlUsuarios.usuarioUpdate) //actualiza
   .delete(ctrlUsuarios.usuarioDelete); //elimina
   
-  router
+router
   .route("/usuarios/mail/:email")
   .get(ctrlUsuarios.usuarioReadExist) //lee usuario espe 
 
+//LOGIN REGISTER  - AUTH
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
+  
 router
   .route("/pizzas")
   .post(ctrlPizzas.pizzaCreate) //crea un usuario

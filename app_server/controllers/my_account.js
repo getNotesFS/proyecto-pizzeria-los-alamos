@@ -2,6 +2,8 @@
 /*Controladores */
 //Llamado a request
 const request = require("request");
+const mongoose = require('mongoose');
+const User = mongoose.model("usuario"); 
 
 const axios = require("axios").default;
 // Definir las URLs para los ambientes de desarrollo y producción
@@ -14,8 +16,41 @@ if (process.env.NODE_ENV === "production") {
   apiOptions.server = "https://pro-web-pizza-la.herokuapp.com"; //servidor remoto - producción
   console.log("=========================HA LLEGADO A PRODUCCION");
 }
-  const myAccountView = (req, res) => {
+  
+//VALIDATE USER
+
+const getUser = (req, res, callback) => {
+  if (req.payload && req.payload.email) {
+    console.log("correo es ====================", req.payload.email);
+    User.findOne({ Correo : req.payload.email })
+      .exec((err, user) => {
+        if (!user) {
+          return res
+            .status(404)
+            .json({"message": "Usuario no encontrado, user no hay"});
+        } else if (err) {
+          console.log(err);
+          return res
+            .status(404)
+            .json(err);
+        }
+        callback(req, res, user.Nombres);
+      });
+  } else {
+    return res
+      .status(404)
+      .json({"message": "Usuario no encontrado, 404"});
+  }
+};
+
+
+
+
+const myAccountView = (req, res) => {
+ 
     res.render('my_account', { title: 'Mi Cuenta' });
+    //res.render('my_account', { title: 'Mi Cuenta' });
+
   }
   
   const myAccountPerfilView = (req, res) => {

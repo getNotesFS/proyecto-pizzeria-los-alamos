@@ -24,12 +24,12 @@ const addNewUsuario = (req, res) => {
   console.log(req.body);
 
   axios
-    .post(`${apiOptions.server}/api/usuarios`, {
+    .post(`${apiOptions.server}/api/register`, {
       
       Nombres: req.body.nombre,
       Apellidos: req.body.apellido,
-      Correo: req.body.correo,
-      Contrasenia: req.body.contrasenia,
+      email: req.body.correo,
+      password: req.body.contrasenia,
       TipoUsuario: req.body.tipousuario,
       Cedula: req.body.cedula,
       Provincia: req.body.provincia,

@@ -1,17 +1,20 @@
 //usar mongoose y el modelo compilado para acceder a la base de datos
+const passport = require('passport');
 const mongoose = require("mongoose");
 const usuarios = mongoose.model("usuario");
 
 //Controladores
 const usuarioCreate = (req, res) => {
+  
+  //usuarios.setPassword(req.body.Contrasenia);
+
   usuarios.create(
     {
       TipoUsuario: req.body.TipoUsuario,
       Nombres: req.body.Nombres,
       Apellidos: req.body.Apellidos,
-      Correo: req.body.Correo,
+      Correo: req.body.Correo, 
       Contrasenia: req.body.Contrasenia,
-      
       Datos: {
         Cedula: req.body.Cedula,
         Provincia: req.body.Provincia,
@@ -117,7 +120,15 @@ const usuarioUpdate = (req, res) => {
     objetoUsuario.Nombres = req.body.Nombres;
     objetoUsuario.Apellidos = req.body.Apellidos;
     objetoUsuario.Correo = req.body.Correo;
-    objetoUsuario.Contrasenia = req.body.Contrasenia;
+    //objetoUsuario.Contrasenia = req.body.Contrasenia;
+    if (!objetoUsuario.validPassword(req.body.Contrasenia) && req.body.Contrasenia != objetoUsuario.currentPassEncript(req.body.Contrasenia)) {
+        objetoUsuario.setPassword(req.body.Contrasenia);
+    }else{
+       
+      //objetoUsuario.setPassword(objetoUsuario.currentPass(req.body.Contrasenia));
+      objetoUsuario.Contrasenia =objetoUsuario.currentPassEncript(req.body.Contrasenia);
+       
+    }
     objetoUsuario.TipoUsuario = req.body.TipoUsuario;
     objetoUsuario.Datos = {
       Cedula : req.body.Cedula,

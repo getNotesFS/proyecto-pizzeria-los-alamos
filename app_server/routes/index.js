@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-
+ 
 /*Importar controladores */
 
 const ctrlLocations = require('../controllers/locations'); 

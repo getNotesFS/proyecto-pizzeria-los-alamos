@@ -2,8 +2,7 @@
 //Llamado a request
 //const { get } = require("request");
 const request = require("request");
-// Modules
-const passport = require("passport");
+// Modules 
 const { response } = require("express");
 
 
@@ -154,11 +153,11 @@ const addNewUsuario = (req, res) => {
 
 const createU = (req,res=response)=>{
 
-  axios.post(`${apiOptions.server}/api/usuarios`, { 
+  axios.post(`${apiOptions.server}/api/register`, { 
     Nombres: req.body.nombre,
     Apellidos: req.body.apellido,
-    Correo: req.body.correo,
-    Contrasenia: req.body.contrasenia
+    email: req.body.correo,
+    password: req.body.contrasenia
   })
   .then(function (response) {
     console.log("Guardado"); 
@@ -179,20 +178,26 @@ const createU = (req,res=response)=>{
     }
 
     //LOGIN
-    const logissn = (req, res) =>{
+    const login = (req, res) =>{
       
-      res.render("login_register", {
-        title: "Login"
-       
+      axios.post(`${apiOptions.server}/api/login`, {  
+        email: req.body.email,
+        password: req.body.password
+      })
+      .then(function (response) {
+        console.log("LOGIN"); 
+       res.redirect(`/my-account`);
+      })
+      .catch(function (error) {
+        console.log(error.response);
+        res.redirect(`/login-register`);
       });
+ 
+
     }
 
 
-    const login = passport.authenticate("local", {
-      successRedirect: "/admin",
-      failureRedirect: "/login-register"
-       
-    });
+    
   
    const logout = (req, res) => {
     req.logout();
