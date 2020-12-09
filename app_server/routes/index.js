@@ -27,6 +27,7 @@ const ctrlAdminListadoUsuarios = require('../controllers/admin_listado_usuarios'
 const ctrlAdminNuevoUsuario = require('../controllers/admin_nuevo_usuario');
 const ctrlMyAccount = require('../controllers/my_account');
 
+const ctrlUpload = require('../controllers/upload');
 
 
 /* Definir las rutas de mis páginas*/
@@ -48,6 +49,10 @@ router.get('/menu', ctrlMenu.menu);
 /*34.- Offerts*/
 router.get('/offerts', ctrlOfferts.offerts);
  
+router.get('/upload', ctrlUpload.upload);
+router.post('/uploadFile', ctrlUpload.uploadFile);
+ 
+
 /*34.- Single Product*/
 router.get('/product', ctrlProduct.product);
 router.get('/product/:_id', ctrlProduct.singleProduct);//VIEW

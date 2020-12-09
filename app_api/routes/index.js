@@ -1,11 +1,15 @@
 //requerir el modulo express y otros
 const express = require("express");
+const expressFileUpload = require('express-fileupload');
+ 
 const { check } = require('express-validator');
 const { validarCampos } = require('../../middlewares/validar-campos');
 const { validarJWT, varlidarADMIN_ROLE } = require('../../middlewares/validar-jwt');
 
+
 const router = express.Router(); 
  
+router.use( expressFileUpload() );
 
 
 //const ctrlLocations = require('../controllers/locations');
@@ -23,6 +27,9 @@ const ctrlCantOtrosProductos = require("../controllers/cantidadotrosproductos");
 
 //auth
 const ctrlAuth = require('../controllers/auth');
+//const ctrlFile= require('../controllers/upload');
+
+const ctrlFile = require('../controllers/upload');
 
 
 //definir rutas paara las acciones definidas para la colección users
@@ -59,6 +66,17 @@ router.get( '/renew',
 validarJWT,
 ctrlAuth.renewToken
 )
+
+
+
+//upload
+ 
+router.get('/upload',  ctrlFile.fileUpload );
+
+//router.put('/upload/:tipo/:id',  ctrlFile.fileUpload );
+
+router.get('/upload/:tipo/:foto', ctrlFile.retornaImagen );
+
 
 router
   .route("/pizzas")

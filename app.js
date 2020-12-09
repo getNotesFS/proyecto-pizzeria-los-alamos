@@ -4,7 +4,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan'); 
- 
+  
+
+
 
 const passport = require("passport"); 
 const bodyParser = require('body-parser');
@@ -26,6 +28,7 @@ const app = express();
 //incluir passport
 //require("./app_server/controllers/auth");
 // Lectura y parseo del body 
+// default options 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

@@ -1,0 +1,36 @@
+extends layout
+
+block content
+
+    // START CABECERA PAGINAS
+    section.SeccionCabeceraPAGINAS
+      .container-fluid
+        .row
+          .cabeceraPaginas
+            h1.tituloPaginasCabera
+              = title
+            .breadcrumb-inner
+              a(href="/") Home
+              span= title
+    .iconArrowDown
+      .icon-default2
+        ion-icon(name="arrow-down-outline")
+    br
+    br
+    section.mainCheckout.pb-5.pt-5
+      .container
+        .row
+          .col-md-12
+            .parte2.shadow
+              .secCabecera2
+                h4.titulo_ParrafosDark.text-center UPLOAD
+              .secCabecera3.mt-5
+                .formularioRegistro
+                  small= mensaje
+                  form(action="/uploadFile" method="POST" role="form" enctype="multipart/form-data")
+                    .form-row
+                      .form-.col-md-6
+                        label(for="correo") Archivo
+                        input#correoHeadReg.correoHeadReg.form-control(type="file" name="imagen"  required)
+                    .actualizarListado.pt-3.d-flex.justify-content-center
+                      button.btn-mediano.bg-yellowCupon(type="submit") SUBIR
