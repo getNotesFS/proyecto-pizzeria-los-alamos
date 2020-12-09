@@ -6,21 +6,17 @@ const otrosProductos = mongoose.model('otroProducto');
 const otroProductoCreate = (req, res) => {
     otrosProductos.create({
         Nombre: req.body.Nombre,
-        Tipo: req.body.eq.body.Tipo,
-        Descripcion : req.body.Descripcion,
+        Tipo: req.body.Tipo,
+        Descripcion: req.body.Descripcion,
         Stock: req.body.Stock,
         Cantidad: req.body.Cantidad,
         Precio: req.body.Precio
        
     },(err, objetoOtrosProductos) =>{
         if(err){
-            res
-                .status(400)
-                .json(err);
+            res.status(400).json(err);
         } else {
-            res
-                .status(201)
-                .json(objetoOtrosProductos);
+            res.status(201).json(objetoOtrosProductos);
         }
     });
 };
@@ -81,7 +77,7 @@ const otroProductoUpdate = (req, res) => {
                 .json({"Mensaje" : "El ID OtroProducto ingresado no existe, ingrese un ID OTROPRODUCTO válido."});
     } 
     
-        otrosProductos
+    otrosProductos
         .findById(req.params.otroproductoid)
         .exec((err, objetoOtrosProductos)=>{
 
@@ -96,7 +92,7 @@ const otroProductoUpdate = (req, res) => {
             objetoOtrosProductos.Stock = req.body.Stock; 
             objetoOtrosProductos.Cantidad = req.body.Cantidad; 
             objetoOtrosProductos.Precio = req.body.Precio; 
-            objetoPizza.save((err, objetoOtrosProductos)=>{
+            objetoOtrosProductos.save((err, objetoOtrosProductos)=>{
                 if(err){
                     res
                         .status(404)
@@ -111,7 +107,7 @@ const otroProductoUpdate = (req, res) => {
 };
 const otroProductoDelete = (req, res) => {
     if (req.params.otroproductoid) {
-        pizzas
+        otrosProductos
             .findByIdAndDelete(req.params.otroproductoid)
             .exec((err, objetoOtrosProductos) => {
                 if (err) {

@@ -47,6 +47,31 @@
       })
  } 
 
+
+ function removeOT(_id){
+  console.log(_id);
+  Swal.fire({
+      title: '¿Estás seguro de eliminarlo?',
+      text: "No podrás rehacer la acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'El Otroproducto ha sido eliminado.',
+          'success'
+        ),
+         
+          window.location.href = "/admin/otrosproductos/delete/"+_id;
+         
+      }
+    })
+} 
+
  function removeU(_id){
     console.log(_id);
     Swal.fire({
@@ -113,6 +138,9 @@ $(document).ready(function () {
       
     });
     $("#updateIngredente").click(function(){
+        
+    });
+    $("#updateOtroProducto").click(function(){
         
     });
 
