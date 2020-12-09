@@ -28,6 +28,7 @@ const addNewOtroProducto = (req, res) => {
       Nombre: req.body.nombre,
       Tipo: req.body.tipo,
       Descripcion: req.body.descripcion,
+      Stock: req.body.stock,
       Cantidad: req.body.cantidad,
       Precio: parseFloat(req.body.precio),
     })
@@ -92,6 +93,7 @@ const UpdateOtroProducto = (req, res) => {
             _id: response.data._id,
             nombre: response.data.Nombre,
             tipo: response.data.Tipo,
+            stock: response.data.Stock,
             descripcion: response.data.Descripcion,
             cantidad: response.data.Cantidad,
             precio: response.data.Precio,

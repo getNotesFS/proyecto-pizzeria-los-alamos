@@ -140,6 +140,9 @@ $(document).ready(function () {
     $("#updateIngredente").click(function(){
         
     });
+    $("#updateOtroProducto").click(function(){
+        
+    });
 
     $(".nav-link").click(function () {
         

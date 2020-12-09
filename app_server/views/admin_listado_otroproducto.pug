@@ -16,6 +16,7 @@ block content
               th Nombre
               th Tipo
               th Descripcion
+              th Stock
               th Cantidad
               th Precio
           tbody
@@ -26,10 +27,12 @@ block content
                 td.nombreOT= element.Nombre
                 td.tipoOT= element.Tipo
                 td.descripcionOT= element.Descripcion
+                td.stockOT= element.Stock
+                td.cantidadOT= element.Cantidad
                 td.precioOT= element.Precio
                 td.crudOtroProducto
-                  //a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-otroproducto/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarOtroProducto") Editar
-                  a.btn.btn-primary.ml-1.btn-sm#updateOtroProducto(href=`/admin/editar-otroproducto/${element._id}` data-id=`${element._id}` ) Editar
+                  //a.btn.btn-primary.ml-1.btn-sm#updateOtroProducto(href=`/admin/editar-otroproducto/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarOtroProducto") Editar
+                  a.btn.btn-primary.ml-1.btn-sm#updatePizza(href=`/admin/editar-otroproducto/${element._id}` data-id=`${element._id}` ) Editar
                   button.btn.btn-danger.ml-1.btn-sm#deleteOtroProducto(data-id=`${element._id}` onClick=`removeOT('${element._id}')`) Eliminar
  
 
@@ -52,11 +55,14 @@ block content
                         label(for="tipo") Tipo
                         input.form-control(type="text" name="tipo" value=`${tipo}`)
                       .form-group
-                        label(for="tipo") Stock
-                        input.form-control(type="text" name="tipo" value=`${tipo}`)
-                      .form-group
                         label(for="descripcion") Descripcion
                         input.form-control(type="text" name="descripcion" value=`${descripcion}`)
+                      .form-group
+                        label(for="stock") Stock
+                        select.form-control(name="stock" required="")
+                          option(selected="") Selecciona el Stock
+                          option(value="0") Si
+                          option(value="1") No
                       .form-group
                         label(for="cantidad") Cantidad
                         input.form-control(type="text" name="cantidad" value=`${cantidad}`)

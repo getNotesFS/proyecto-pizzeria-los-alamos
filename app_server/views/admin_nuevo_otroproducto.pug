@@ -24,6 +24,12 @@ block content
               label(for="descripcion") Descripcion 
               input.form-control(type="text" name="descripcion" required="")
             .form-group
+              label(for="stock") Stock
+              select.form-control(name="stock" required="")
+                option(selected="") Selecciona el Stock
+                option(value="0") Si
+                option(value="1") No
+            .form-group
               label(for="cantidad") Cantidad
               input.form-control(type="text" name="cantidad" required="")
             .form-group

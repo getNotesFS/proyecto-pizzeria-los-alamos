@@ -6,21 +6,17 @@ const otrosProductos = mongoose.model('otroProducto');
 const otroProductoCreate = (req, res) => {
     otrosProductos.create({
         Nombre: req.body.Nombre,
-        Tipo: req.body.eq.body.Tipo,
-        Descripcion : req.body.Descripcion,
-        //Stock: req.body.Stock,
+        Tipo: req.body.Tipo,
+        Descripcion: req.body.Descripcion,
+        Stock: req.body.Stock,
         Cantidad: req.body.Cantidad,
         Precio: req.body.Precio
        
     },(err, objetoOtrosProductos) =>{
         if(err){
-            res
-                .status(400)
-                .json(err);
+            res.status(400).json(err);
         } else {
-            res
-                .status(201)
-                .json(objetoOtrosProductos);
+            res.status(201).json(objetoOtrosProductos);
         }
     });
 };
@@ -93,10 +89,10 @@ const otroProductoUpdate = (req, res) => {
             objetoOtrosProductos.Nombre = req.body.Nombre; 
             objetoOtrosProductos.Tipo = req.body.Tipo; 
             objetoOtrosProductos.Descripcion = req.body.Descripcion; 
-            //objetoOtrosProductos.Stock = req.body.Stock; 
+            objetoOtrosProductos.Stock = req.body.Stock; 
             objetoOtrosProductos.Cantidad = req.body.Cantidad; 
             objetoOtrosProductos.Precio = req.body.Precio; 
-            objetoPizza.save((err, objetoOtrosProductos)=>{
+            objetoOtrosProductos.save((err, objetoOtrosProductos)=>{
                 if(err){
                     res
                         .status(404)
