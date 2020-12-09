@@ -8,8 +8,8 @@ block content
       .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
         h1= title
       // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
-      .table-responsive.tablaIngredientes
-        table.table.table-striped.table-sm
+      .table-responsive
+        table.dataT.display.responsive.nowrap(style="width:100%;")
           thead
             tr
               th #
@@ -19,8 +19,9 @@ block content
               th Stock
               th Cantidad
               th Precio
+              th Otros
           tbody
-          - var pos=1
+            - var pos=1
             each element in otroProductoList
               tr
                 td.idOtroProducto= pos++
@@ -31,42 +32,8 @@ block content
                 td.cantidadOT= element.Cantidad
                 td.precioOT= element.Precio
                 td.crudOtroProducto
-                  //a.btn.btn-primary.ml-1.btn-sm#updateOtroProducto(href=`/admin/editar-otroproducto/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarOtroProducto") Editar
                   a.btn.btn-primary.ml-1.btn-sm#updatePizza(href=`/admin/editar-otroproducto/${element._id}` data-id=`${element._id}` ) Editar
                   button.btn.btn-danger.ml-1.btn-sm#deleteOtroProducto(data-id=`${element._id}` onClick=`removeOT('${element._id}')`) Eliminar
  
 
-        // Modal
-        #modalEditarOtroProducto.modal.fade(tabindex="-1" role="dialog" aria-labelledby="modalEditarOtroProducto" aria-hidden="true")
-          .modal-dialog.modal-dialog-centered.modal-lg(role="document")
-            .modal-content
-              .modal-header
-                h5#exampleModalLongTitle.modal-title Editar
-                button.close(type="button" data-dismiss="modal" aria-label="Close")
-                  span(aria-hidden="true") ×
-              .modal-body
-                .row.p-3.justify-content-center
-                  .col-md-10
-                    form(method="POST" action="" role="form")
-                      .form-group
-                        label(for="nombre") Nombre
-                        input.form-control(type="text" name="nombre" value=`${nombre}`)
-                      .form-group
-                        label(for="tipo") Tipo
-                        input.form-control(type="text" name="tipo" value=`${tipo}`)
-                      .form-group
-                        label(for="descripcion") Descripcion
-                        input.form-control(type="text" name="descripcion" value=`${descripcion}`)
-                      .form-group
-                        label(for="stock") Stock
-                        select.form-control(name="stock" required="")
-                          option(selected="") Selecciona el Stock
-                          option(value="0") Si
-                          option(value="1") No
-                      .form-group
-                        label(for="cantidad") Cantidad
-                        input.form-control(type="text" name="cantidad" value=`${cantidad}`)
-                      .form-group
-                        label(for="precio") Precio
-                        input.form-control(type="text" name="precio" required="" value=`${precio}`)
-                      button.btn.btn-primary(type="submit") Actualizar OtroProducto
+        
