@@ -47,7 +47,8 @@ const getUser = (req, res, callback) => {
 
 
 const myAccountView = (req, res) => {
- 
+  
+    //console.log(req.payload.email);
     res.render('my_account', { title: 'Mi Cuenta' });
     //res.render('my_account', { title: 'Mi Cuenta' });
 

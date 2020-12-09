@@ -31,7 +31,7 @@ router
   .route("/usuarios")
 
   .post(ctrlUsuarios.usuarioCreate) //crea un usuario
-  .get(ctrlUsuarios.usuarioList); //enlista usuario
+  .get(auth,ctrlUsuarios.usuarioList); //enlista usuario
 
 router
   .route("/usuarios/:usuarioid")
