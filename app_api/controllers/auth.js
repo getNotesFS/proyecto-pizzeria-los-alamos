@@ -9,12 +9,12 @@ const { generarJWT } = require('../../helpers/jwt');
 
 const login = async( req, res = response ) => {
 
-    const {email, password } = req.body;
+    const {Correo, Contrasenia } = req.body;
     console.log(req.body);
     try {
         
         // Verificar email
-        const usuarioDB = await Usuario.findOne({Correo: email });
+        const usuarioDB = await Usuario.findOne({Correo: Correo });
 
         if ( !usuarioDB ) {
             return res.status(404).json({
@@ -24,7 +24,7 @@ const login = async( req, res = response ) => {
         }
 
         // Verificar contraseña
-        const validPassword = bcrypt.compareSync( password, usuarioDB.Contrasenia );
+        const validPassword = bcrypt.compareSync( Contrasenia, usuarioDB.Contrasenia );
         if ( !validPassword ) {
             return res.status(400).json({
                 ok: false,
@@ -55,11 +55,11 @@ const login = async( req, res = response ) => {
 
 const register = async(req, res = response) => {
 
-    const { email, password } = req.body;
+    const { Coreo, Contrasenia } = req.body;
 
     try {
 
-        const existeEmail = await Usuario.findOne({ Correo: email });
+        const existeEmail = await Usuario.findOne({ Correo: Coreo });
 
         if ( existeEmail ) {
             return res.status(400).json({
@@ -87,7 +87,7 @@ const register = async(req, res = response) => {
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
-        usuario.Contrasenia = bcrypt.hashSync( Contrasenia, salt );
+        usuario.Contrasenia = bcrypt.hashSync( req.body.Contrasenia, salt );
     
     
         // Guardar usuario

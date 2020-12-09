@@ -156,8 +156,8 @@ const createU = (req,res=response)=>{
   axios.post(`${apiOptions.server}/api/register`, { 
     Nombres: req.body.nombre,
     Apellidos: req.body.apellido,
-    email: req.body.correo,
-    password: req.body.contrasenia
+    Correo: req.body.correo,
+    Contrasenia: req.body.contrasenia
   })
   .then(function (response) {
     console.log("Guardado"); 
@@ -181,8 +181,8 @@ const createU = (req,res=response)=>{
     const login = (req, res) =>{
       
       axios.post(`${apiOptions.server}/api/login`, {  
-        email: req.body.email,
-        password: req.body.password
+        Correo: req.body.Correo,
+        Contrasenia: req.body.Contrasenia
       })
       .then(function (response) {
         console.log("LOGIN"); 

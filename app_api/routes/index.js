@@ -38,7 +38,7 @@ router
   .route("/usuarios")
 
   .post(ctrlUsuarios.usuarioCreate) //crea un usuario
-  .get(validarJWT,varlidarADMIN_ROLE ,ctrlUsuarios.usuarioList); //enlista usuario
+  .get(ctrlUsuarios.usuarioList); //enlista usuario
 
 router
   .route("/usuarios/:usuarioid")
@@ -52,13 +52,7 @@ router
   .get(ctrlUsuarios.usuarioReadExist) //lee usuario espe 
 
 //LOGIN REGISTER  - AUTH
-router.post('/register', [
-  check('Nombres', 'El nombre es obligatorio').not().isEmpty(),
-  check('Apellidos', 'El apellido es obligatorio').not().isEmpty(), 
-  check('password', 'El password es obligatorio').not().isEmpty(),
-  check('email', 'El email es obligatorio').isEmail(),
-  validarCampos,
-], ctrlAuth.register);
+router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 router.put('/update/:usuarioid', ctrlAuth.actualizarUser);
 

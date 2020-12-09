@@ -28,8 +28,8 @@ const addNewUsuario = (req, res) => {
       
       Nombres: req.body.nombre,
       Apellidos: req.body.apellido,
-      email: req.body.correo,
-      password: req.body.contrasenia,
+      Correo: req.body.correo,
+      Contrasenia: req.body.contrasenia,
       TipoUsuario: req.body.tipousuario,
       Cedula: req.body.cedula,
       Provincia: req.body.provincia,
@@ -94,7 +94,7 @@ const UpdateUsuario = (req, res) => {
   console.log("==========ACTUALIZAR");
   console.log(req.body);
   axios
-    .put(`${apiOptions.server}/api/usuarios/${req.params._id}`, {
+    .put(`${apiOptions.server}/api/update/${req.params._id}`, {
       
       Nombres: req.body.nombre,
       Apellidos: req.body.apellido,

@@ -48,6 +48,8 @@ const getUser = (req, res, callback) => {
 
 const myAccountView = (req, res) => {
  
+  //
+
   const uid = req.uid;
 
   console.log("My id: ==========", uid);
@@ -108,6 +110,7 @@ const editUsuarioView = (req, res) => {
 const UpdateUsuario = (req, res) => {
   console.log("==========ACTUALIZAR");
   console.log(req.body);
+
   axios
     .put(`${apiOptions.server}/api/usuarios/${req.params._id}`, {
       
