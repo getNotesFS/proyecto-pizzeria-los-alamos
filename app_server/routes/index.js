@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
  
-/*Importar controladores */
+/*Importar controladores */ 
 
 const ctrlLocations = require('../controllers/locations'); 
 const ctrlHomepage = require('../controllers/homepage');

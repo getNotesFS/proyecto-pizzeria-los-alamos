@@ -1,13 +1,13 @@
 //requerir el modulo express y otros
 const express = require("express");
-const router = express.Router(); 
+const { check } = require('express-validator');
+const { validarCampos } = require('../../middlewares/validar-campos');
+const { validarJWT, varlidarADMIN_ROLE } = require('../../middlewares/validar-jwt');
 
-const jwt = require('express-jwt');
-const auth = jwt({
-  secret: process.env.JWT_SECRET,
-  algorithms: ['RS256'],
-  userProperty: 'payload'
-})
+const router = express.Router(); 
+ 
+
+
 //const ctrlLocations = require('../controllers/locations');
 //requerir controladores
 const ctrlUsuarios = require("../controllers/usuarios");
@@ -31,7 +31,7 @@ router
   .route("/usuarios")
 
   .post(ctrlUsuarios.usuarioCreate) //crea un usuario
-  .get(ctrlUsuarios.usuarioList); //enlista usuario
+  .get(validarJWT,varlidarADMIN_ROLE ,ctrlUsuarios.usuarioList); //enlista usuario
 
 router
   .route("/usuarios/:usuarioid")
@@ -45,9 +45,21 @@ router
   .get(ctrlUsuarios.usuarioReadExist) //lee usuario espe 
 
 //LOGIN REGISTER  - AUTH
-router.post('/register', ctrlAuth.register);
+router.post('/register', [
+  check('Nombres', 'El nombre es obligatorio').not().isEmpty(),
+  check('Apellidos', 'El apellido es obligatorio').not().isEmpty(), 
+  check('password', 'El password es obligatorio').not().isEmpty(),
+  check('email', 'El email es obligatorio').isEmail(),
+  validarCampos,
+], ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
-  
+router.put('/update/:usuarioid', ctrlAuth.actualizarUser);
+
+router.get( '/renew',
+validarJWT,
+ctrlAuth.renewToken
+)
+
 router
   .route("/pizzas")
   .post(ctrlPizzas.pizzaCreate) //crea un usuario

@@ -48,6 +48,11 @@ const getUser = (req, res, callback) => {
 
 const myAccountView = (req, res) => {
  
+  const uid = req.uid;
+
+  console.log("My id: ==========", uid);
+  console.log("My token: ==========", req.token);
+
     res.render('my_account', { title: 'Mi Cuenta' });
     //res.render('my_account', { title: 'Mi Cuenta' });
 

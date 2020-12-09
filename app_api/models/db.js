@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
  console.log("Se esta conectando a la DB remota");
 } 
  
-mongoose.connect(dbURI, { useNewUrlParser: true,useCreateIndex:true });
+mongoose.connect(dbURI, { useNewUrlParser: true,useCreateIndex:true, useFindAndModify: false  });
 
 
 /*

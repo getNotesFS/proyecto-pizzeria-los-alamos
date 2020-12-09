@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
@@ -20,6 +21,7 @@
     "express": "~4.16.1",
     "express-jwt": "^6.0.0",
     "express-session": "^1.17.1",
+    "express-validator": "^6.8.0",
     "flash": "^1.1.0",
     "fs": "^0.0.1-security",
     "http-errors": "^1.6.3",

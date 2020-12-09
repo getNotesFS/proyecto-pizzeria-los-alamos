@@ -1,7 +1,4 @@
-require('dotenv').config();
-//require('dotenv').config({path:'my-app/.env'});
-
-//dotenv.config();
+require('dotenv').config(); 
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -28,6 +25,7 @@ const apiRouter = require('./app_api/routes/index');
 const app = express();
 //incluir passport
 //require("./app_server/controllers/auth");
+// Lectura y parseo del body 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
