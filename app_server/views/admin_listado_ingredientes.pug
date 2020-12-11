@@ -9,7 +9,7 @@ block content
         h1= title
       // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
       .table-responsive
-        table#table_id.display.responsive.nowrap(style="width:100%;")
+        table.dataT.display.responsive.nowrap(style="width:100%;")
           thead
             tr
               th #
@@ -18,7 +18,7 @@ block content
               th Precio
               th Otros
           tbody
-          - var pos=1
+            - var pos=1
             each element in ingredientesList
               tr
                 td.idProducto= pos++
@@ -32,30 +32,4 @@ block content
                   button.btn.btn-danger.ml-1.btn-sm#deleteIngredente(data-id=`${element._id}` onClick=`removeI('${element._id}')`) Eliminar
  
 
-        // Modal
-        #modalEditarIngrediente.modal.fade(tabindex="-1" role="dialog" aria-labelledby="modalEditarIngrediente" aria-hidden="true")
-          .modal-dialog.modal-dialog-centered.modal-lg(role="document")
-            .modal-content
-              .modal-header
-                h5#exampleModalLongTitle.modal-title Editar
-                button.close(type="button" data-dismiss="modal" aria-label="Close")
-                  span(aria-hidden="true") ×
-              .modal-body
-                .row.p-3.justify-content-center
-                  .col-md-10
-                    form(method="POST" action="" role="form")
-                      .form-group
-                        label(for="nombre") Nombre
-                        input.form-control(type="text" name="nombre" value=`${nombre}`)
-                      .form-group
-                        label(for="precio") Precio
-                        input.form-control(type="text" name="precio" required="" value=`${precio}`)
-                      .form-group
-                        label(for="imagen")
-                          | Imagen 
-                          small
-                            | (Solo hay cebolla, champinion,
-                            | tomate, queso, pollo,
-                            | pinia, tocino o jamon)
-                        input.form-control(type="text" name="imagen" placeholder="tomate" required="" value=`${imagen}`)
-                      button.btn.btn-primary(type="submit") Actualizar Producto
+        

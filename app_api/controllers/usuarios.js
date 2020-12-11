@@ -1,7 +1,10 @@
 //usar mongoose y el modelo compilado para acceder a la base de datos
 const passport = require('passport');
+
+const bcrypt = require('bcryptjs');
 const mongoose = require("mongoose");
 const usuarios = mongoose.model("usuario");
+const { generarJWT } = require('../../helpers/jwt');
 
 //Controladores
 const usuarioCreate = (req, res) => {
@@ -119,8 +122,9 @@ const usuarioUpdate = (req, res) => {
     }
     objetoUsuario.Nombres = req.body.Nombres;
     objetoUsuario.Apellidos = req.body.Apellidos;
-    objetoUsuario.Correo = req.body.Correo;
+    
     //objetoUsuario.Contrasenia = req.body.Contrasenia;
+    /*
     if (!objetoUsuario.validPassword(req.body.Contrasenia) && req.body.Contrasenia != objetoUsuario.currentPassEncript(req.body.Contrasenia)) {
         objetoUsuario.setPassword(req.body.Contrasenia);
     }else{
@@ -128,7 +132,31 @@ const usuarioUpdate = (req, res) => {
       //objetoUsuario.setPassword(objetoUsuario.currentPass(req.body.Contrasenia));
       objetoUsuario.Contrasenia =objetoUsuario.currentPassEncript(req.body.Contrasenia);
        
+    }*/
+
+    if ( objetoUsuario.Correo !== req.body.Correo ) {
+
+      const existeEmail =  usuarios.findOne({Correo: req.body.Correo });
+      if ( existeEmail ) {
+          return res.status(400).json({
+              ok: false,
+              msg: 'Ya existe un usuario con ese email'
+          });
+        }
     }
+    objetoUsuario.Correo = req.body.Correo;
+    
+    const validPassword = bcrypt.compareSync(req.body.Contrasenia, objetoUsuario.currentPassEncript(req.body.Contrasenia) );
+    if ( !validPassword ) {
+      // Encriptar contraseña
+      const salt = bcrypt.genSaltSync();
+      objetoUsuario.Contrasenia = bcrypt.hashSync( req.body.Contrasenia, salt );
+
+    }else{
+      objetoUsuario.Contrasenia =objetoUsuario.currentPassEncript(req.body.Contrasenia);
+    }
+
+
     objetoUsuario.TipoUsuario = req.body.TipoUsuario;
     objetoUsuario.Datos = {
       Cedula : req.body.Cedula,

@@ -1,0 +1,39 @@
+
+extends admin_layout
+
+block content
+
+    // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
+    main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1= title
+      // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
+      .table-responsive
+        table.dataT.display.responsive.nowrap(style="width:100%;")
+          thead
+            tr
+              th #
+              th Nombre
+              th Tipo
+              th Descripcion
+              th Stock
+              th Cantidad
+              th Precio
+              th Otros
+          tbody
+            - var pos=1
+            each element in otroProductoList
+              tr
+                td.idOtroProducto= pos++
+                td.nombreOT= element.Nombre
+                td.tipoOT= element.Tipo
+                td.descripcionOT= element.Descripcion
+                td.stockOT= element.Stock
+                td.cantidadOT= element.Cantidad
+                td.precioOT= element.Precio
+                td.crudOtroProducto
+                  a.btn.btn-primary.ml-1.btn-sm#updatePizza(href=`/admin/editar-otroproducto/${element._id}` data-id=`${element._id}` ) Editar
+                  button.btn.btn-danger.ml-1.btn-sm#deleteOtroProducto(data-id=`${element._id}` onClick=`removeOT('${element._id}')`) Eliminar
+ 
+
+        

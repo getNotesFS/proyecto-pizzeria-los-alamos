@@ -47,8 +47,19 @@ const getUser = (req, res, callback) => {
 
 
 const myAccountView = (req, res) => {
+<<<<<<< HEAD
   
     //console.log(req.payload.email);
+=======
+ 
+  //
+
+  const uid = req.uid;
+
+  console.log("My id: ==========", uid);
+  console.log("My token: ==========", req.token);
+
+>>>>>>> 30392e8b4c950951df67966ed417af36c6436509
     res.render('my_account', { title: 'Mi Cuenta' });
     //res.render('my_account', { title: 'Mi Cuenta' });
 
@@ -104,6 +115,7 @@ const editUsuarioView = (req, res) => {
 const UpdateUsuario = (req, res) => {
   console.log("==========ACTUALIZAR");
   console.log(req.body);
+
   axios
     .put(`${apiOptions.server}/api/usuarios/${req.params._id}`, {
       
