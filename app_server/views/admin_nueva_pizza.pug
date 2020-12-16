@@ -15,49 +15,44 @@ block content
       .row.justify-content-center.pt-5.mainIntercambiableContent
         .col-md-6
           p.text-center #{mensaje}
-          form(method="POST" action="" role="form")
+          form(method="POST" action="" role="form" enctype="multipart/form-data")
             .form-group
               label(for="nombre") Nombre
               input.form-control(type="text" name="nombre")
             .form-group
               label(for="descripcion") Descripción
-              textarea.form-control(name="descripcion" required="")
+              textarea.form-control(name="descripcion" )
             .form-group
               label(for="categoria") Categoría
-              select.form-control(name="categoria" required="")
+              select.form-control(name="categoria" )
                 option(selected="") Selecciona una categoría...
                 option(value="Vegana") Vegana
                 option(value="Oriental") Oriental
                 option(value="Otro") Otro
             .form-group
               label(for="tipomasa") Tipo Masa
-              select.form-control(name="tipomasa" required="")
+              select.form-control(name="tipomasa" )
                 option(selected="") Selecciona un tipo de masa...
                 option(value="0") Fina
                 option(value="1") Gruesa
             .form-group
               label(for="tamanio") Tamaño
-              select.form-control(name="tamanio" required="")
+              select.form-control(name="tamanio" )
                 option(selected="") Selecciona un tamaño...
                 option(value="0") Grande
                 option(value="1") Mediana
                 option(value="2") Personal
             .form-group
               label(for="precio") Precio
-              input.form-control(type="text" name="precio" required="")
+              input.form-control(type="text" name="precio" )
             .form-group
               label(for="imagen")
                 | Imagen 
                 small
                   | (Solo hay:pizzaPollo, pizzaJamon, pizzaMixto,
                   | pizzaQueso, pizzaTomate, pizzaVegana )
-              input.form-control(type="text" name="imagen" placeholder="pizzaPollo" required="")
-            // FILE INPUT MODIFICAR ESTO PARA IMAGEN
+              input.form-control(type="file" name="imagen" )
             //
-              <div class="form-group">
-              <label for="subirImagen">Subir Imagen</label><br>
-              <input type="file" class="customSubirImagen" name="subirImagen">
-              </div>
             .form-group
               label(for="ingredientes") Ingredientes
               select.form-control(multiple="" name="ingredientes")

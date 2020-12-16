@@ -15,7 +15,7 @@ block content
       .row.justify-content-center.pt-5.mainIntercambiableContent
         .col-md-6
               p.text-center #{mensaje}
-              form(method="POST" action="" role="form")
+              form(method="POST" action="" role="form" enctype="multipart/form-data")
                 .form-group
                   label(for="nombre") Nombre
                   input.form-control(type="text" name="nombre" value=`${pizzaData.Nombre}`)
@@ -53,10 +53,12 @@ block content
                       | (Solo hay:pizzaPollo, pizzaJamon,
                       | pizzaMixto, pizzaQueso, pizzaTomate, pizzaVegana
                       | )
-                  input.form-control(type="text" name="imagen" placeholder="pizzaPollo" required="" value=`${pizzaData.Imagen}`)
+                  img.editImgCurrent(src=`../../uploads/pizzas/${pizzaData.Imagen}`)
+                  input.form-control(type="file" name="imagen")
+                  input.form-control(type="hidden" name="imagenh"  value=`${pizzaData.Imagen}`)
                 .form-group
                   label(for="ingredientes") Ingredientes
-                  select.form-control#propertyType(multiple="" name="ingredientes")
+                  select.form-control#choices-multiple-remove-button(multiple="" name="ingredientes")
                 
                     - let bandera = false
                     - var IngDataSize = Object.keys(pizzaData.Ingredientes).length -1 
@@ -75,6 +77,7 @@ block content
                               option(value= listaIngredientes[i]._id )= listaIngredientes[i].Nombre      
                             
                   
+                input#ctrlSelect(type="hidden" value='' name="ctrlSelect")
                 button.btn.btn-primary(type="submit") Guardar Producto
                 a.btn.btn-danger.ml-1(href="/admin/listado-productos") Cancelar
       .pb-5

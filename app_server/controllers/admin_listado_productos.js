@@ -2,6 +2,9 @@
 //Llamado a request
 const request = require("request");
 
+const formidable = require("formidable");
+const fs = require("fs");
+const { v4: uuidv4 } = require("uuid");
 const axios = require("axios").default;
 // Definir las URLs para los ambientes de desarrollo y producción
 
@@ -40,14 +43,31 @@ const adminListadoProductos = (req, res) => {
 
 //delete
 const deletePizza = (req, res) => {
-  console.log("======DELETE Pizza");
-  console.log("=========================>" + req.params._id);
-  //delete Axios
+  axios
+  .get(`${apiOptions.server}/api/pizzas/${req.params._id}`)
+  .then(function (response) {
+    const pathActual = `./uploads/pizzas/${response.data.Imagen}`;
+    if ( fs.existsSync( pathActual ) ) {
+      // borrar la imagen anterior
+      fs.unlinkSync( pathActual );
+    }
+    //delete Axios
+   //delete Axios
   axios.delete(`${apiOptions.server}/api/pizzas/${req.params._id}`)
-    .then(function () {
-      console.log("DELETED");
-      res.redirect(`/admin/listado-productos`);
-    });
+  .then(function () {
+    console.log("DELETED");
+    res.redirect(`/admin/listado-productos`);
+  });
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+  
 };
 
 

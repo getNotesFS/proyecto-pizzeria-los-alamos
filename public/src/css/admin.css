@@ -188,3 +188,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, tabl
   max-width: 150px;
   padding: 8px;
 }
+
+.editImgCurrent{
+  max-width: 100px!important;
+  display: block!important;
+}

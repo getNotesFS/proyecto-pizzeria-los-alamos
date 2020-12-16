@@ -27,10 +27,11 @@ block content
               .secCabecera3.mt-5
                 .formularioRegistro
                   small= mensaje
-                  form(action="/uploadFile" method="POST" role="form" enctype="multipart/form-data")
+                  form(action="/upload_file" method="POST" role="form" enctype="multipart/form-data")
                     .form-row
                       .form-.col-md-6
                         label(for="correo") Archivo
-                        input#correoHeadReg.correoHeadReg.form-control(type="file" name="imagen"  required)
+                        input.nommmm.form-control(type="text" name="nombre")
+                        input#correoHeadReg.correoHeadReg.form-control(type="file" name="imagen")
                     .actualizarListado.pt-3.d-flex.justify-content-center
                       button.btn-mediano.bg-yellowCupon(type="submit") SUBIR

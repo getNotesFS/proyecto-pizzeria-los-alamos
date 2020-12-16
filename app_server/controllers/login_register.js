@@ -180,13 +180,15 @@ const createU = (req,res=response)=>{
     //LOGIN
     const login = (req, res) =>{
       
+       
+      
       axios.post(`${apiOptions.server}/api/login`, {  
-        Correo: req.body.Correo,
-        Contrasenia: req.body.Contrasenia
+        email: req.body.Correo,
+        password: req.body.Contrasenia
       })
       .then(function (response) {
         console.log("LOGIN"); 
-       res.redirect(`/my-account`);
+        res.redirect(`/my-account`);
       })
       .catch(function (error) {
         console.log(error.response);

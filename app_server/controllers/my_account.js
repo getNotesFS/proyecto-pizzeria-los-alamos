@@ -50,12 +50,18 @@ const myAccountView = (req, res) => {
  
   //
 
-  const uid = req.uid;
+  const uid = req.id;   
+  //console.log(req.cookies); 
+  if (req.session.authenticated = true) {
+   
+    res.render('my_account', { title: 'Mi Cuenta' });
+  }else{
+    res.redirect('/login-register')
+  }
 
-  console.log("My id: ==========", uid);
+  
   console.log("My token: ==========", req.token);
 
-    res.render('my_account', { title: 'Mi Cuenta' });
     //res.render('my_account', { title: 'Mi Cuenta' });
 
   }

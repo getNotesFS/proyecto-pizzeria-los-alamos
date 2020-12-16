@@ -92,6 +92,18 @@ usuario_schema.methods.generateJwt = function () {
   }, process.env.JWT_SECRET);
 };
 
+
+
+usuario_schema.methods.encryptPassword = async (password) => {
+  const salt = await bcrypt.genSalt(10);
+  return await bcrypt.hash(password, salt);
+};
+
+usuario_schema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.Contrasenia );
+};
+
+
 const Usuario = new mongoose.model('usuario', usuario_schema); // compilar el esquema en el modelo
 const Datos = new mongoose.model('datosUsuario', datos_schema); // compilar el esquema en el modelo
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Ingrediente = mongoose.model("ingredientes");
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
  
 
@@ -39,8 +40,56 @@ const actualizarImagen = async(tipo, id, nombreArchivo) => {
 
 }
 
+const tipoArchivo =  (name)=> {
 
+    const nombreCortado = name.split('.'); // wolverine.1.3.jpg
+    const extensionArchivo = nombreCortado[ nombreCortado.length - 1 ];
+   
+   // Validar extension
+   const extensionesValidas = ['png','jpg','jpeg','gif'];
+   return extensionesValidas.includes(extensionArchivo) 
+    
+}
+const subirArchivo = async(tipo, id,oldpath,newpath,name, current)=> {
+    
+     const nombreCortado = name.split('.'); // wolverine.1.3.jpg
+     const extensionArchivo = nombreCortado[ nombreCortado.length - 1 ];
+    
+    // Validar extension
+    const extensionesValidas = ['png','jpg','jpeg','gif'];
+    if ( !extensionesValidas.includes( extensionArchivo ) ) {
+        /*return res.status(400).json({
+            ok: false,
+            msg: 'No es una extensión permitida'
+        });*/
+        
+       console.log("No es una extensión permitida");
+    }
 
+    const nombreArchivo = `${ uuidv4() }.${ extensionArchivo }`;
+
+    //Path para guardar la imagen
+    const newp = newpath+tipo+'/'+nombreArchivo;
+
+    fs.rename(oldpath, newp, function (err) {
+        if (err) throw err;
+        console.log("Archivo cargado y almacenado.!");
+       // res.end();
+         // Actualizar base de datos
+         actualizarImagen( tipo, id, nombreArchivo );
+
+         console.log("============IMAGEN CARGADA");
+      });
+
+   
+
+    
+}
+
+ 
 module.exports = { 
-    actualizarImagen
+    actualizarImagen,
+    subirArchivo,
+    tipoArchivo,
+    borrarImagen
 }

@@ -4,6 +4,9 @@ const express = require('express');
 const router = express.Router();
  
 /*Importar controladores */ 
+//const expressFileUpload = require('express-fileupload');
+ 
+//router.use( expressFileUpload() );
 
 const ctrlLocations = require('../controllers/locations'); 
 const ctrlHomepage = require('../controllers/homepage');
@@ -34,7 +37,7 @@ const ctrlAdminListadoOtroProducto = require('../controllers/admin_listado_otrop
 const ctrlAdminNuevoOtroProducto = require('../controllers/admin_nuevo_otroproducto');
 
 /* Definir las rutas de mis páginas*/
-
+const { isAuthenticated } = require("../../helpers/authenti");
  
 /*1.- home*/
 
@@ -53,15 +56,15 @@ router.get('/menu', ctrlMenu.menu);
 router.get('/offerts', ctrlOfferts.offerts);
  
 router.get('/upload', ctrlUpload.upload);
-router.post('/uploadFile', ctrlUpload.uploadFile);
- 
+router.post('/upload_file', ctrlUpload.uploadFile);
+
 
 /*34.- Single Product*/
 router.get('/product', ctrlProduct.product);
 router.get('/product/:_id', ctrlProduct.singleProduct);//VIEW
 
 /*MY ACCOUNT */
-router.get('/my-account', ctrlMyAccount.myAccountView);//VIEW
+router.get('/my-account',isAuthenticated, ctrlMyAccount.myAccountView);//VIEW
 router.get('/my-account/perfil', ctrlMyAccount.myAccountPerfilView);//VIEW
 router.get('/my-account/pedidos', ctrlMyAccount.myAccountPedidosView);//VIEW
 //router.get('/my-account/direcciones', ctrlMyAccount.myAccountView);//VIEW

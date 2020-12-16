@@ -27,7 +27,7 @@ block content
                             tr
                               td.idProducto= pos++
                               td.imagenPiz
-                                img(src=`../../images/productos/${element.Imagen}.png` alt="")
+                                img(src=`../../uploads/pizzas/${element.Imagen}` alt=`${element.Imagen}`)
                               td.nombrePiz= element.Nombre
                               td.ingredientesPiz
                                 each ingre in element.Ingredientes

@@ -2,7 +2,7 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const Usuario = mongoose.model("usuario");
-
+const jwt = require('jsonwebtoken');
 const { generarJWT } = require('../../helpers/jwt');
 
  
@@ -30,22 +30,33 @@ const login = async( req, res = response ) => {
                 ok: false,
                 msg: 'Contraseña no válida'
             });
-        }
+        } 
+    // Generar el TOKEN - JWT
+            //const token = await generarJWT( usuarioDB.id );
+            
+           // const tokens = await generarJWT(res, usuarioDB.id );
+            
+        const payload = {
+            uid:usuarioDB.id
+        };
+           const token = jwt.sign(payload , process.env.JWT_SECRET);
 
-        // Generar el TOKEN - JWT
-        const token = await generarJWT( usuarioDB.id );
+           res.cookie('token', token, {
+            maxAge:3600,
+            secure: false, // set to true if your using https
+            httpOnly: true,
+          });
+           
+        res.status(200).end();
 
-
-        res.json({
-            ok: true,
-            token
-        })
+         
+        
 
     } catch (error) {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'Hable con el administrador'
+            msg: 'Hable con el administrador',datos:req.body
         })
     }
 

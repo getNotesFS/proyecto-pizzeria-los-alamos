@@ -19,8 +19,9 @@ if (process.env.NODE_ENV === "production") {
 //listado Pizzas
   
 const adminListadoUsuarios = (req, res) => {
-
-  axios.get(`${apiOptions.server}/api/usuarios`)
+  
+ 
+  axios.get(`${apiOptions.server}/api/usuarios`,{ withCredentials: true })
     .then(function (response) {
     console.log(response.data);
       res.render("admin_listado_usuario", {

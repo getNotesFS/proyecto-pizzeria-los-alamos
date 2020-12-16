@@ -1,77 +1,51 @@
-const passport = require('passport');
+const usersCtrl = {};
+
+const { response } = require("express");
+const passport = require("passport");
 const mongoose = require('mongoose');
 
 const User = mongoose.model("usuario");
 
-const register = (req, res) => {
-    if (!req.body.Nombres || !req.body.Apellidos || !req.body.email || !req.body.password) {
-      return res
-        .status(400)
-        .json({"message": "Todos los campos requeridos -> [Datos recibidos]"});
-    }
+ 
   
-    const user = new User();
-    user.TipoUsuario = req.body.TipoUsuario;
-    user.Nombres = req.body.Nombres;
-    user.Apellidos = req.body.Apellidos;
-    user.Correo = req.body.email;
-    user.setPassword(req.body.password); 
-    user.Datos = {
-        Cedula: req.body.Cedula,
-        Provincia: req.body.Provincia,
-        Ciudad: req.body.Ciudad,
-        DireccionFacturacion: req.body.DireccionFacturacion,
-        DireccionEnvio: req.body.DireccionEnvio,
-        Referencia: req.body.Referencia,
-        TelefonoConvencional: req.body.TelefonoConvencional,
-        TelefonoCelular: req.body.TelefonoCelular,
-        CodigoPostal: req.body.CodigoPostal,
-    };
+usersCtrl.logins = passport.authenticate("local", {
+  successRedirect: "/my-account",
+  failureRedirect: "/login-register",
+  failureFlash: true,
+});
 
-    user.save((err) => {
-      if (err) {
-        res
-          .status(400)
-          .json(err);
-      } else {
-        const token = user.generateJwt();
-        res
-          .status(200)
-          .json({token});
-      }
-    })
-  };
-  
-  
-  
-  
-  const login = (req, res) => {
-    if (!req.body.email || !req.body.password) {
+
+usersCtrl.logout = (req, res) => {
+  req.logout();
+  req.flash("success_msg", "You are logged out now.");
+  res.redirect("/login-register");
+};
+
+// Controlador para Login de usuarios existentes
+usersCtrl.login = (req, res) => {
+  if (!req.body.email || !req.body.password) { // validar que todos los campos se hayan ingresado
       return res
-        .status(400)
-        .json({"message": "Todos los campos requeridos -> [Login]"});
-    }
-    passport.authenticate('local', (err, user, info) => {
-      if (err) {
-        return res
-          .status(404)
-          .json(err);
+          .status(400)
+          .json({ "message": "All fields required" });
+  }
+  passport.authenticate('local', (err, user, info) => { // pasa el nombre de la estrategia y el callback para autenticar el método
+      if (err) { // retorna error si passport encuentra un error
+          return res
+              .status(404)
+              .json(err);
       }
-      if (user) {
-        const token = user.generateJwt();
-        res
-          .status(200)
-          .json({token});
-      } else {
-        res
-          .status(401)
-          .json(info);
+      if (user) { // si passport encuentra al usuario, se genera y envía el token (JWT)
+          //const token = user.generateJwt();
+          res
+              .status(200)
+              .json({"mensaje": "Listpoo" });
+      } else { // caso contrario se retorna el mensaje de porqué falló la authentication
+          res
+              .status(401)
+              .json(info);
       }
-    })(req, res);
-  };
-  
-  module.exports = {
-    register,
-    login
-  };
-  
+  })(req, res); // request y response disponibles para passport
+};
+
+
+module.exports = usersCtrl;

@@ -1,3 +1,6 @@
+var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+  removeItemButton: true,
+});
 //BTN JS
  function removeP(_id){
     console.log(_id);
@@ -98,7 +101,39 @@
 
 $(document).ready(function () {
 
+    let optionSelected=[];
+    let texsst='';
+    let $el=$("#choices-multiple-remove-button");
+
+    $el.find('option:selected').each(function(){
+      optionSelected.push({value:$(this).val()});
+      texsst+=$(this).val()+',';
+    });
+    texsst = texsst.slice(0, -1) 
     
+    var res = texsst.split(",");
+    console.log(res);
+    $('#ctrlSelect').val(res);
+
+  $('#choices-multiple-remove-button').on('change',function() {
+    //alert($(this).val());
+   //console.log($(this).val());
+   texsst ='';
+    $el.find('option:selected').each(function(){
+      optionSelected.push({value:$(this).val()});
+      texsst+=$(this).val()+',';
+    });
+    texsst = texsst.slice(0, -1) 
+    console.log(texsst);
+    var res = texsst.split(",");
+    console.log(res);
+    $('#ctrlSelect').val(res);
+    
+    // var energy = JSON.stringify(optionSelected);
+    //  console.log(energy);
+  });
+  
+
     
     $("#deletePizza").click(function() {
          var _id= $(this).attr('href');

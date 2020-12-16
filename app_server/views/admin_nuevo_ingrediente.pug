@@ -13,20 +13,21 @@ block content
       .row.justify-content-center.pt-5.mainIntercambiableContent
         .col-md-6
           p.text-center #{mensaje}
-          form(method="POST" action="" role="form")
+          form(method="POST" action="" role="form" enctype="multipart/form-data")
             .form-group
               label(for="nombre") Nombre
-              input.form-control(type="text" name="nombre")
+              input.form-control(type="text" name="nombre" )
             .form-group
               label(for="precio") Precio
-              input.form-control(type="text" name="precio" required="")
+              input.form-control(type="text" name="precio" )
             .form-group
               label(for="imagen")
                 | Imagen 
                 small
                   | (Solo hay cebolla, champinion, tomate, queso, pollo,
                   | pinia, tocino o jamon)
-              input.form-control(type="text" name="imagen" placeholder="tomate" required="")
+              input.form-control(type="file" name="imagen" )
+              
             // FILE INPUT MODIFICAR ESTO PARA IMAGEN
             //
               <div class="form-group">
