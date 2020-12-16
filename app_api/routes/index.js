@@ -24,6 +24,7 @@ const ctrlDetallesOrden = require("../controllers/detallesOrden");
 const ctrlHistorialPedidos = require("../controllers/historialpedidos");
 const ctrlCantPizzas = require("../controllers/cantidadpizzas");
 const ctrlCantOtrosProductos = require("../controllers/cantidadotrosproductos");
+const ctrlOfertas = require("../controllers/ofertas");
 
 //auth
 const  { login}  = require('../controllers/auth2');
@@ -178,5 +179,21 @@ router
   .get(ctrlCantOtrosProductos.cantOtrosProductosRead) //lee usuario específico por id
   .put(ctrlCantOtrosProductos.cantOtrosProductosUpdate) //actualiza
   .delete(ctrlCantOtrosProductos.cantOtrosProductosDelete); //elimina
+
+router
+
+  .route("/ofertas")
+  .post(ctrlOfertas.ofertaCreate) //crea un usuario
+  .get(ctrlOfertas.ofertaList); //enlista usuario
+
+router
+
+  .route("/ofertas/:ofertaid")
+
+  .get(ctrlOfertas.ofertaRead) //lee usuario específico por id
+  .put(ctrlOfertas.ofertaUpdate) //actualiza
+  .delete(ctrlOfertas.ofertaDelete); //elimina
+
+
 
 module.exports = router;

@@ -1,0 +1,251 @@
+<!-- START NAVBAR-->
+<header>
+    <div class="container-fluid nv-header1">
+        <div class="row nv-margen">
+            <div class="nv-telefono col-6 col-sm-6 col-md-4 col-lg-2">
+                <svg class="bi bi-telephone" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+                </svg>
+                <span style="padding-left: 10px;">02 2813237</span>
+            </div>
+            <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+                <p class="nv-texto-header1">pizzerialosalamos@outlook.com</p>
+            </div>
+            <div class="col-md-4-none col-lg-3">
+            </div>
+            <div class="nv-redes col-6 col-sm-6 col-md-2 col-lg-3">
+                <ion-icon class="nv-redes-icons md hydrated" name="logo-facebook" role="img" aria-label="logo facebook"></ion-icon>
+                <ion-icon class="nv-redes-icons md hydrated" name="logo-instagram" role="img" aria-label="logo instagram"></ion-icon>
+                <ion-icon class="nv-redes-icons md hydrated" name="logo-twitter" role="img" aria-label="logo twitter"></ion-icon>
+            </div>
+            <div class="nv-user col-6 col-sm-6 col-md-2 col-lg-2 loginPart">
+                <span class="myUsuario" style="float: left; cursor:pointer;" data-toggle="modal" data-target="#loginRegisterModal">Mi Cuenta</span>
+                <ion-icon class="nv-user-icon md hydrated" name="person-circle-outline" role="img" aria-label="person circle outline"></ion-icon>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid nv-header2" style="padding: 0px;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 5px 8%;">
+            <a class="navbar-brand logoHNavbar" href="/">
+                <img src="../../images/LogoLA2.png" alt="Logo Pizzería Los Alamos">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ml-auto mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/offerts">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contacto</a>
+                    </li>
+                </ul>
+                <span class="navbar-text" id="carritoMenu">
+                    <span style="float: left;">$ 0.0</span><!-- ------------------------------- ITEMS PARA EL CARRITO------------------------------>
+                    <ion-icon class="nv-shop-icon md hydrated" name="cart" role="img" aria-label="cart"></ion-icon>
+                </span>
+                <!-- CART FLOTANTE-->
+                <div class="cartListFlotante hideLA">
+                    <div class="cartContenedor">
+                        <div class="productoItem">
+                            <div class="imagenProductoCF">
+                                <img src="../../images/pizzaPersonal.jpg" alt="">
+                            </div>
+                            <div class="nombrePrecioCF">
+                                <h6>Pizza de Pollo</h6>
+                                <span>$ 12.00</span>
+                            </div>
+                            <span class="removerProductoCF">
+                                <ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline">
+                                </ion-icon>
+                            </span>
+                        </div>
+                        <div class="resumenCosto pb-2">
+                            <h6>Subtotal : <span>$ 12.00</span></h6>
+                        </div>
+                        <div class="opcionesCheckout">
+                            <a class="btn-mediano bg-darkCupon" href="/cart">VIEW ALL</a>
+                            <a class="btn-mediano bg-yellowCupon" href="/checkout">CHECK OUT</a>
+                        </div>
+                    </div>
+                </div><!-- END CART FLOTANTE-->
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- START CABECERA PAGINAS-->
+<section class="SeccionCabeceraPAGINAS">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="cabeceraPaginas">
+                <h1 class="tituloPaginasCabera">{{titulo}}</h1>
+                <div class="breadcrumb-inner">
+                    <a href="/">Home</a>
+                    <span>Ofertas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="iconArrowDown">
+    <div class="icon-default2">
+        <ion-icon name="arrow-down-outline" role="img" class="md hydrated" aria-label="arrow down outline"></ion-icon>
+    </div>
+</div>
+<section class="secOfertas pb-5 pt-5">
+    <div class="container">
+        <div class="card cardOffert pb-4 pt-4">
+            <div class="row">
+                <div class="col-md-5 customImgOffert2">
+                    <img class="d-block" src="../../images/{{ofertas.Imagen}}.jpg" alt=""></div>
+                    <div class="col-md-7 customTextOffert"><div class="card-block shadow">
+                        <h5 class="card-title">{{ofertas.Nombre}}</h5>
+                        <p class="card-text">{{ofertas.Descripcion}}</p>
+                        <ul class="list-group ListaDetalleOferta">
+                            <li class="list-group-item">
+                                <ion-icon name="checkmark-outline" role="img" class="md hydrated" aria-label="checkmark outline"></ion-icon>Solo en el local
+                            </li>
+                                <li class="list-group-item">
+                                    <ion-icon name="checkmark-outline" role="img" class="md hydrated" aria-label="checkmark outline"></ion-icon>El iva esta incluido
+                                </li>
+                                <li class="list-group-item">
+                                        <ion-icon name="checkmark-outline" role="img" class="md hydrated" aria-label="checkmark outline"></ion-icon> 
+                                        Por una compra mayor a 20$
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </section>
+        <!-- START FOOTER-->
+        <div class="mt-5"></div>
+        <footer class="bg-darkLA">
+            <div class="footerMainContainer showLA">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="footer-logo">
+                            <img src="../../images/LogoLA2.png" alt="Logo Pizzería Los Alamos">
+                        </div>
+                        <div class="footer-info">
+                            <h3>Pizzería Los Álamos</h3>
+                            <p>Av. Eloy Alfaro, Quito 170517, Ecuador.</p>
+                            <p>(02) 2456123</p>
+                            <p>info@losalamos.com</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Copyright-->
+                <div class="container-fluid copyright mt-5">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-12 justify-content-center">
+                            <div class="loationMarker">
+                                <p class="copyright-text">© 2020 Los Álamos. Todos los derechos reservados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="iconArrowLocation">
+                <div class="icon-find" id="openMAP">
+                    <ion-icon name="location-outline" role="img" class="md hydrated" aria-label="location outline"></ion-icon>
+                </div>
+            </div>
+            <div class="LINE_YELLOW showLA">Encuéntranos</div>
+            <div class="mapaLA hideLA" id="mapaLA">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.4491112372677!2d-78.48429667080315!3d-0.18973139999134625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a7ba861479d%3A0xbc7ed28e01ecc8dd!2sROYAL%20ENFIELD%20QUITO!5e0!3m2!1ses!2sec!4v1603494645819!5m2!1ses!2sec" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </footer>
+        <!-- MODAL HERE--><!-- Modal-->
+        <div class="modal fade" id="loginRegisterModal" tabindex="-1" role="dialog" aria-labelledby="loginRegisterModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <small></small>
+                        <ul class="nav nav-tabs tabsLogRegistro">
+                            <li class="active logg opActive">
+                                <a data-toggle="tab" href="#loginTab">Iniciar Sesión</a>
+                            </li>
+                            <li class="regg">
+                                <a data-toggle="tab" href="#registerTab"> Registro</a>
+                            </li>
+                        </ul>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="loginTab">
+                                <div class="secCabecera1">
+                                    <h4 class="titulo_ParrafosDark text-center">Inciar Sesión</h4>
+                                    <br>
+                                </div>
+                                <div class="formularioLogin">
+                                    <form action="" method="POST" role="form">
+                                        <div class="form-group">
+                                            <label for="correo">Correo</label>
+                                            <input class="form-control" id="correo" type="email" name="correo" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contrasenia">Contraseña</label>
+                                            <input class="form-control" id="contrasenia" type="password" name="contrasenia" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <a class="linkText" href="#">
+                                                <small>Olvidé Contraseña</small>
+                                            </a>
+                                        </div>
+                                        <div class="actualizarListado pt-3 d-flex justify-content-center"><!--button.btn-mediano.bg-darkCupon(type="submit") Iniciar Sesión-->
+                                            <a class="btn-mediano bg-darkCupon" href="/admin/listado-productos">Iniciar Sesión</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="registerTab">
+                                <div class="secCabecera2">
+                                    <h4 class="titulo_ParrafosDark text-center">REGISTRO</h4>
+                                </div>
+                                <div class="secCabecera3 mt-5">
+                                    <div class="formularioRegistro">
+                                        <form action="/register-f" method="POST" role="form" required="">
+                                            <div class="form-group">
+                                                <label for="nombre">Nombres</label>
+                                                <input class="form-control" id="nombre" type="text" name="nombre" required=""></div>
+                                                <div class="form-group">
+                                                    <label for="apellido">Apellidos</label>
+                                                    <input class="form-control" id="apellido" type="text" name="apellido" required="">
+                                                </div><div class="form-group">
+                                                    <label for="correo">Correo</label>
+                                                    <input class="correoHeadReg form-control" id="correoHeadReg" type="email" name="correo" required=""></div>
+                                                    <div class="form-group"><label for="contrasenia">Contraseña</label>
+                                                        <input class="form-control" id="contrasenia" type="password" name="contrasenia" required=""></div>
+                                                        <div class="actualizarListado pt-3 d-flex justify-content-center">
+                                                            <button class="btn-mediano bg-yellowCupon" type="submit">REGISTRAR</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BOOTSTRAP JS FILES-->
+                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script><!--dataTables--><script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+                    <!-- CUSTOM SCRIPT-->
+                    <script src="../../src/js/scripts.js"></script>

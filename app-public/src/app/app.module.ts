@@ -1,23 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'; //3. El modulo HTTPCliente debe estar disponible para toda la app
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { OffertsComponent } from './offerts/offerts.component';
-//import { NgFallimgModule} from 'ng-fallimg';
+import { OfertasComponent } from './ofertas/ofertas.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
-    OffertsComponent
+    OfertasComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-    /*NgFallimgModule.forRoot({
-      default: '/assets/LogoLA2.png'
-    })*/
+    HttpClientModule, //4. Ahora es un modulo disponible para al aplicacion
+    IonicModule.forRoot()
   ],
   providers: [],
-  bootstrap: [OffertsComponent] //este es el inicio el landing space
+  bootstrap: [OfertasComponent]
 })
 export class AppModule { }
