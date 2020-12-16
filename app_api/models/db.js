@@ -114,6 +114,8 @@ require('./DetallesOrden');
 require('./Pedido');
 
 require('./HistorialPedidos');
+
+require('./Ofertas');
  
 
 

@@ -8,9 +8,6 @@ const cors = require('cors');
 var session = require("express-session");
 
 
-
-
-
 const passport = require("passport"); 
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -85,9 +82,9 @@ var sessionChecker = (req, res, next) => {
 //permitir los requerimientos Angular
 app.use('/api', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
- next();
- });
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
  //api Router
 app.use('/', indexRouter);

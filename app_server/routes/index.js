@@ -33,6 +33,10 @@ const ctrlUpload = require('../controllers/upload');
 const ctrlAdminListadoOtroProducto = require('../controllers/admin_listado_otroproducto');
 const ctrlAdminNuevoOtroProducto = require('../controllers/admin_nuevo_otroproducto');
 
+//ofertas
+const ctrlAdminListadoOfertas = require('../controllers/admin_listado_ofertas');
+const ctrlAdminNuevoOferta = require('../controllers/admin_nuevo_ofertas');
+
 /* Definir las rutas de mis páginas*/
 
  
@@ -115,6 +119,17 @@ router.get('/admin/editar-otroproducto/:_id', ctrlAdminNuevoOtroProducto.editOtr
 router.post('/admin/editar-otroproducto/:_id',ctrlAdminNuevoOtroProducto.UpdateOtroProducto);
 router.get('/admin/listado-otroproducto', ctrlAdminListadoOtroProducto.adminListadoOtroProductos);
 router.get('/admin/otrosproductos/delete/:_id',ctrlAdminListadoOtroProducto.deleteOtrosProductos);
+
+
+
+//Ofertas
+router.get('/admin/nuevo-oferta', ctrlAdminNuevoOferta.adminNuevoOfertaView);//VIEW
+router.post('/admin/nuevo-oferta', ctrlAdminNuevoOferta.addNewOferta);
+
+router.get('/admin/editar-oferta/:_id', ctrlAdminNuevoOferta.editOfertaView); //VIEW
+router.post('/admin/editar-oferta/:_id',ctrlAdminNuevoOferta.UpdateOferta);
+router.get('/admin/listado-oferta', ctrlAdminListadoOfertas.adminListadoOferta);
+router.get('/admin/oferta/delete/:_id',ctrlAdminListadoOfertas.deleteOferta);
 
 
 
