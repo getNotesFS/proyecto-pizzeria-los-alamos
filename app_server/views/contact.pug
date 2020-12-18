@@ -20,27 +20,27 @@ block content
             .secCabecera1
               h4.titulo_ParrafosDark ....
               p
-                | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                | Si tienes alguna duda puedes enviarnos un correo. Estaremos gustosos de responderte para que puedas disfrutar de la mejor pizza de Quito.
             .formularioContacto
-              form(action="" method="POST" role="form")
+              form(action="/email" method="POST" role="form")
                 .form-row
                   .form-group.col-md-6
-                    label(for="nombre") Nombre
-                    input#nombre.form-control(type="text" name="nombre")
+                    label(for="name") Nombre
+                    input#nombre.form-control(type="text" placeholder="Nombre" name="name")
                   .form-group.col-md-6
                     label(for="apellido") Apellido
-                    input#apellido.form-control(type="text" name="apellido")
+                    input#apellido.form-control(type="text" placeholder="Apellido" name="apellido")
                 .form-row
                   .form-group.col-md-6
                     label(for="correo") Email
-                    input#correo.form-control(type="email" name="correo")
+                    input#correo.form-control(type="email" placeholder="Email" name="email")
                   .form-group.col-md-6
                     label(for="asunto") Asunto
-                    input#asunto.form-control(type="text" name="asunto")
+                    input#asunto.form-control(type="text" placeholder="Asunto" name="asunto")
                 .form-group
                   label(for="mensaje") Mensaje
-                  textarea#mensaje.form-control(name="mensaje" rows="3")
-                button.btn.btn-Dark.float-right(type="submit") Enviar Mensaje
+                  textarea#mensaje.form-control(placeholder="Mensaje" name="mensaje" rows="3")
+                button#submit.btn.btn-Dark.float-right Enviar Mensaje
           .col-md-4
             .secCabecera2
               h4.titulo_ParrafosYellow Dirección

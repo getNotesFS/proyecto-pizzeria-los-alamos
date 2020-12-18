@@ -3,7 +3,7 @@
   /*GET -> Offerts*/
 
   const offerts = (req, res) => {
-    res.render('offerts', { title: 'Ofertas' });
+    res.render('offerts');
   }
   
     module.exports =  {

@@ -134,6 +134,12 @@ $( "input.correoHeadReg" ).keyup(function() {
 
 });
 
+
+
+
+
+
+
 });
 
 

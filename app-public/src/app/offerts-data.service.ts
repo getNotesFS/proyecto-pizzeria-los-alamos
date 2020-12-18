@@ -12,10 +12,11 @@ export class OffertsDataService {
   private apiBaseUrl = 'http://localhost:3000/api/ofertas';
 
   //5. Metodo Publico para que el componente pueda llamarlo. Devuelve una Promesa (devuelve todo lo que esta en la base de datos)
-  public getOfferts(): Promise<Ofertas> {
-    
-    const codigo: string = '5fd9c4863c7a6b283833ccc1'; //id
-    const url: string = `${this.apiBaseUrl}/${codigo}`;
+  public getOfferts(): Promise<Ofertas[]> {
+
+
+    //const codigo: string = '5fd9c4863c7a6b283833ccc1'; //id   /${codigo}
+    const url: string = `${this.apiBaseUrl}`;
     return this.http
       .get(url)
       .toPromise()
