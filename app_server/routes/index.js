@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const nodemailer = require('nodemailer');
  
 /*Importar controladores */ 
 //const expressFileUpload = require('express-fileupload');
@@ -143,8 +144,44 @@ router.post('/admin/editar-usuario/:_id',ctrlAdminNuevoUsuario.UpdateUsuario);
 router.get('/admin/listado-usuarios', ctrlAdminListadoUsuarios.adminListadoUsuarios);
 router.get('/admin/usuarios/delete/:_id',ctrlAdminListadoUsuarios.deleteUsuario);
 
+//Email
+router.post('/email', async (req, res) =>{
+    //console.log(req.body);
+    const {name, apellido, email, asunto, mensaje } = req.body;
 
+    contentHTML = `
+        <h1> User Informacion </h1>
+        <ul>
+            <li>Usuario: ${name} ${apellido} </li>
+            <li>Asunto: ${asunto} </li>
+            <li>Correo de Usuario: ${email} </li>
+        </ul>
+        <p>Mensaje: ${mensaje} </p>
+    `;
 
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.hostinger.com', //email del host
+        port: 587,
+        secure: false,
+        auth: {
+           user: 'losalamos@getnotesfs.host', //donde lo va a enviar
+           pass: 'Experimentos_1' 
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+    
+    const info = await transporter.sendMail({
+        from: "'smtp.hostinger.com' <losalamos@getnotesfs.host>",
+        to: 'josue_rap@hotmail.es',
+        subject: "Formulario de Contacto 'Los Alamos'",
+        html: contentHTML
+    });
+    
+    console.log('Mensaje enviado', info.messageId);
+    res.redirect('../contact');
+});
 
 module.exports = router;
 

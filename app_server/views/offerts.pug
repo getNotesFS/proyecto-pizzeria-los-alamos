@@ -1,40 +1,12 @@
 extends layout
 
 block content
+  app-ofertas
 
-    section.SeccionCabeceraPAGINAS
-      .container-fluid
-        .row
-          .cabeceraPaginas
-            h1.tituloPaginasCabera
-              = title
-            .breadcrumb-inner
-              a(href="/") Home
-              span= title
-    .iconArrowDown
-      .icon-default2
-        ion-icon(name="arrow-down-outline")
-    section.secOfertas.pb-5.pt-5
-      .container
-        .card.cardOffert.pb-4.pt-4
-          .row
-            .col-md-5.customImgOffert2
-              img.d-block(src="../../images/extraPapas.jpg" alt="")
-            .col-md-7.customTextOffert
-              .card-block.shadow
-                h5.card-title Papas Gratis
-                p.card-text
-                  | It's a broader card with text below as a natural lead-in to
-                  | extra content. This content is a little longer.
-                ul.list-group.ListaDetalleOferta
-                  li.list-group-item
-                    ion-icon(name="checkmark-outline")
-                    |  Cras justo odio
-                  li.list-group-item
-                    ion-icon(name="checkmark-outline")
-                    |  Dapibus ac facilisis in
-                  li.list-group-item
-                    ion-icon(name="checkmark-outline")
-                    |  Morbi leo risus
+block scripts
+  script(src='/build/runtime.f5963d1930afb901a00e.js')
+  script(src='/build/polyfills.3227b3cecbd90ee455b5.js')
+  script(src='/build/main.079d0afca8fa89567e54.js')
+    
 
 

@@ -53,11 +53,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(__dirname + '/uploads'));
 app.use('/uploads', express.static(__dirname + '/uploads'));  
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app-public')));
 
-app.use(express.static(path.join(__dirname, 'public'))); 
-//app angular aqui
-app.use(express.static(path.join(__dirname, 'app_public')));
- 
 //passport init
  /*
 app.use(
@@ -141,5 +139,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+/* Email */
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+
 
 module.exports = app;

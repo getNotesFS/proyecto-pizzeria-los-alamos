@@ -166,6 +166,12 @@ $( "input.correoHeadReg" ).keyup(function() {
 
 });
 
+
+
+
+
+
+
 });
 
 
