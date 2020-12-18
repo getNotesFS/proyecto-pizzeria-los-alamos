@@ -25,23 +25,24 @@ block content
           #collapseOne.collapse(aria-labelledby="headingOne" data-parent="#accordionExample")
             .card-body
               .container-fluid
-                .mn-productos.row.justify-content-center
+                .mn-productos.row.justify-content-center.cotenedorProductos
                   each element in pizzaList
-                    .col-auto.mb-5.cardProductoM
-                        div
-                          a(href=`/product/${element._id}`)
-                            img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
-                        a.productLink(href=`/product/${element._id}`)
-                                h6= element.Nombre
-                        p.descripCort= element.Descripcion
-                        br
-                        span.mn-productos-precio
-                          small
-                            | Desde 
-                          b= "$ "+ element.Precio
-                        button.mn-productos-botones
-                          ion-icon(name="basket-outline")
-                          | Añadir
+                      .col-auto.mb-5.cardProductoM.itemProducto(data-id=`${element._id}`)
+                          div
+                            a(href=`/product/${element._id}`)
+                                img.img-fluid.itemImagen(src=`../../uploads/pizzas/${element.Imagen}` alt="Pizza")
+                          a.productLink(href=`/product/${element._id}`)
+                            h6.itemNombre= element.Nombre
+                          p.descripCort.itemDescripcion= element.Descripcion
+                          br
+                          span.mn-productos-precio
+                            small
+                              | Desde 
+                            
+                            b.itemPrecio= element.Precio + '$'
+                          button.mn-productos-botones.addToCart
+                            ion-icon(name="basket-outline")
+                            | Añadir
                  
         
         .card
@@ -57,15 +58,17 @@ block content
                           .col-auto.mb-5.cardProductoM
                               div
                                 a(href=`/product/${element._id}`)
-                                    img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
-                              a.productLink(href=`/product/${element._id}`)
-                                h6= element.Nombre
-                              p.descripCort= element.Descripcion
+                                    img.img-fluid.itemImagen(src=`../../uploads/pizzas/${element.Imagen}` alt="Pizza")
+                              a.productLink(href=`/product/${element._id}` item-id=`${element._id}`)
+                                h6.itemNombre= element.Nombre
+                              p.descripCort.itemDescripcion= element.Descripcion
                               br
                               span.mn-productos-precio
                                 small
                                   | Desde 
-                                b= "$ "+ element.Precio
+                                span
+                                  | $
+                                b.itemPrecio= element.Precio
                               button.mn-productos-botones
                                 ion-icon(name="basket-outline")
                                 | Añadir
@@ -83,15 +86,17 @@ block content
                           .col-auto.mb-5.cardProductoM
                               div
                                 a(href=`/product/${element._id}`)
-                                  img.img-fluid(src=`../../images/productos/${element.Imagen}.png` alt="Pizza")
-                              a.productLink(href=`/product/${element._id}`)
-                                h6= element.Nombre
-                              p.descripCort= element.Descripcion
+                                    img.img-fluid.itemImagen(src=`../../uploads/pizzas/${element.Imagen}` alt="Pizza")
+                              a.productLink(href=`/product/${element._id}` item-id=`${element._id}`)
+                                h6.itemNombre= element.Nombre
+                              p.descripCort.itemDescripcion= element.Descripcion
                               br
                               span.mn-productos-precio
                                 small
                                   | Desde 
-                                b= "$ "+ element.Precio
+                                span
+                                  | $
+                                b.itemPrecio= element.Precio
                               button.mn-productos-botones
                                 ion-icon(name="basket-outline")
                                 | Añadir

@@ -13,6 +13,7 @@ html
     
     // IONICONS
     script(src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js")
+    script(src="https://js.stripe.com/v3/")
     title=title
    
   body
@@ -34,12 +35,15 @@ html
             ion-icon.nv-redes-icons(name="logo-instagram")
             ion-icon.nv-redes-icons(name="logo-twitter")
           .nv-user.col-6.col-sm-6.col-md-2.col-lg-2.loginPart
-            span.myUsuario(style="float: left; cursor:pointer;" data-toggle="modal" data-target="#loginRegisterModal") Mi Cuenta
-            ion-icon.nv-user-icon(name="person-circle-outline")
-      .container-fluid.nv-header2(style="padding: 0px;")
+            a(href='/login-register')
+              //span.myUsuario(style="float: left; cursor:pointer;" data-toggle="modal" data-target="#loginRegisterModal") Mi Cuenta
+              span.myUsuario(style="float: left; cursor:pointer;" ) Mi Cuenta
+              ion-icon.nv-user-icon(name="person-circle-outline")
+                
+      .container-fluid.nv-header2#header2(style="padding: 0px;")
         nav.navbar.navbar-expand-lg.navbar-dark.bg-dark(style="padding: 5px 8%;")
           a.navbar-brand.logoHNavbar(href="/")
-            img(src="../../images/LogoLA2.png" alt="Logo Pizzería Los Alamos")
+            img(src="../../images/LogoLosAlamos.png" alt="Logo Pizzería Los Alamos")
           button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation")
             span.navbar-toggler-icon
           #navbarText.collapse.navbar-collapse
@@ -55,27 +59,21 @@ html
               li.nav-item
                 a.nav-link(href="/contact") Contacto
             span#carritoMenu.navbar-text
-              span(style="float: left;") $ 0.0
+              span.shoppingCartTotal(style="float: left;") 0.0$ 
               // ------------------------------- ITEMS PARA EL CARRITO----------------------------
               ion-icon.nv-shop-icon(name="cart")
             // CART FLOTANTE
             .cartListFlotante.hideLA
               .cartContenedor
-                .productoItem
-                  .imagenProductoCF
-                    img(src="../../images/pizzaPersonal.jpg" alt="")
-                  .nombrePrecioCF
-                    h6 Pizza de Pollo
-                    span $ 12.00
-                  span.removerProductoCF
-                    ion-icon(name="trash-outline")
+                .shoppingCartItemsContainer
                 .resumenCosto.pb-2
                   h6
                     | Subtotal : 
-                    span $ 12.00
+                    span.shoppingCartTotal 0.0$
                 .opcionesCheckout
                   a.btn-mediano.bg-darkCupon(href="/cart") VIEW ALL
-                  a.btn-mediano.bg-yellowCupon(href="/checkout") CHECK OUT
+                  button.comprarButton.btn-mediano.bg-yellowCupon#comprarBtn(data-toggle="modal" data-target="#comprarModal") CHECK OUT
+                  //a.btn-mediano.bg-yellowCupon(href="/checkout") CHECK OUT
             // END CART FLOTANTE
             
     block content
@@ -88,7 +86,7 @@ html
         .container
           .row.justify-content-center
             .footer-logo
-              img(src="../../images/LogoLA2.png" alt="Logo Pizzería Los Alamos")
+              img(src="../../images/LogoLosAlamos.png" alt="Logo Pizzería Los Alamos")
             .footer-info
               h3 Pizzería Los Álamos
               p Av. Eloy Alfaro, Quito 170517, Ecuador.
@@ -161,6 +159,40 @@ html
                         input#contrasenia.form-control(type="password" name="contrasenia" required)
                       .actualizarListado.pt-3.d-flex.justify-content-center
                         button.btn-mediano.bg-yellowCupon(type="submit") REGISTRAR
+    
+    // START MODAL COMPRA
+    #comprarModal.modal.fade(tabindex='-1' aria-labelledby='comprarModalLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-centered
+        .modal-content
+          .modal-header
+            h5#comprarModalLabel.modal-title Datos para el env&iacute;o
+            button.close(type='button' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            // ? STRIPE START
+            form#payment-form
+              //.form-group
+                label(for='email-element') Email
+                input#email-element.form-control(type='email' aria-describedby='emailHelp' placeholder='E-mail')
+              .form-group
+                #card-element.form-control(style='height: 2.4em; padding-top: .7em;')
+                  // Stripe.js injects the Card Element
+              button#submit.btn.btn-primary.w-100
+                #spinner.spinner-border.text-light.hidden(role='status')
+                  span.sr-only Loading...
+                span#button-text Pagar
+              p#card-error(role='alert')
+              p.result-message.hidden
+                | Pago satisfactorio
+                | &#x2705;
+                | En breve recibir&aacute; su pedido
+            // ? STRIPE END
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') Cerrar
+    // END MODAL COMPRA
+
+    
+    
     // BOOTSTRAP JS FILES
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous")
@@ -171,6 +203,10 @@ html
     script(src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js")
      
     // CUSTOM SCRIPT
-    script(src="../../src/js/scripts.js")
+    script(src="../../src/js/scripts.js") 
+    script( src="../../src/js/front_carrito.js") 
+    script( src="../../src/js/currentCart.js")
+    script( src="../../src/js/payments.js")
+    
 
     block scripts

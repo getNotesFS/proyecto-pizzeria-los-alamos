@@ -143,7 +143,9 @@ const UpdateIngrediente = (req, res) => {
   const form = new formidable.IncomingForm();
 
   form.parse(req, function (err, fields, files) {
-    console.log(fields); 
+
+    //console.log(fields); 
+
     if((files.imagen.name == '' && fields.imagenh !='')  && fields.nombre != "" && fields.precio != ""){
          
             console.log("Archivo cargado y almacenado.!");

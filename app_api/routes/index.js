@@ -6,11 +6,8 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../../middlewares/validar-campos');
 const { validarJWT, varlidarADMIN_ROLE } = require('../../middlewares/validar-jwt');
 
-
 const router = express.Router(); 
- 
 router.use( expressFileUpload() );
-
 
 //const ctrlLocations = require('../controllers/locations');
 //requerir controladores
@@ -25,11 +22,14 @@ const ctrlHistorialPedidos = require("../controllers/historialpedidos");
 const ctrlCantPizzas = require("../controllers/cantidadpizzas");
 const ctrlCantOtrosProductos = require("../controllers/cantidadotrosproductos");
 const ctrlOfertas = require("../controllers/ofertas");
-
+const ctrlPaymentIntents = require("../controllers/paymentsIntent");
+ 
 //auth
-const  { login}  = require('../controllers/auth2');
+//const  { login}  = require('../controllers/authv3');
 //const ctrlFile= require('../controllers/upload');
 
+//auth
+const ctrlAuth = require('../controllers/auth');
 const ctrlFile = require('../controllers/upload');
 
 
@@ -39,7 +39,7 @@ router
   .route("/usuarios")
 
   .post(ctrlUsuarios.usuarioCreate) //crea un usuario
-  .get(validarJWT,ctrlUsuarios.usuarioList); //enlista usuario
+  .get(ctrlUsuarios.usuarioList); //enlista usuario
 
 router
   .route("/usuarios/:usuarioid")
@@ -53,11 +53,16 @@ router
   .get(ctrlUsuarios.usuarioReadExist) //lee usuario espe 
 
 //LOGIN REGISTER  - AUTH
-//router.post('/register', ctrlAuth.register);
-router.post('/login',login);
-//router.put('/update/:usuarioid', ctrlAuth.actualizarUser);
+ 
+//LOGIN REGISTER  - AUTH
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
+router.put('/update/:usuarioid', ctrlAuth.actualizarUser);
 
-//router.get( '/renew', validarJWT, ctrlAuth.renewToken )
+router.get( '/renew',
+validarJWT,
+ctrlAuth.renewToken
+)
 
 
 
@@ -69,6 +74,7 @@ router.post('/upload',  ctrlFile.fileUpload );
  
 router.get('/imagen/:tipo/:foto', ctrlFile.retornaImagen);
  
+router.post('/payment-intent', ctrlPaymentIntents.paymentIntentP);
 
 router
   .route("/pizzas")

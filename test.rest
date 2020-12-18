@@ -1,0 +1,55 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/items
+
+###
+GET http://localhost:3000/items/item
+Content-Type: application/json
+
+{
+    "itemId":"5f87ebadbf386d24f40c286b"
+}
+
+###
+
+GET http://localhost:3000/api/pizzas/5fb0b556759cbc36e810e21a
+
+###
+POST http://localhost:3000/api/ingredientes
+Content-Type: application/json
+
+{
+    "Nombre": "Pokemon Oro",
+    "Precio": 19.99,
+    "Imagen": "pokemon-oro.jpg"
+}
+
+###
+POST http://localhost:3000/api/payment-intent
+Content-Type: application/json
+
+[
+    {
+        "id": "5fb0b556759cbc36e810e21a",
+        "qty": 1
+    }
+]
+
+###
+POST http://localhost:3000/api/pedido
+Content-Type: application/json
+
+{
+    "Usuario": "5fd0f3120d0c0748c42f83e8",
+    "Fecha": "2014-01-01T23:28:56.782Z",
+    "SubTotal": "22.50",
+    "Total": "27.50",
+    "DetallesOrden":[
+        {
+            "id": "5fb0b556759cbc36e810e21a",
+            "qty": 1
+        }
+    ]
+}

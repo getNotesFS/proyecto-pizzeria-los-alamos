@@ -21,7 +21,7 @@ block content
     .pt-5
     section.pt-5.singleProduct
       .container
-        .row
+        .row.itemProducto(data-id=`${pizzaData._id}`)
           .col-md-6.col-sm-12.col-xs-12.singlePLeft
             .container
               .row
@@ -30,20 +30,20 @@ block content
                     // slides
                     .carousel-inner
                       .carousel-item.active
+                        img.itemImagen(src=`../../uploads/pizzas/${pizzaData.Imagen}` alt=`${pizzaData.Imagen}`)
+                      //.carousel-item
                         img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
-                      .carousel-item
+                      //.carousel-item
                         img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
-                      .carousel-item
-                        img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
-                      .carousel-item
+                      //.carousel-item
                         img(src=`../images/productos/${pizzaData.Imagen}.png` alt="Hills")
                     // Left right
-                    a.carousel-control-prev(href="#carouselSingleProduct" data-slide="prev")
+                    //a.carousel-control-prev(href="#carouselSingleProduct" data-slide="prev")
                       ion-icon.prevIcon(name="chevron-back-outline")
-                    a.carousel-control-next(href="#carouselSingleProduct" data-slide="next")
+                    //a.carousel-control-next(href="#carouselSingleProduct" data-slide="next")
                       ion-icon.nextIcon(name="chevron-forward-outline")
                     // Thumbnails
-                    ol.carousel-indicators.list-inline
+                    //ol.carousel-indicators.list-inline
                       li.list-inline-item.active
                         a#carousel-selector-0.selected(data-slide-to="0" data-target="#carouselSingleProduct")
                           img.img-fluid(src=`../images/productos/${pizzaData.Imagen}.png`)
@@ -57,17 +57,17 @@ block content
                         a#carousel-selector-2(data-slide-to="3" data-target="#carouselSingleProduct")
                           img.img-fluid(src=`../images/productos/${pizzaData.Imagen}.png`)
           .col-md-6.col-sm-12.col-xs-12.singlePRight
-            h4.tituloSP= pizzaData.Nombre
-            p.descripcionSP= pizzaData.Descripcion
+            h4.tituloSP.itemNombre= pizzaData.Nombre
+            p.descripcionSP.itemDescripcion= pizzaData.Descripcion
                
-            h3.precioSP= "$ "+pizzaData.Precio
+            h3.precioSP.itemPrecio= "$ "+pizzaData.Precio
             .campoCantidadProducto
               span.disminuir#disminuir
                 ion-icon(name="remove-outline")
               input(type="text" name="txt" id="cantProductos" placeholder="1" pattern="[0-9]" value="1")
               span.agregar#aumentar
                 ion-icon(name="add-outline")
-            a.btnAgregarACarrito.btnSpecialYellow#addCarrito(href="#")
+            button.btnAgregarACarrito.btnSpecialYellow.addToCart#addCarrito
               ion-icon(name="basket-outline")
               | Añadir
             .compartirRS.mt-4

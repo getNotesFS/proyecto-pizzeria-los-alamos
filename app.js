@@ -5,12 +5,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan'); 
 const cors = require('cors');
-const flash = require("connect-flash");
-const expressFileUpload = require('express-fileupload');
-const session = require("express-session");
-  
-const passport = require("passport"); 
 const bodyParser = require('body-parser');
+const passport = require("passport");  
+const flash = require("connect-flash");
+const session = require("express-session");
+const expressFileUpload = require('express-fileupload'); 
+
 const fs = require('fs');
  
 
@@ -26,7 +26,9 @@ const apiRouter = require('./app_api/routes/index');
 
 
 const app = express();
-require("./app_api/config/passport");
+// Passport Config
+require('./app_api/config/passport');
+//require("./app_api/config/passport");
 //require("./app_server/controllers/auth");
 // Lectura y parseo del body 
 // default options 
@@ -51,9 +53,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(__dirname + '/uploads'));
 app.use('/uploads', express.static(__dirname + '/uploads'));  
+
 app.use(express.static(path.join(__dirname, 'public'))); 
 //app angular aqui
 app.use(express.static(path.join(__dirname, 'app_public')));
+ 
 //passport init
  /*
 app.use(
@@ -63,25 +67,27 @@ app.use(
     saveUninitialized: true
   })
 );*/
-    const MemoryStore =session.MemoryStore;
-    app.use(session({
-        name : 'app.sid',
-        secret: "secret",
-        resave: true,
-        store: new MemoryStore(),
-        saveUninitialized: true
-}));
+// Express session
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Connect flash
 app.use(flash());
 
 // Global Variables
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
-  res.locals.user = req.user || null;
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   next();
 });
 

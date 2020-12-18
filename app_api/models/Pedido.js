@@ -1,11 +1,10 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var pedido_schema = new Schema({
-  DetallesOrden: {
-    type: Schema.Types.ObjectId,
-    ref: "DetallesOrden",
-  },
-  Usuario: { type: Schema.Types.ObjectId, required: true, ref: "Usuario" },
+  DetallesOrden: [{_id:false,
+  id:String,
+  qty:Number}],
+  Usuario: {type:String, },
   Fecha: { type: Date, required: true },
   Total: { type: Number, required: true },
   SubTotal: { type: Number, required: true },

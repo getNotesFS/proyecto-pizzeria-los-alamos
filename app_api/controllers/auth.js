@@ -2,7 +2,7 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const Usuario = mongoose.model("usuario");
-const jwt = require('jsonwebtoken');
+
 const { generarJWT } = require('../../helpers/jwt');
 
  
@@ -30,33 +30,22 @@ const login = async( req, res = response ) => {
                 ok: false,
                 msg: 'Contraseña no válida'
             });
-        } 
-    // Generar el TOKEN - JWT
-            //const token = await generarJWT( usuarioDB.id );
-            
-           // const tokens = await generarJWT(res, usuarioDB.id );
-            
-        const payload = {
-            uid:usuarioDB.id
-        };
-           const token = jwt.sign(payload , process.env.JWT_SECRET);
+        }
 
-           res.cookie('token', token, {
-            maxAge:3600,
-            secure: false, // set to true if your using https
-            httpOnly: true,
-          });
-           
-        res.status(200).end();
+        // Generar el TOKEN - JWT
+        const token = await generarJWT( usuarioDB.id );
 
-         
-        
+
+        res.json({
+            ok: true,
+            token
+        })
 
     } catch (error) {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'Hable con el administrador',datos:req.body
+            msg: 'Hable con el administrador'
         })
     }
 
@@ -66,11 +55,11 @@ const login = async( req, res = response ) => {
 
 const register = async(req, res = response) => {
 
-    const { Coreo, Contrasenia } = req.body;
+    const { Correo, Contrasenia } = req.body;
 
     try {
 
-        const existeEmail = await Usuario.findOne({ Correo: Coreo });
+        const existeEmail = await Usuario.findOne({ Correo: Correo });
 
         if ( existeEmail ) {
             return res.status(400).json({

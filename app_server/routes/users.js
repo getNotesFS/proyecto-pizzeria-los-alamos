@@ -8,6 +8,8 @@ const userspageController = (req, res) => {
 /*
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
-});*/
+});
+*/
+
 router.get('/', userspageController);
 module.exports = router;

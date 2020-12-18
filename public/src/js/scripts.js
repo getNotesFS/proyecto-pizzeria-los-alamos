@@ -1,4 +1,25 @@
-$(document).ready(function () {
+ 
+ 
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("header2");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("fixed_header");
+  } else {
+    header.classList.remove("fixed_header");
+  }
+}
+
+
+$(document).ready(function () { 
+
   $("#openMAP").click(function () {
     $("#mapaLA").toggleClass("showLA");
     $(".footerMainContainer").toggleClass("showLA");
@@ -6,7 +27,7 @@ $(document).ready(function () {
     $("footer").toggleClass("bg-darkLA");
   });
 
-  $("#carritoMenu").hover(function () {
+  $("#carritoMenu").click(function () {
     $(".cartListFlotante").removeClass("hideLA");
     $(".cartListFlotante").mouseover(function () {
       $(".cartListFlotante").removeClass("hideLA");
@@ -14,6 +35,17 @@ $(document).ready(function () {
         $(".cartListFlotante").addClass("hideLA");
       });
     });
+
+    /*if ($(".shoppingCartItemsContainer").html().length > 0) {
+      //document.querySelector('comprarButton').disabled=false;
+      document.getElementById("comprarBtn").disabled = false;
+      console.log("tiene cont");
+    }else{
+      //document.querySelector('comprarButton').disabled=true;
+      document.getElementById("comprarBtn").disabled = true;
+      console.log("no tiene cont");
+    }
+    */
   });
 
   $(".tabsLogRegistro .logg").click(function () {

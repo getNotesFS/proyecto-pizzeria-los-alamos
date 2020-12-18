@@ -42,6 +42,7 @@
     "request": "^2.88.2",
     "select-pure": "^0.6.1",
     "serve-favicon": "^2.5.0",
+    "stripe": "^8.129.0",
     "uuid": "^3.4.0"
   },
   "devDependencies": {

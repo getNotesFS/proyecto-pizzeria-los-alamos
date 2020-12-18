@@ -40,8 +40,6 @@ const ctrlAdminNuevoOtroProducto = require('../controllers/admin_nuevo_otroprodu
 const ctrlAdminListadoOfertas = require('../controllers/admin_listado_ofertas');
 const ctrlAdminNuevoOferta = require('../controllers/admin_nuevo_ofertas');
 
-/* Definir las rutas de mis páginas*/
-const { isAuthenticated } = require("../../helpers/authenti");
  
 /*1.- home*/
 
@@ -68,7 +66,7 @@ router.get('/product', ctrlProduct.product);
 router.get('/product/:_id', ctrlProduct.singleProduct);//VIEW
 
 /*MY ACCOUNT */
-router.get('/my-account',isAuthenticated, ctrlMyAccount.myAccountView);//VIEW
+router.get('/my-account',  ctrlMyAccount.myAccountView);//VIEW
 router.get('/my-account/perfil', ctrlMyAccount.myAccountPerfilView);//VIEW
 router.get('/my-account/pedidos', ctrlMyAccount.myAccountPedidosView);//VIEW
 //router.get('/my-account/direcciones', ctrlMyAccount.myAccountView);//VIEW

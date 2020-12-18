@@ -1,16 +1,13 @@
-const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
-
 const mongoose = require("mongoose");
 const Usuario = mongoose.model("usuario");
- 
-dotenv.config();
 
-const validarJWT2 = (req, res, next) => {
+
+const validarJWT = (req, res, next) => {
 
     // Leer el Token
-    //const token = req.header('x-token') || req.headers['authorization'] || req.headers['x-access-token'];
-    const token = req.cookies.token || '';
+    const token = req.header('x-token') || req.headers['authorization'] || req.headers['x-access-token'];
+
     if ( !token ) {
         return res.status(401).json({
             ok: false,
@@ -33,24 +30,7 @@ const validarJWT2 = (req, res, next) => {
     }
  
 }
- 
-const validarJWT = async (req, res, next) => {
-  const token = req.cookies.token || '';
-  try {
-    if (!token) {
-      return res.status(401).json('You need to Login')
-    }
-    const decrypt = await jwt.verify(token, process.env.JWT_SECRET);
-    req.user = {
-      id: decrypt.id,
-    };
-    next();
-  } catch (err) {
-    return res.status(500).json(err.toString());
-  }
-};
 
- 
 const varlidarADMIN_ROLE = async(req, res, next)  => {
 
     const uid = req.uid;
