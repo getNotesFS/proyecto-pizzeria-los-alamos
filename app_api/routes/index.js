@@ -57,7 +57,7 @@ router
 //LOGIN REGISTER  - AUTH
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
-router.put('/update/:usuarioid', ctrlAuth.actualizarUser);
+router.put('/update/:usuarioid', ctrlUsuarios.usuarioUpdate);
 
 router.get( '/renew',
 validarJWT,
@@ -118,13 +118,13 @@ router
 
 router
 
-  .route("/pedido")
+  .route("/pedidos")
   .post(ctrlPedido.pedidoCreate) //crea un usuario
   .get(ctrlPedido.pedidoList); //enlista usuario
 
 router
 
-  .route("/pedido/:pedidoid")
+  .route("/pedidos/:pedidoid")
 
   .get(ctrlPedido.pedidoRead) //lee usuario específico por id
   .put(ctrlPedido.pedidoUpdate) //actualiza

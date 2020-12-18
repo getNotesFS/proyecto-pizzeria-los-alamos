@@ -5,8 +5,8 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
  
 /*Importar controladores */ 
-//const expressFileUpload = require('express-fileupload');
- 
+const expressFileUpload = require('express-fileupload');
+router.use( expressFileUpload() );
 //router.use( expressFileUpload() );
 
 const ctrlLocations = require('../controllers/locations'); 
@@ -40,6 +40,7 @@ const ctrlAdminNuevoOtroProducto = require('../controllers/admin_nuevo_otroprodu
 //ofertas
 const ctrlAdminListadoOfertas = require('../controllers/admin_listado_ofertas');
 const ctrlAdminNuevoOferta = require('../controllers/admin_nuevo_ofertas');
+const ctrlAdminListadoPedidos = require('../controllers/admin_listado_pedidos');
 
  
 /*1.- home*/
@@ -134,6 +135,10 @@ router.get('/admin/listado-oferta', ctrlAdminListadoOfertas.adminListadoOferta);
 router.get('/admin/oferta/delete/:_id',ctrlAdminListadoOfertas.deleteOferta);
 
 
+//PEDIDOS
+router.get('/admin/listado-pedidos',ctrlAdminListadoPedidos.adminListadoPedidos);
+router.get('/admin/pedidos/delete/:_id',ctrlAdminListadoPedidos.deletePedido);
+
 
 //usuarios
 router.get('/admin/nuevo-usuario', ctrlAdminNuevoUsuario.adminNuevoUsuarioView);//VIEW
@@ -174,7 +179,7 @@ router.post('/email', async (req, res) =>{
     
     const info = await transporter.sendMail({
         from: "'smtp.hostinger.com' <losalamos@getnotesfs.host>",
-        to: 'josue_rap@hotmail.es',
+        to: 'sfmarmolg@gmail.com',
         subject: "Formulario de Contacto 'Los Alamos'",
         html: contentHTML
     });

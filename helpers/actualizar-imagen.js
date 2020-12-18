@@ -86,10 +86,53 @@ const subirArchivo = async(tipo, id,oldpath,newpath,name, current)=> {
     
 }
 
- 
+const subirArchivo2 =  (req,res=response,file)=> {
+
+     
+    
+  const nombreCortado = file.name.split('.'); // wolverine.1.3.jpg
+  const extensionArchivo = nombreCortado[ nombreCortado.length - 1 ];
+  
+  const extensionesValidas = ['png','jpg','jpeg','gif'];
+  if ( !extensionesValidas.includes( extensionArchivo ) ) {
+      return res.status(400).json({
+          ok: false,
+          msg: 'No es una extensión permitida'
+      });
+  }
+  // Validar extension
+
+  console.log(file);
+  // Generar el nombre del archivo
+  const nombreArchivo = `${ uuidv4() }.${ extensionArchivo }`;
+  console.log(nombreArchivo);
+  // Path para guardar la imagen
+  const paths = `./uploads/${ tipo }/${ nombreArchivo }`;
+
+  
+  // Mover la imagen
+  file.mv( paths , (err) => {
+      if (err){
+          console.log(err)
+          return res.status(500).json({
+              ok: false,
+              msg: 'Error al mover la imagen'
+          });
+      }
+      res.json({
+          ok: true,
+          msg: 'Archivo subido',
+          nombreArchivo
+      });
+
+  });
+}
+
+
 module.exports = { 
     actualizarImagen,
     subirArchivo,
     tipoArchivo,
-    borrarImagen
+    borrarImagen,
+    subirArchivo2
 }

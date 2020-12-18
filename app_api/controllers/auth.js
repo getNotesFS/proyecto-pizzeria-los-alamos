@@ -160,6 +160,7 @@ const actualizarUser = async (req, res = response) => {
                 campos.Contrasenia =usuarioDB.Contrasenia;
             }
             campos.TipoUsuario = req.body.TipoUsuario;
+            console.log("========CAMPOS",campos);
 
         const usuarioActualizado = await Usuario.findByIdAndUpdate( uid, campos, { new: true } );
 

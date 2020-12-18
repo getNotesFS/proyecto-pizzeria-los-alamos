@@ -1,8 +1,9 @@
 /*Controladores */
 //Llamado a request
 const { get } = require("request");
-const request = require("request"); 
-const formidable = require("formidable");
+const request = require("request");
+
+//const formidable = require("formidable");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const axios = require("axios").default;
@@ -39,69 +40,30 @@ async function adminNuevaPizzaView(req, res) {
 //ADD PIZZA
 const addNuevaPizza = (req, res) => {
   const tipo = "pizzas";
-  const form = new formidable.IncomingForm();
 
-  form.parse(req, function (err, fields, files) {
-    console.log(files);
+  // Validar que exista un archivo
+  console.log(req.files);
+  if (
+    req.files != null &&
+    req.body.nombre != "" &&
+    req.body.descripcion != "" &&
+    req.body.categoria != "" &&
+    req.body.tipomasa != "" &&
+    req.body.tamanio != "" &&
+    req.body.precio != "" &&
+    req.body.ingredientes != ""
+  ) {
+    // Procesar la imagen...
+    const file = req.files.imagen;
+    const nombreCortado = file.name.split("."); // wolverine.1.3.jpg
+    const extensionArchivo = nombreCortado[nombreCortado.length - 1];
 
-    if (files.imagen.name != "" && fields.nombre != "" && fields.descripcion != ''&& fields.categoria != ''&& fields.tipomasa != ''&& fields.tamanio != '' && fields.precio != ''&& fields.ingredientes != '') {
-      if (tipoArchivo(files.imagen.name)) {
-        const oldpath = files.imagen.path;
-        const newpath = "./uploads/";
-
-        const nombreCortado = files.imagen.name.split("."); // wolverine.1.3.jpg
-        const extensionArchivo = nombreCortado[nombreCortado.length - 1];
-
-        const nombreArchivo = `${uuidv4()}.${extensionArchivo}`;
-
-        //Path para guardar la imagen
-        const newp = newpath + tipo + "/" + nombreArchivo;
-
-        fs.rename(oldpath, newp, function (err) {
-          if (err) {
-            res.redirect("/admin/nueva-pizza");
-            throw err;
-          } else {
-            console.log("Archivo cargado y almacenado.!");
-            console.log(fields);
-
-            axios
-              .post(`${apiOptions.server}/api/pizzas`, {
-                Nombre: fields.nombre,
-                Descripcion: fields.descripcion,
-                Categoria: fields.categoria,
-                TipoMasa: fields.tipomasa,
-                Tamanio: fields.tamanio,
-                Precio: parseFloat(fields.precio),
-                Imagen: nombreArchivo,
-                Ingredientes: fields.ingredientes,
-              })
-              .then(function (response) {
-                axios
-                  .get(`${apiOptions.server}/api/ingredientes`)
-                  .then(function (response) {
-                    res.render("admin_nueva_pizza", {
-                      title: "Add New Pizza",
-                      mensaje: "Se ha agrergado un nuevo producto" + fields.nombre,
-                      listaIngredientes: response.data,
-                    });
-                  })
-                  .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                  })
-                  .then(function () {
-                    // always executed
-                  });
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          }
-        });
-      } else {
-        // res.redirect("/admin/nuevo-ingrediente");
-        axios
+    // Validar extension
+    const extensionesValidas = ["png", "jpg", "jpeg", "gif"];
+    if (!extensionesValidas.includes(extensionArchivo)) {
+      console.log("================ERROR TIPO ARCHIVO");
+      // res.redirect("/admin/nuevo-ingrediente");
+      axios
         .get(`${apiOptions.server}/api/ingredientes`)
         .then(function (response) {
           res.render("admin_nueva_pizza", {
@@ -117,28 +79,76 @@ const addNuevaPizza = (req, res) => {
         .then(function () {
           // always executed
         });
-      }
     } else {
-      //res.redirect("/admin/nuevo-ingrediente");
-       
-      axios
-        .get(`${apiOptions.server}/api/ingredientes`)
-        .then(function (response) {
-          res.render("admin_nueva_pizza", {
-            title: "Add New Pizza",
-            mensaje: "Todos los campos deben estar llenos",
-            listaIngredientes: response.data,
+      // Generar el nombre del archivo
+      const nombreArchivo = `${uuidv4()}.${extensionArchivo}`;
+      console.log(nombreArchivo);
+      // Path para guardar la imagen
+      const paths = `./uploads/${tipo}/${nombreArchivo}`;
+      // Mover la imagen
+      file.mv(paths, (err) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).json({
+            ok: false,
+            msg: "Error al mover la imagen",
           });
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .then(function () {
-          // always executed
-        });
+        }
+
+        axios
+          .post(`${apiOptions.server}/api/pizzas`, {
+            Nombre: req.body.nombre,
+            Descripcion: req.body.descripcion,
+            Categoria: req.body.categoria,
+            TipoMasa: req.body.tipomasa,
+            Tamanio: req.body.tamanio,
+            Precio: parseFloat(req.body.precio),
+            Imagen: nombreArchivo,
+            Ingredientes: req.body.ingredientes,
+          })
+          .then(function (response) {
+            axios
+              .get(`${apiOptions.server}/api/ingredientes`)
+              .then(function (response) {
+                res.render("admin_nueva_pizza", {
+                  title: "Add New Pizza",
+                  mensaje:
+                    "Se ha agrergado un nuevo producto" + req.body.nombre,
+                  listaIngredientes: response.data,
+                });
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+              .then(function () {
+                // always executed
+              });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
     }
-  });
+  } else {
+    console.log("================ERROR NO ARCHIVO");
+    axios
+      .get(`${apiOptions.server}/api/ingredientes`)
+      .then(function (response) {
+        res.render("admin_nueva_pizza", {
+          title: "Add New Pizza",
+          mensaje: "Todos los campos deben estar llenos",
+          listaIngredientes: response.data,
+        });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
 };
 
 //MOSTRAR INGREDIENTE EN FORMULARIO EDITAR
@@ -212,97 +222,104 @@ const editPizzaViewUpdated = (req, res, mensajeUpd) => {
 //UPDATE PIZZA
 
 const updatePizza = (req, res) => {
-
   const tipo = "pizzas";
-  const form = new formidable.IncomingForm();
-  //const form = formidable({ multiples: true });
-  form.parse(req, function (err, fields, files) {
-   // console.log(fields); 
-    if((files.imagen.name == '' && fields.imagenh !='')   && fields.nombre != "" && fields.descripcion != ''&& fields.categoria != ''&& fields.tipomasa != ''&& fields.tamanio != '' && fields.precio != ''&& fields.ingredientes != ''){
-         
-            console.log("Archivo cargado y almacenado.!");
-            console.log(fields);
-            console.log("==========ACTUALIZAR");
-            axios
-            .put(`${apiOptions.server}/api/pizzas/${req.params._id}`, {
-              Nombre: fields.nombre,
-              Descripcion: fields.descripcion,
-              Categoria: fields.categoria,
-              TipoMasa: fields.tipomasa,
-              Tamanio: fields.tamanio,
-              Precio: parseFloat(fields.precio),
-              Imagen: fields.imagenh,
-              Ingredientes: fields.ingredientes,
-            })
-            .then(function () {
-                  
-                editPizzaViewUpdated(req,res,fields.nombre + " se ha actualizado!");
-        
-            });
-          
-       
-    }
-    else if ((files.imagen.name != ''&& fields.imagenh)  && fields.nombre != "" && fields.descripcion != ''&& fields.categoria != ''&& fields.tipomasa != ''&& fields.tamanio != '' && fields.precio != ''&& fields.ingredientes != '') {
-       
-      if (tipoArchivo(files.imagen.name)) {
-        const oldpath = files.imagen.path;
-        const newpath = "./uploads/";
 
-        const nombreCortado = files.imagen.name.split("."); // wolverine.1.3.jpg
-        const extensionArchivo = nombreCortado[nombreCortado.length - 1];
+  // Validar que exista un archivo
+  console.log(req.files);
+  if (
+    req.files == null &&
+    req.body.imagenh != "" &&
+    req.body.nombre != "" &&
+    req.body.descripcion != "" &&
+    req.body.categoria != "" &&
+    req.body.tipomasa != "" &&
+    req.body.tamanio != "" &&
+    req.body.precio != "" &&
+    req.body.ingredientes != ""
+  ) {
+    axios
+      .put(`${apiOptions.server}/api/pizzas/${req.params._id}`, {
+        Nombre: req.body.nombre,
+        Descripcion: req.body.descripcion,
+        Categoria: req.body.categoria,
+        TipoMasa: req.body.tipomasa,
+        Tamanio: req.body.tamanio,
+        Precio: parseFloat(req.body.precio),
+        Imagen: req.body.imagenh,
+        Ingredientes: req.body.ingredientes,
+      })
+      .then(function () {
+        editPizzaViewUpdated(req, res, req.body.nombre + " se ha actualizado!");
+      });
+  } else if (
+    req.files != null &&
+    req.body.imagenh != "" &&
+    req.body.nombre != "" &&
+    req.body.descripcion != "" &&
+    req.body.categoria != "" &&
+    req.body.tipomasa != "" &&
+    req.body.tamanio != "" &&
+    req.body.precio != "" &&
+    req.body.ingredientes != ""
+  ) {
+    // Procesar la imagen...
+    const file = req.files.imagen;
+    const nombreCortado = file.name.split("."); // wolverine.1.3.jpg
+    const extensionArchivo = nombreCortado[nombreCortado.length - 1];
 
-        const nombreArchivo = `${uuidv4()}.${extensionArchivo}`;
-
-        //Path para guardar la imagen
-        const newp = newpath + tipo + "/" + nombreArchivo;
-        const pathActual = `./uploads/pizzas/${fields.imagenh}`;
-        if ( fs.existsSync( pathActual ) ) {
-          // borrar la imagen anterior
-          fs.unlinkSync( pathActual );
-        }
-
-
-        fs.rename(oldpath, newp, function (err) {
-          if (err) {
-            res.redirect(`/admin/editar-pizza/${req.params._id}`);
-            throw err;
-          } else {
-            console.log("Archivo cargado y almacenado.!");
-            //console.log(fields);
-            console.log("==========ACTUALIZAR");
-            axios
-            .put(`${apiOptions.server}/api/pizzas/${req.params._id}`, {
-              Nombre: fields.nombre,
-              Descripcion: fields.descripcion,
-              Categoria: fields.categoria,
-              TipoMasa: fields.tipomasa,
-              Tamanio: fields.tamanio,
-              Precio: parseFloat(fields.precio),
-              Imagen: nombreArchivo,
-              Ingredientes: fields.ingredientes,
-            })
-            .then(function () {
-                  
-                editPizzaViewUpdated(req,res,fields.nombre + " se ha actualizado!");
-        
-            });
-             
-          }
-        });
-
-      } else {
-        // res.redirect("/admin/nuevo-ingrediente");
-         
-        editPizzaViewUpdated(req,res,"Tipo de archivo inválido");
-      }
+    // Validar extension
+    const extensionesValidas = ["png", "jpg", "jpeg", "gif"];
+    if (!extensionesValidas.includes(extensionArchivo)) {
+      console.log("================ERROR TIPO ARCHIVO");
+      editPizzaViewUpdated(req, res, "Tipo de archivo inválido");
     } else {
-      //res.redirect("/admin/nuevo-ingrediente");
-      editPizzaViewUpdated(req,res,"Todos los campos deben estar llenos");
-       
+      // Generar el nombre del archivo
+      const nombreArchivo = `${uuidv4()}.${extensionArchivo}`;
+      console.log(nombreArchivo);
+      // Path para guardar la imagen
+      const paths = `./uploads/${tipo}/${nombreArchivo}`;
+
+      const pathActual = `./uploads/pizzas/${req.body.imagenh}`;
+      if (fs.existsSync(pathActual)) {
+        // borrar la imagen anterior
+        fs.unlinkSync(pathActual);
+      }
+      // Mover la imagen
+      file.mv(paths, (err) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).json({
+            ok: false,
+            msg: "Error al mover la imagen",
+          });
+        }
+        //console.log(fields);
+        console.log("==========ACTUALIZAR");
+        axios
+          .put(`${apiOptions.server}/api/pizzas/${req.params._id}`, {
+            Nombre: req.body.nombre,
+            Descripcion: req.body.descripcion,
+            Categoria: req.body.categoria,
+            TipoMasa: req.body.tipomasa,
+            Tamanio: req.body.tamanio,
+            Precio: parseFloat(req.body.precio),
+            Imagen: nombreArchivo,
+            Ingredientes: req.body.ingredientes,
+          })
+          .then(function () {
+            editPizzaViewUpdated(
+              req,
+              res,
+              req.body.nombre + " se ha actualizado!"
+            );
+          });
+      });
     }
-  });
-
-
+  } else {
+    console.log("================ERROR NO ARCHIVO");
+    //res.redirect("/admin/nuevo-ingrediente");
+    editPizzaViewUpdated(req, res, "Todos los campos deben estar llenos");
+  }
 
   
 };

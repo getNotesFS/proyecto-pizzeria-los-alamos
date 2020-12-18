@@ -1,0 +1,38 @@
+
+extends admin_layout
+
+block content
+
+    // AQUÍ ESTÁ EL CONTENIDO DE CADA PÁGINA
+    main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1= title
+      // AQUÍ VA OTRAS COSAS QUE SE NECESITE EN LA CABECERA DEL DASHBOARD
+      .table-responsive
+        table.dataT.display.responsive.nowrap(style="width:100%;")
+          thead
+            tr
+              th #
+              th Usuario
+              th Productos
+              th Fecha
+              th Total
+              //th Otros
+          tbody
+            - var pos=1
+            each element in pedidosList
+              tr
+                td.idProducto= pos++
+                td.imagenIng= element.Usuario
+                td.nombreIng
+                  each ingre in element.DetallesOrden
+                                  span= ingre.id + ', '
+                td.precioIng= element.Fecha
+                td.precioIng= element.Total
+                //td.crudProducto
+                  a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-ingrediente/${element._id}` data-id=`${element._id}` data-toggle="modal" data-target="#modalEditarIngrediente") Editar
+                  a.btn.btn-primary.ml-1.btn-sm#updateIngredente(href=`/admin/editar-ingrediente/${element._id}` data-id=`${element._id}` ) Editar
+                  button.btn.btn-danger.ml-1.btn-sm#deleteIngredente(data-id=`${element._id}` onClick=`removeP('${element._id}')`) Eliminar
+ 
+
+        

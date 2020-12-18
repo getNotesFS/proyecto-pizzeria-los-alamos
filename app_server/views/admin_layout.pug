@@ -13,7 +13,7 @@ html
     link(rel="stylesheet", href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css") 
     link(rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css")
     link(rel="stylesheet" href="https://joshuajohnson.co.uk/Choices/assets/styles/choices.min.css?version=7.0.0")
-    script(src="https://joshuajohnson.co.uk/Choices/assets/scripts/choices.min.js?version=7.0.0")
+    // script(src="https://joshuajohnson.co.uk/Choices/assets/scripts/choices.min.js?version=7.0.0")
     title=title
    
   body
@@ -37,7 +37,7 @@ html
                   ion-icon(name="apps-outline")
                   |                                 Dashboard
               li.nav-item
-                a.nav-link.border.nbr(href="#")
+                a.nav-link.border.nbr(href="/admin/listado-pedidos")
                   ion-icon(name="document-outline")
                   |                                 Órdenes
               li.nav-item
@@ -73,6 +73,22 @@ html
                       a.nav-link.border.nbr(href="/admin/listado-otroproducto")
                         ion-icon(name="server-outline")
                         |                                             Listado Otro Producto
+              li.nav-item
+                a.nav-link.border.nbr.twoLevels(href="#" data-target="#ofertas" data-toggle="collapse")
+                  ion-icon(name="gift-outline")
+                  |                                 Ofertas
+                #ofertas.collapse
+                  ul.nav.flex-column.pl-4
+                    li.nav-item
+                      a.nav-link.border.nbr(href="/admin/nuevo-oferta")
+                        ion-icon(name="create-outline")
+                        |                                             Nueva Oferta
+                        ion-icon.float-right(name="shapes-outline")
+                    li.nav-item
+                      a.nav-link.border.nbr(href="/admin/listado-oferta")
+                        ion-icon(name="server-outline")
+                        |                                             Listado Ofertas
+                                
               li.nav-item
                 a.nav-link.border.nbr.twoLevels(href="#" data-target="#productos2" data-toggle="collapse")
                   ion-icon(name="people-outline")

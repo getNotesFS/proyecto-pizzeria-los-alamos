@@ -13,22 +13,20 @@ block content
       .row.justify-content-center.pt-5.mainIntercambiableContent
         .col-md-6
           p.text-center #{mensaje}
-          form(method="POST" action="" role="form")
+          form(method="POST" action="" role="form" enctype="multipart/form-data")
             .form-group
-              label(for="imagen")
-                | Imagen 
-                small
-                  | (Solo hay cebolla, champinion,
-                  | tomate, queso, pollo,
-                  | pinia, tocino o jamon)
-              input.form-control(type="text" name="imagen" placeholder="tomate" required="" value=`${imagen}`)
+              label(for="nombre") Título
+              input.form-control(type="text" name="nombre" value=`${nombre}`)
             .form-group
               label(for="descripcion") Descripcion
               input.form-control(type="text" name="descripcion" required="" value=`${descripcion}`)
             .form-group
-              label(for="nombre") Nombre
-              input.form-control(type="text" name="nombre" value=`${nombre}`)
-            
+              label(for="imagen")
+                | Imagen 
+              img.editImgCurrent(src=`../../uploads/ofertas/${imagen}`)
+              input.form-control(type="file" name="imagen")
+              input.form-control(type="hidden" name="imagenh"  value=`${imagen}`)
+             
             button.btn.btn-primary(type="submit") Actualizar Producto
             a.btn.btn-danger.ml-1(href="/admin/listado-oferta") Cancelar
             

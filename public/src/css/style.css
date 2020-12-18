@@ -280,6 +280,12 @@ footer {
   display: block !important;
 }
 
+@media (min-width: 768px){
+  .customTextOffert { 
+   max-width: 100%!important;
+}
+}
+
 
 /*======================================HOME PAGE*/
 .mainSliderHomePage .carousel-item {

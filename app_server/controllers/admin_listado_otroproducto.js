@@ -2,7 +2,8 @@
 //Llamado a request
 const { get } = require("request");
 const request = require("request");
-
+const fs = require("fs");
+const { v4: uuidv4 } = require("uuid");
 const axios = require("axios").default;
 // Definir las URLs para los ambientes de desarrollo y producción
 
@@ -40,13 +41,32 @@ const adminListadoOtroProductos = (req, res) => {
   
 //delete
 const deleteOtrosProductos = (req, res) => {
-  
-  //delete Axios
-  axios.delete(`${apiOptions.server}/api/otrosproductos/${req.params._id}`)
+  axios
+    .get(`${apiOptions.server}/api/otrosproductos/${req.params._id}`)
+    .then(function (response) {
+      const pathActual = `./uploads/otrosproductos/${response.data.Imagen}`;
+      if ( fs.existsSync( pathActual ) ) {
+        // borrar la imagen anterior
+        fs.unlinkSync( pathActual );
+      }
+      //delete Axios
+      axios.delete(`${apiOptions.server}/api/otrosproductos/${req.params._id}`)
+      .then(function () {
+        console.log("DELETED");
+        res.redirect(`/admin/listado-otroproducto`);
+      });
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
     .then(function () {
-      console.log("DELETED");
-      res.redirect(`/admin/listado-otroproducto`);
+      // always executed
     });
+ 
+ 
+
+
 };
 
 module.exports = {

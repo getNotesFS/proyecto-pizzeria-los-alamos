@@ -10,7 +10,8 @@ const otroProductoCreate = (req, res) => {
         Descripcion: req.body.Descripcion,
         Stock: req.body.Stock,
         Cantidad: req.body.Cantidad,
-        Precio: req.body.Precio
+        Precio: req.body.Precio,
+        Imagen : req.body.Imagen,
        
     },(err, objetoOtrosProductos) =>{
         if(err){
@@ -92,7 +93,9 @@ const otroProductoUpdate = (req, res) => {
             objetoOtrosProductos.Stock = req.body.Stock; 
             objetoOtrosProductos.Cantidad = req.body.Cantidad; 
             objetoOtrosProductos.Precio = req.body.Precio; 
-            objetoOtrosProductos.save((err, objetoOtrosProductos)=>{
+            objetoOtrosProductos.Imagen = req.body.Imagen; 
+            
+            objetoOtrosProductos.save((err, objetoOtrosProducto)=>{
                 if(err){
                     res
                         .status(404)
@@ -100,7 +103,7 @@ const otroProductoUpdate = (req, res) => {
                 }else{
                     res
                         .status(200)
-                        .json(objetoOtrosProductos);
+                        .json(objetoOtrosProducto);
                 }
             });
         });
