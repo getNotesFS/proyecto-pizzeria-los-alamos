@@ -18,8 +18,10 @@ if (process.env.NODE_ENV === "production") {
 
 const homepage = (req, res) => {
 
+ 
   axios.get(`${apiOptions.server}/api/pizzas`)
     .then(function (response) {
+      
       res.render("index", {
         title: "Inicio",
         pizzaList: response.data,
@@ -32,6 +34,8 @@ const homepage = (req, res) => {
     .then(function () {
       // always executed
     });
+
+
 
 };
 

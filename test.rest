@@ -38,14 +38,14 @@ Content-Type: application/json
 ]
 
 ###
-POST http://localhost:3000/api/pedido
+POST http://localhost:3000/api/pedidos
 Content-Type: application/json
 
 {
     "Usuario": "5fd0f3120d0c0748c42f83e8",
     "Fecha": "2014-01-01T23:28:56.782Z",
-    "SubTotal": "22.50",
-    "Total": "27.50",
+    "SubTotal": 22.50,
+    "Total": 27.50,
     "DetallesOrden":[
         {
             "id": "5fb0b556759cbc36e810e21a",

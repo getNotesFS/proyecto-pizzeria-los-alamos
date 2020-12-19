@@ -48,55 +48,27 @@ block content
         .card
           #headingTwo.mn-cards.card-header(style="padding: 0;")
             h2.mb-0
-              button#open-pizzas.mn-botones.btn.btn-dark.btn-block.text-left.collapsed(style="background-image: url('../../images/Menu/Hamburguesas.jpg');" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo")
-                h1.mn-botones-texto HAMBURGUESAS
+              button#open-pizzas.mn-botones.btn.btn-dark.btn-block.text-left.collapsed(style="background-image: url('../../images/Menu/Bebidas.jpg');" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo")
+                h1.mn-botones-texto OTROS PRODUCTOS
           #collapseTwo.collapse(aria-labelledby="headingTwo" data-parent="#accordionExample")
             .card-body
               .container-fluid
                 .mn-productos.row.justify-content-center
-                     each element in pizzaList
+                     each element in listadoProductos
                           .col-auto.mb-5.cardProductoM
                               div
                                 a(href=`/product/${element._id}`)
-                                    img.img-fluid.itemImagen(src=`../../uploads/pizzas/${element.Imagen}` alt="Pizza")
-                              a.productLink(href=`/product/${element._id}` item-id=`${element._id}`)
-                                h6.itemNombre= element.Nombre
-                              p.descripCort.itemDescripcion= element.Descripcion
-                              br
+                                    img.img-fluid.itemImagen(src=`../../uploads/otrosproductos/${element.Imagen}` alt="Otro" style="max-width:150px;")
+                              a.productLink(href=`#` item-id=`${element._id}`)
+                                h6.itemNombre= element.Nombre 
+                              
                               span.mn-productos-precio
                                 small
-                                  | Desde 
+                                  | Stock 
                                 span
-                                  | $
-                                b.itemPrecio= element.Precio
-                              button.mn-productos-botones
-                                ion-icon(name="basket-outline")
-                                | Añadir
-                      
-        .card
-          #headingThree.mn-cards.card-header(style="padding: 0;")
-            h2.mb-0
-              button.mn-botones.btn.btn-dark.btn-block.text-left.collapsed(style="background-image: url('../../images/Menu/Bebidas.jpg');" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree")
-                h1.mn-botones-texto BEBIDAS
-          #collapseThree.collapse(aria-labelledby="headingThree" data-parent="#accordionExample")
-            .card-body
-              .container-fluid
-                .mn-productos.row.justify-content-center
-                     each element in pizzaList
-                          .col-auto.mb-5.cardProductoM
-                              div
-                                a(href=`/product/${element._id}`)
-                                    img.img-fluid.itemImagen(src=`../../uploads/pizzas/${element.Imagen}` alt="Pizza")
-                              a.productLink(href=`/product/${element._id}` item-id=`${element._id}`)
-                                h6.itemNombre= element.Nombre
+                                  |
+                                b.itemPrecio= element.Cantidad 
                               p.descripCort.itemDescripcion= element.Descripcion
                               br
-                              span.mn-productos-precio
-                                small
-                                  | Desde 
-                                span
-                                  | $
-                                b.itemPrecio= element.Precio
-                              button.mn-productos-botones
-                                ion-icon(name="basket-outline")
-                                | Añadir
+                              span.mn-productos-precio.d-flex.justify-content-center 
+                                b.itemPrecio= element.Precio + '$'

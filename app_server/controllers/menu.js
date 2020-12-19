@@ -18,20 +18,36 @@ if (process.env.NODE_ENV === "production") {
 
 const menu = (req, res) => {
 
-  axios.get(`${apiOptions.server}/api/pizzas`)
-    .then(function (response) {
-      res.render("menu", {
-        title: "Menú",
-        pizzaList: response.data,
+  axios
+  .get(`${apiOptions.server}/api/pizzas`)
+  .then(function (response) { 
+    //console.log(response.data);
+    const tmpp = response.data;
+    axios
+      .get(`${apiOptions.server}/api/otrosproductos`)
+      .then(function (response) {
+        //console.log(response.data);
+        res.render("menu", {
+          title: "MENÚ",
+          pizzaList: tmpp,
+          listadoProductos: response.data, 
+        });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
       });
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
 
 };
 

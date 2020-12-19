@@ -1,6 +1,7 @@
-var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+/*var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
   removeItemButton: true,
 });
+*/
 //BTN JS
  function removeP(_id){
     console.log(_id);

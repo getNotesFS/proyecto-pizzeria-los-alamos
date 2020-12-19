@@ -8,8 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const passport = require("passport");  
 const flash = require("connect-flash");
-const session = require("express-session");
-const expressFileUpload = require('express-fileupload'); 
+const session = require("express-session"); 
 
 const fs = require('fs');
  
