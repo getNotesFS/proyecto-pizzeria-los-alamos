@@ -60,9 +60,8 @@ router.post('/login', ctrlAuth.login);
 router.put('/update/:usuarioid', ctrlUsuarios.usuarioUpdate);
 
 router.get( '/renew',
-validarJWT,
 ctrlAuth.renewToken
-)
+);
 
 
 

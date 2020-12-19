@@ -16,7 +16,7 @@ block content
           form(method="POST" action="" role="form" enctype="multipart/form-data")
             .form-group
               label(for="nombre") Nombre
-              input.form-control(type="text" name="nombre")
+              input.form-control(type="text" name="nombre" required="")
             .form-group
               label(for="tipo") Tipo
               input.form-control(type="text" name="tipo" required="")
@@ -37,7 +37,7 @@ block content
               input.form-control(type="text" name="precio" required="") 
             .form-group
               label(for="imagen") Imagen
-              input.form-control(type="file" name="imagen" )
+              input.form-control(type="file" name="imagen" required="")
     
             button.btn.btn-primary(type="submit") Guardar OtroProducto
             a.btn.btn-danger.ml-1(href="/admin/listado-otroproducto") Cancelar

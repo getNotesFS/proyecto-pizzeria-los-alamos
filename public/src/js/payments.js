@@ -1,4 +1,4 @@
-const serverUrl = 'https://pro-web-pizza-la.herokuapp.com/';
+const serverUrl = 'http://pro-web-pizza-la.herokuapp.com/';
 var stripe = Stripe('pk_test_51HzUyTAoIeelwSdVaOAkJr39ogScJQOARl2OdhT256Ma05UcRQua3pThOF4oj6TGBAsxlJOr9Mr8d41gej8BTHi700HSyS3Y59');
 
 const purchaseButton = document.querySelector('.comprarButton');
@@ -134,7 +134,7 @@ function saveOrderInDataBase() {
     DetallesOrden: JSON.parse(shoppingCart),
   };
 
-  fetch(`${serverUrl}api/pedido`, {
+  fetch(`${serverUrl}api/pedidos`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

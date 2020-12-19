@@ -169,7 +169,7 @@ const UpdateOtroProducto = (req, res) => {
         Stock: req.body.stock,
         Cantidad: req.body.cantidad,
         Precio: req.body.precio,
-        Imagen: req.body.imagenh,
+        Imagen: req.body.imagenh
       })
       .then(function () {
         editOtroProductoViewUpdated(
@@ -229,7 +229,7 @@ const UpdateOtroProducto = (req, res) => {
             Stock: req.body.stock,
             Cantidad: req.body.cantidad,
             Precio: req.body.precio,
-            Imagen: nombreArchivo,
+            Imagen: nombreArchivo
           })
           .then(function () {
             editOtroProductoViewUpdated(
